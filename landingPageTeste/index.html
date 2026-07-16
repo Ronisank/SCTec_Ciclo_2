@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIPPLI.PET</title>
+    <script src="app2.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BIPPLI<span>.PET</span></h1>
+            <nav class="nav">
+                <ul>
+                    <li id="start"><a href="#header">Inicio</a></li>
+                    <li id="about"><a href="#about-section">Sobre</a></li>
+                    <li id="services"><a href="#services-section">Serviços</a></li>
+                    <li id="contact"><a href="#contacts-section">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="content">
+        <div class="hero-text">
+        <h2>Cuidando do seu pet<br><span>com carinho e qualidade</span></h2>
+        <p>Banho, tosa e produtos selecionados para garantir a saúde e felicidade do seu melhor amigo.</p>
+        <button id="btnAgendar">Quero Agendar</button>
+    </div>
+     <div class="hero-image">
+        <img src="./Images/Salsicha-dog.png" alt="Cachorro">
+    </div>
+        </div>
+        <div id="about-section" class="about">
+    <div class="about-text">
+        <h2>Sobre a Blippi<span>.Pet</span></h2>
+        <p>
+            Na Blippi.Pet, acreditamos que cada animal merece cuidado, carinho e atenção especial.
+        </p>
+        <p>
+            Nossa missão é oferecer serviços de qualidade, com profissionais dedicados e um ambiente seguro.
+        </p>
+
+        <div class="about-stats">
+            <div>
+                <h3><span>+</span>200</h3>
+                <p>Pets atendidos</p>
+            </div>
+            <div>
+                <h3><span>+</span>2</h3>
+                <p>Anos de experiência</p>
+            </div>
+            <div>
+                <h3>100<span>%</span></h3>
+                <p>Amor aos animais</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-image">
+        <img src="../ProjetoLandingPage/Images/bulldog.png" alt="Cachorro feliz">
+    </div>
+</div>
+<div id="services-section" class="services">
+    <div class="service-text">
+    <h2>Nossos Serviços</h2>
+    </div>
+    <div class="service-cards">
+        <div class="service-card">
+            <i class="fas fa-bath"></i>
+            <h3>Banho e Tosa</h3>
+            <p>Higiene completa e corte específico para cada raça.</p>
+            </div>
+        <div class="service-card">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Consultas</h3>
+            <p>Check-ups e orientações com veterinários experientes.</p>
+            </div>
+        <div class="service-card">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Pet Shop</h3>
+            <p>Brinquedos, rações premium, e acessórios exclusivos.</p>
+            </div>
+        </div>
+        <div id="contacts-section" class="contacts">
+            <div class="contact-text">
+                <h2>Contato</h2>
+            </div>
+            <div class="contact-info">
+                <ul class="contact-list">
+                    <li><i class="fas fa-map-marker-alt"></i> São José/SC</li>
+                    <li><i class="fas fa-phone"></i> (48) 1234-5678</li>
+                    <li><i class="fas fa-envelope"></i> contato@bippli.pet</li>
+                </ul>
+                <form id="contact-form">
+                    <input id="nameForm" type="text" placeholder="Seu nome" required>
+                    <input id="emailForm" type="email" placeholder="Seu email" required>
+                    <textarea id="messageForm" placeholder="Como podemos ajudar seu pet?" required></textarea>
+                    <button id="btnSubmitForm" type="submit">ENVIAR MENSAGEM</button>
+                </form>
+            </div>
+        </div>
+    <div class="footer">
+        <p>© 2026 BIPPLI.PET. Todos os direitos reservados.</p>
+    </div>
+    </div>
+    <!-- Modal form -->
+      <div id="modalForm" class="modal">
+    <div class="modal-content">
+      <h3>Agendar Serviço</h3>
+
+      <form id="serviceForm">
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Telefone" required>
+
+        <select required>
+          <option value="">Serviço</option>
+          <option>Banho e Tosa</option>
+          <option>Consulta</option>
+          <option>Pet Shop</option>
+        </select>
+
+        <button id="btnSubmitModal" type="submit">Enviar</button>
+        <button id="btnCloseModal">Fechar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

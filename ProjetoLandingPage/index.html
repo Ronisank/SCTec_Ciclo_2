@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PATINHA FELIZ</title>
+
+    <script src="script.js" type="module"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header" id="header">
+      <h1>PATINHA<span>FELIZ</span></h1>
+
+      <nav>
+        <ul>
+          <li><a href="#header">Início</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+      <!-- Seção Hero -->
+      <section class="content">
+        <div class="hero-text">
+          <h2>Cuidando do seu pet<br /><span>com carinho e qualidade</span></h2>
+          <p>
+            Banho, tosa e produtos selecionados para garantir a saúde e
+            felicidade do seu melhor amigo.
+          </p>
+          <button id="btnAgendar">Quero Agendar</button>
+        </div>
+
+        <figure class="hero-image">
+          <img src="./Images/Salsicha-dog.png" alt="Cachorro Salsicha" />
+        </figure>
+      </section>
+
+      <!-- Seção Sobre -->
+      <section id="about" class="about">
+        <div class="about-text">
+          <h2>Sobre a Patinha<span>Feliz</span></h2>
+
+          <p>
+            Na Patinha Feliz, acreditamos que cada animal merece cuidado,
+            carinho e atenção especial.
+          </p>
+          <p>
+            Nossa missão é oferecer serviços de qualidade, com profissionais
+            dedicados e um ambiente seguro.
+          </p>
+
+          <div class="about-stats">
+            <div>
+              <h3><span>+</span>200</h3>
+              <p>Pets atendidos</p>
+            </div>
+            <div>
+              <h3><span>+</span>2</h3>
+              <p>Anos de experiência</p>
+            </div>
+            <div>
+              <h3>100<span>%</span></h3>
+              <p>Amor aos animais</p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="about-image">
+          <img src="./Images/bulldog.png" alt="Cachorro feliz" />
+        </figure>
+      </section>
+
+      <!-- Seção Serviços -->
+      <section id="services" class="services">
+        <h2>Nossos Serviços</h2>
+
+        <div class="service-cards">
+          <article class="service-card">
+            <i class="fas fa-bath"></i>
+            <h3>Banho e Tosa</h3>
+            <p>Higiene completa e corte específico para cada raça.</p>
+          </article>
+
+          <article class="service-card">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Consultas</h3>
+            <p>Check-ups e orientações com veterinários experientes.</p>
+          </article>
+
+          <article class="service-card">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Pet Shop</h3>
+            <p>Brinquedos, rações premium e acessórios exclusivos.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Seção Contato -->
+      <section id="contact" class="contacts">
+        <h2>Contato</h2>
+        <div class="contact-info">
+          <ul class="contact-list">
+            <li><i class="fas fa-map-marker-alt"></i> São José/SC</li>
+            <li><i class="fas fa-phone"></i> (48) 1234-5678</li>
+            <li><i class="fas fa-envelope"></i> contato@patinhafeliz.com</li>
+          </ul>
+          <form id="contact-form">
+            <input id="nameForm" type="text" placeholder="Seu nome" required />
+            <input
+              id="emailForm"
+              type="email"
+              placeholder="Seu email"
+              required
+            />
+            <textarea
+              id="messageForm"
+              placeholder="Como podemos ajudar seu pet?"
+              required
+            ></textarea>
+            <button id="btnSubmitForm" type="submit">ENVIAR MENSAGEM</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+      <p>
+        © 2026 PATINHA FELIZ. Todos os direitos reservados.<br />
+        Desenvolvido por Roni Rodrigues
+      </p>
+    </footer>
+
+    <!-- Modal -->
+    <section id="modalForm" class="modal">
+      <div class="modal-content">
+        <h3>Agendar Serviço</h3>
+
+        <form id="serviceForm">
+          <input type="text" placeholder="Nome" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Telefone" required />
+
+          <select required>
+            <option value="blank">Serviço</option>
+            <option>Banho e Tosa</option>
+            <option>Consulta</option>
+            <option>Pet Shop</option>
+          </select>
+
+          <button id="btnSubmitModal" type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

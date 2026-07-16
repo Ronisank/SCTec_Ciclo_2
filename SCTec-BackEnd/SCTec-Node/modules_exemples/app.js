@@ -1,0 +1,12 @@
+var pessoa = require("./commons/Pessoa")
+let somar = require("./commons/calculadora")
+let subtrair = require("./commons/calculadora")
+let multi = require("./commons/calculadora")
+let dividir = require("./commons/calculadora")
+
+roni = pessoa()
+// console.log(JSON.stringify(roni))
+console.log("A Soma é: " + somar.soma(35, 10))
+console.log("A subtração é: " + subtrair.subtração(35, 10))
+console.log("A Multiplicação é: " + multi.multiplicacao(35, 10))
+console.log("A divisão é: " + dividir.divisao(35, 10))
