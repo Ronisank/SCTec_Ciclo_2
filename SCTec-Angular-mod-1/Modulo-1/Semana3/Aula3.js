@@ -33,3 +33,30 @@ const emails = ["joao@email.com", "ana@email.com", "lucas@email.com"];
 emails.forEach((email) => {
     console.log('Enviando e-mail para ' + email)
 });
+
+console.log()
+console.log('-------------Atividade Objeto---------------------')
+console.log()
+
+let livro = {
+    titulo: "Dom Quixote",
+    autor: "Miguel de Cervantes"
+};
+
+console.log(typeof (livro));
+console.log(livro);
+
+livro.anoPublicao = 1960;
+
+console.log(livro);
+
+console.log(livro.autor);
+
+livro.anoPublicao = 1605;
+
+console.log(livro);
+
+console.log()
+console.log('-------------Atividade filter---------------------')
+console.log()
+
