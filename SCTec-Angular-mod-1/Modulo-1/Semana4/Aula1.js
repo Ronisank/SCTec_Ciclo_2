@@ -105,13 +105,18 @@ const filmes = [
     }
 ];
 
-const filmesDispon = filmes.filter(item => item.disponivel === true);
-const filmesMelhorAvaliados = filmes.filter(item => item.nota >= 9);
-const filmesAcao = filmes.filter(item => item.genero === 'Ação')
+// const filmesDispon = filmes.filter(item => item.disponivel === true);
+// const filmesMelhorAvaliados = filmes.filter(item => item.nota >= 9);
+const filmesAcao = filmes.filter(item => item.genero === 'Ação');
 
-console.log('--------Filmes Disponíveis----------')
-console.log(filmesDispon)
-console.log('-------Filmes Melhores Avaliados ------')
-console.log(filmesMelhorAvaliados)
-console.log('-----------Filmes de Ação---------------')
-console.log(filmesAcao)
+console.log('--------Filmes Disponíveis----------');
+// console.log(filmesDispon);
+console.log(filmes.filter(item=> item.disponivel === true));
+
+console.log('-------Filmes Melhores Avaliados ------');
+// console.log(filmesMelhorAvaliados);
+console.log(filmes.filter(item => item.nota >= 9));
+
+console.log('-----------Filmes de Ação---------------');
+console.log(filmesAcao);
+
