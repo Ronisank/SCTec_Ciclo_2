@@ -49,7 +49,7 @@ console.log();
 // console.log(resultado);
 
 console.log();
-console.log('-----------------Atividade 3--------------------------');
+console.log('-----------------Atividade 3------------------');
 console.log();
 
 const alunos = [
@@ -145,11 +145,8 @@ Crie uma função chamada verificarSituacao() que receba a média do aluno e ret
 function verificarSituacao() {
     let situacao = [];
     for (let index = 0; index < alunos.length; index++) {
-        let media = (alunos[index].nota1 + alunos[index].nota2) / 2
-        if (media >= 6) {
-            media = 'APROVADO'
-
-        } else media = 'REPROVADO'
+        let media = calcularMedia()[index]
+        media >= 6 ? media = 'APROVADO' : media = 'REPROVADO'
 
         situacao.push(media)
     }

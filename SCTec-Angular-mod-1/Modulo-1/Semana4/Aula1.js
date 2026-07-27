@@ -29,20 +29,20 @@ console.log()
 let carrinho = ['uva','pera','banana'];
 let continua;
 
-// do {
-//     const fruta = prompt('Digite uma fruta: ');
+do {
+    const fruta = prompt('Digite uma fruta: ');
     
-//         carrinho.push(fruta);
+        carrinho.push(fruta);
 
-//     if (carrinho.length > 5) {
-//         carrinho.pop()
-//     }
-//     console.log(carrinho)
-//     continua = prompt('Deseja continuar? ')
+    if (carrinho.length > 5) {
+        carrinho.pop()
+    }
+    console.log(carrinho)
+    continua = prompt('Deseja continuar? ')
 
-// } while (continua.toLocaleUpperCase() != 'SAIR');
+} while (continua.toLocaleUpperCase() != 'SAIR');
 
-// console.log(carrinho)
+console.log(carrinho)
 // const fruta = prompt('Digite uma fruta: ');
 
 // do {
@@ -54,7 +54,7 @@ let continua;
 //     }
 
 // } while (condition);
-// console.log(carrinho)
+console.log(carrinho)
 
 console.log()
 console.log('-------------Atividade 3----Arrays Ex.: MAP-------------------')
