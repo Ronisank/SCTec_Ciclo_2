@@ -29,29 +29,37 @@ pessoa1.setIdade(40);
 console.log('Depois do setIdade ', pessoa1.getIdade());
 
 console.log()
-console.log("+".repeat(15), ' ATIVIDADE EXEMPLO ', '+'.repeat(15))
+console.log("+".repeat(15), ' ATIVIDADE EXEMPLO', '+'.repeat(15))
 console.log()
 
 class Professor extends Pessoa {
     #materias = [];
 
-    constructor(nome, idade, materia) {
+    constructor(nome, idade) {
         super(nome, idade);
-        this.#materias = materias;
 
     }
-    adicionarMaterias() {
-        this.#materias.push()
+    //set para #materias
+    adicionarMaterias(materia) {
+        this.#materias.push(materia)
     }
+    //get para #materias
     retornarMaterias() {
         return this.#materias;
     }
+    // Exemplo de Polimorfismo
+    saudacao() {
+        console.log('Olá, eu sou o Prof°: ', this.nome);
+    }
 
 }
-// let profe = new Professor('Seu Madruga', 54)
+let profe = new Professor('Seu Madruga', 54)
 
+profe.adicionarMaterias('Angular');
+profe.adicionarMaterias('HTML');
+profe.adicionarMaterias('JS');
 
-
+console.log(profe.retornarMaterias());
 
 console.log()
 console.log("+".repeat(15), ' ATIVIDADE 1 ', '+'.repeat(15))
@@ -119,7 +127,7 @@ console.log()
 console.log("+".repeat(15), ' EXEMPLO POLIMORFISMO ', '+'.repeat(15))
 console.log()
 
-
+profe.saudacao();
 
 console.log()
 console.log("+".repeat(15), ' ATIVIDADE 2 ', '+'.repeat(15))
