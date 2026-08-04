@@ -1,4 +1,6 @@
-import { CarrinhoDeCompras, Pessoa } from './Aula3-modulo.js';
+import promptSync from 'prompt-sync'; // como está setado para type: modules, no console quebrava por causa do require.
+import { Pessoa } from './Aula3-modulo.js';
+const prompt = promptSync();
 
 console.log()
 console.log('+'.repeat(15), 'Exemplo de modulos IMPORT/EXPORT', '+'.repeat(15))
@@ -20,7 +22,7 @@ class Professor extends Pessoa {
     }
 
 }
-let profe = new Professor('girafales', 35)
+let profe = new Professor('Girafales', 35)
 
 profe.saudacao();
 
