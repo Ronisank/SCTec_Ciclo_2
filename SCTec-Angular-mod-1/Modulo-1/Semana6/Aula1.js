@@ -90,14 +90,6 @@ console.log(calcularTotalCompra(30));
 console.log(calcularTotalCompra(50));
 console.log(calcularTotalCompra());
 
-console.log('='.repeat(20), 'ATIVIDADE - PARAMETRO PADRÃO ', '='.repeat(20))
-
-function exibirBoasVindas(nome = 'Visitante') {
-    return console.log(`Olá! ${nome} Bem Vindo`);
-}
-
-exibirBoasVindas('Lucas');
-exibirBoasVindas();
 
 export function logTerminal(texto, cor = 'azul') {
     const cores = {
@@ -122,6 +114,3 @@ console.log(nomes.length)
 
 }
 listarParticipantes("Lucas", "Beatriz", "Gabriel", "Camila", "Matheus", "Larissa");
-
-console.log('='.repeat(20), 'ATIVIDADE 4 - REST','='.repeat(20));
-
