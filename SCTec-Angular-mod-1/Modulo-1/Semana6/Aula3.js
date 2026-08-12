@@ -142,23 +142,34 @@ Exibir a mensagem: “Tarefa removida com sucesso!”
 Ao final da função, exibir a lista atualizada de tarefas.
 
  */
-function removerTarefa(nomeTarefa) {
-     // Verifica se a tarefa existe no array
-    if (!tarefas.includes(nomeTarefa)) {
-        console.log("Tarefa não encontrada!");
-    } else {
-        // Descobre a posição da tarefa
-        const indice = tarefas.indexOf(nomeTarefa);
+// function removerTarefa(nomeTarefa) {
+//      // Verifica se a tarefa existe no array
+//     if (!tarefas.includes(nomeTarefa)) {
+//         console.log("Tarefa não encontrada!");
+//     } else {
+//         // Descobre a posição da tarefa
+//         const indice = tarefas.indexOf(nomeTarefa);
         
-        // Remove a tarefa usando o splice
-        tarefas.splice(indice, 1);
+//         // Remove a tarefa usando o splice
+//         tarefas.splice(indice, 1);
         
-        console.log("Tarefa removida com sucesso!");
-    }
+//         console.log("Tarefa removida com sucesso!");
+//     }
     
-    // Exibe a lista atualizada
-    console.log("Lista de tarefas atualizada:", tarefas);
+//     // Exibe a lista atualizada
+//     console.log("Lista de tarefas atualizada:", tarefas);
+// }
+
+function removerTarefa(nomeTarefa) {
+    if(tarefas.includes(nomeTarefa) === true){
+        let id = tarefas.indexOf(nomeTarefa)
+        tarefas.splice(id,1);
+        console.log('A tarefa removida com sucesso')
+    }else{
+        console.log('Tarefa não encontrada')
+    }
+    console.table(tarefas)
 }
 
-removerTarefa("Ler documentação"); // Tarefa existente
+// removerTarefa("Ler documentação"); // Tarefa existente
 removerTarefa("Ir ao supermercado"); // Tarefa não existente

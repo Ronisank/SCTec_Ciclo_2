@@ -1,0 +1,71 @@
+<!-- Filme - Parte 1
+Crie uma página web, em HTML, apresentando um filme que você gosta.
+
+A página deverá possuir:
+Um título principal com <h1> contendo o nome do filme.
+Um parágrafo <p> apresentando uma breve sinopse.
+Um subtítulo <h2> com o texto "Informações".
+Uma lista não ordenada <ul> contendo:
+Ano de lançamento;
+Gênero;
+Diretor;
+Duração.
+Um segundo <h2> com o texto "Por que assistir?".
+Um parágrafo explicando por que você recomenda o filme.
+Um link <a> direcionando para uma página relacionada ao filme. -->
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="filme.css" />
+    <title>Filme Favorito</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <header>
+          <h1>Filme Interestelar</h1>
+          <p>
+            Interestelar é um aclamado filme de ficção científica onde uma
+            equipe de exploradores viaja através de um buraco de minhoca no
+            espaço para encontrar um novo lar e garantir a sobrevivência da
+            humanidade.
+          </p>
+        </header>
+      </div>
+      <div class="information">
+        <h2>Informações</h2>
+        <ul>
+          <li>Ano de lançamento: 2014</li>
+          <li>Genero: Ficção científica</li>
+          <li>Diretor: Christopher Nolan</li>
+          <li>Duração: 169 minutos</li>
+        </ul>
+      </div>
+
+      <div class="infos">
+        <h2>Por que assistir?</h2>
+        <p>
+          Interestelar é considerado uma das maiores obras-primas da ficção
+          científica moderna por unir perfeitamente emoção humana e precisão
+          científica.
+        </p>
+        <p>
+          Ele vai muito além de uma simples ficção científica de Hollywood,
+          transformando conceitos complexos de física em uma narrativa
+          visualmente espetacular e profundamente tocante
+        </p>
+      </div>
+
+      <div class="frame">
+        <span>
+          Veja o trailler aqui: <br /><br />
+      
+          <iframe width="800" height="392" src="https://www.youtube.com/embed/i6avfCqKcQo" title="Interestelar - Trailer Oficial 4 (dub) [HD]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

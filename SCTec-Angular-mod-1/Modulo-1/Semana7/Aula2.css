@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background: #f4f4f4;
+  color: #333;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  margin-bottom: 5px;
+  color: #0056b3;
+}
+h3 {
+  color: #555;
+  margin-top: 0;
+}
+.contact-info {
+  font-size: 0.9em;
+  color: #334155;
+}
+.section {
+  margin-bottom: 20px;
+}
+.section h2 {
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 5px;
+  color: #0056b3;
+  font-size: 1.2em;
+}
+ul {
+  padding-left: 20px;
+}
+.course-item {
+  margin-bottom: 20px;
+}
+.course-title {
+  color: #1e293b;
+  font-weight: bold;
+}
+.institution {
+  color: #2563eb;
+  font-size: 0.95em;
+}
+.tag {
+  background: #e2e8f0;
+  color: #0f172a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-right: 5px;
+}
