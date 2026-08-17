@@ -26,6 +26,14 @@ h3 {
   font-size: 0.9em;
   color: #334155;
 }
+.network{
+  display: flex;
+  flex-direction: row;
+}
+.network img{
+  width: 30px;
+  gap: 5px;
+}
 .section {
   margin-bottom: 20px;
 }
