@@ -1,0 +1,140 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E PALETA DE CORES (VARIÁVEIS)
+   ========================================================================== */
+:root {
+    --bg-space: #0b0f19;       /* Azul espacial profundo para o fundo */
+    --bg-card: #161c2a;        /* Fundo dos cartões e seções */
+    --text-primary: #f3f4f6;   /* Branco gelo para leitura confortável */
+    --text-muted: #9ca3af;     /* Cinza claro para textos secundários */
+    --accent-blue: #38bdf8;    /* Azul brilhante para links e títulos */
+    --border-color: #243249;   /* Cor sutil para bordas */
+    --max-width: 900px;
+}
+
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-space);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+}
+
+/* ==========================================================================
+   2. ESTRUTURA DO LAYOUT (MAIN & HEADER)
+   ========================================================================== */
+.header,
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto 2rem auto;
+    padding: 2rem;
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.header {
+    text-align: center;
+    border-bottom: 3px solid var(--accent-blue);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   3. SEÇÕES DE CONTEÚDO (FICHA TÉCNICA E CRÍTICAS)
+   ========================================================================== */
+/* Seção de Informações / Lista */
+.information h2,
+.infos h2 {
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    border-left: 4px solid var(--accent-blue);
+    padding-left: 0.75rem;
+}
+
+.information ul {
+    list-style: none; /* Remove os marcadores padrão */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Substitui o uso antigo de <br> com espaçamento limpo */
+}
+
+.information li {
+    font-size: 1.05rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+/* Seção de Opiniões com os Articles */
+.infos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.infos article {
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.infos p {
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   4. SEÇÃO DE MÍDIA RESPONSIVA (TRAILER)
+   ========================================================================== */
+.frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.frame figcaption {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Container responsivo para o vídeo do YouTube não quebrar em telas pequenas */
+.frame iframe {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajustes finos para telas de smartphones */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    .header h1 {
+        font-size: 2rem;
+    }
+    .header, .container {
+        padding: 1.25rem;
+    }
+}
