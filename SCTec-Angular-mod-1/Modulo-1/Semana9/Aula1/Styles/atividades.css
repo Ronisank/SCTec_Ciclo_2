@@ -1,0 +1,144 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+/* .tabela {
+  width: 700px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 1px solid #3f063a;
+}
+th {
+  border: 1px solid #999efd;
+  padding: 8px;
+  background-color: rgb(149, 149, 150);
+}
+td {
+  border: 1px solid #3f063a;
+  padding: 8px;
+  text-align: center;
+}
+tr {
+  border: 1px dashed #999efd;
+}
+tbody tr:nth-child(even) {
+  background-color: #849fe9;
+}
+
+/* Configuração básica das linhas do corpo da tabela 
+tbody tr {
+  background-color: #acdf5b;
+  /* Transição suave para todas as propriedades (fundo, sombra e transformação) 
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  position: relative;
+}
+
+/* Efeito quando o mouse passa por cima 
+tbody tr:hover {
+  background-color: #ffffff; /* Garante que o fundo não fique transparente */
+
+/* 1. Faz a linha crescer levemente (1% maior) 
+  transform: scale(1.01); 
+  
+  /* 2. Adiciona uma sombra suave para dar o efeito de que descolou do fundo 
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
+  
+  /* 3. Coloca a linha atual acima das outras para a sombra não ficar escondida 
+  z-index: 10; 
+  
+  cursor: pointer;
+} 
+ */
+.table-container {
+  width: 800px;
+}
+h2 {
+  text-align: center;
+}
+/* 1. Defina uma largura para a tabela */
+table {
+  width: 100%; /* Ocupa a largura total do elemento pai */
+  max-width: 700px; /* Define um limite máximo elegante */
+  margin: 20px auto; /* Centraliza a tabela na tela */
+  border-collapse: collapse; /* Une as bordas das células em uma única linha */
+  font-family: Arial, sans-serif;
+}
+
+/* 2. Adicione bordas nas células & 3. Adicione espaçamento interno nas células */
+th,
+td {
+  border: 1px solid #dcdcdc; /* Aplica borda fina e cinza em todas as células */
+  padding: 12px; /* Adiciona espaçamento interno (respiro) */
+}
+
+/* 4. Destaque visualmente o cabeçalho */
+th {
+  background-color: #2c3e50; /* Cor de fundo escura para contraste */
+  color: #ffffff; /* Texto branco para leitura legível */
+  font-weight: bold;
+  text-transform: uppercase; /* Letras maiúsculas para impor destaque */
+  font-size: 0.9rem;
+}
+
+/* 5. Centralize ou organize adequadamente os valores */
+th,
+td {
+  text-align: left; /* Alinha os textos (Nome, Email) à esquerda por padrão */
+}
+
+/* Alinhamento centralizado específico para colunas com tags ou botões */
+td:nth-child(3),
+td:nth-child(4),
+th:nth-child(3),
+th:nth-child(4) {
+  text-align: center; /* Centraliza os valores das colunas 'Perfil' e 'Ação' */
+}
+
+/* 7. Utilize cores alternadas nas linhas para facilitar a leitura */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Aplica fundo cinza bem claro nas linhas pares */
+}
+
+/* 6. Aplique um efeito visual quando o mouse passar sobre uma linha (:hover) */
+tbody tr:hover {
+  background-color: #f1f1f1; /* Destaca a linha ativa em um tom cinza mais evidente */
+}
+
+/* Estilização básica opcional para os botões e badges internos */
+.perfil {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.perfil-admin {
+  background-color: #fed7d7;
+  color: #9b2c2c;
+}
+.perfil-gerente {
+  background-color: #feebc8;
+  color: #9c4221;
+}
+.perfil-supervisor {
+  background-color: #e2e8f0;
+  color: #4a5568;
+}
+.perfil-analista {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+}
+.perfil-assistente {
+  background-color: rgb(117, 247, 99);
+  color: rgb(114, 117, 114);
+}
+
+.btn-excluir {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-excluir:hover {
+  background-color: #c53030;
+}
