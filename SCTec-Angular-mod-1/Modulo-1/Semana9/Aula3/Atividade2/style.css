@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.form-container {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin-top: 80px;
+}
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+  font-weight: bold;
+}
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.btn-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.btn-submit {
+  background-color: #28a745;
+  color: white;
+}
+.btn-submit:hover {
+  background-color: #218838;
+}
+.btn-clear {
+  background-color: #dc3545;
+  color: white;
+}
+.btn-clear:hover {
+  background-color: #c82333;
+}
+/* .table-container {
+  width: 800px;
+} */
+h2 {
+  text-align: center;
+}
+/* 1. Defina uma largura para a tabela */
+table,
+#produtoForm {
+  width: 100%; /* Ocupa a largura total do elemento pai */
+  max-width: 700px; /* Define um limite máximo elegante */
+  margin: 10px auto; /* Centraliza a tabela na tela */
+  border-collapse: collapse; /* Une as bordas das células em uma única linha */
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Adicione bordas nas células & 3. Adicione espaçamento interno nas células */
+th,
+td {
+  border: 1px solid #dcdcdc; /* Aplica borda fina e cinza em todas as células */
+  padding: 12px; /* Adiciona espaçamento interno (respiro) */
+}
+
+/* 4. Destaque visualmente o cabeçalho */
+th {
+  background-color: #2c3e50; /* Cor de fundo escura para contraste */
+  color: #ffffff; /* Texto branco para leitura legível */
+  font-weight: bold;
+  text-transform: uppercase; /* Letras maiúsculas para impor destaque */
+  font-size: 0.9rem;
+}
+
+/* 5. Centralize ou organize adequadamente os valores */
+th,
+td {
+  text-align: left; /* Alinha os textos (Nome, Email) à esquerda por padrão */
+}
+
+/* Alinhamento centralizado específico para colunas com tags ou botões */
+td:nth-child(3),
+td:nth-child(4),
+th:nth-child(3),
+th:nth-child(4) {
+  text-align: center; /* Centraliza os valores das colunas 'Perfil' e 'Ação' */
+}
+
+/* 7. Utilize cores alternadas nas linhas para facilitar a leitura */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Aplica fundo cinza bem claro nas linhas pares */
+}
+
+/* 6. Aplique um efeito visual quando o mouse passar sobre uma linha (:hover) */
+tbody tr:hover {
+  background-color: #f1f1f1; /* Destaca a linha ativa em um tom cinza mais evidente */
+}

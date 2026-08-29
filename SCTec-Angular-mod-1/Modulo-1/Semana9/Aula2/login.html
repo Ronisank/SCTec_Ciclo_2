@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <main class="card-login">
+      <form id="meuFormulario">
+        <h3>LOGIN</h3>
+        <div class="div-user">
+          <label for="usuario">Usuário</label><br />
+          <input type="text" id="usuario" placeholder="Digite seu email" />
+        </div>
+        <div class="div-senha">
+          <label id="labelSenha " for="senha">Senha</label><br />
+          <input
+            id="senha"
+            type="password"
+            placeholder="Digite sua senha"
+            />
+            <button type="button" id="btn-senha"></button>
+        </div>
+        <div class="div-btn">
+          <button id="btnEntrar" class="entrar" disabled>Entrar</button>
+
+          <button class="cadastrar">Cadastre-se</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

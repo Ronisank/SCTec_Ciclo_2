@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" href="../Atividade2/style.css" />
+    <!-- <link rel="stylesheet" href="../../Aula1/Styles/atividades.css" /> -->
+  </head>
+  <body>
+    <main>
+      <div class="form-container">
+        <h2>Cadastrar Produto</h2>
+        <form id="produtoForm">
+          <div class="form-group">
+            <label for="nome">Nome do produto:</label>
+            <input type="text" id="nome" required />
+          </div>
+
+          <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" required>
+              <option value="" disabled selected>
+                Selecione uma categoria
+              </option>
+              <option value="Informática">Informática</option>
+              <option value="Acessórios">Acessórios</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="preco">Preço (R$):</label>
+            <input type="number" id="preco" step="0.01" min="0" required />
+          </div>
+
+          <div class="form-group">
+            <label for="estoque">Estoque:</label>
+            <input type="number" id="estoque" min="0" required />
+          </div>
+
+          <div class="btn-container">
+            <button
+              type="button"
+              class="btn-submit"
+              onclick="cadastrarProduto()"
+            >
+              Cadastrar
+            </button>
+            <button
+              type="button"
+              class="btn-clear"
+              onclick="limparFormulario()"
+            >
+              Limpar
+            </button>
+          </div>
+        </form>
+      </div>
+      <table class="tabela">
+        <caption>
+          Tabela Atividade 1
+        </caption>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-tabela">
+          <!-- <tr class="p1">
+            <td>Produto1</td>
+            <td>Categoria1</td>
+            <td>Preço1</td>
+            <td>Estoque1</td>
+            <td>Situação1</td>
+        </tr>
+        <tr>
+            <td>Produto2</td>
+            <td>Categoria2</td>
+            <td>Preço2</td>
+            <td>Estoque2</td>
+            <td>Situação2</td>
+        </tr>
+        <tr>
+            <td>Produto3</td>
+            <td>Categoria3</td>
+            <td>Preço3</td>
+            <td>Estoque3</td>
+            <td>Situação3</td>
+        </tr>
+        <tr>
+            <td>Produto4</td>
+            <td>Categoria4</td>
+            <td>Preço4</td>
+            <td>Estoque4</td>
+            <td>Situação4</td>
+        </tr>
+        <tr>
+            <td>Produto5</td>
+            <td>Categoria5</td>
+            <td>Preço5</td>
+            <td>Estoque5</td>
+            <td>Situação5</td>
+            </tr> -->
+        </tbody>
+      </table>
+      <script src="index.js" defer></script>
+    </main>
+  </body>
+</html>
