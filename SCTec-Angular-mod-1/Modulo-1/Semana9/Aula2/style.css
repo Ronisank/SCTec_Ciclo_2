@@ -12,7 +12,9 @@ body {
     align-items: center;
     min-height: 100vh; 
 }
-
+h3{
+    color: #4a5568;
+}
 /* *(Container Principal) */
 .card-login {
     background-color: #ffffff;
@@ -93,6 +95,10 @@ input:focus {
     cursor: pointer;
     transition: background-color 0.2s ease;
     margin-top: 10px;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 #btnEntrar:hover, .cadastrar:hover {

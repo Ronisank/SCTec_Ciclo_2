@@ -28,24 +28,10 @@ const produtos = [
         categoria: "Acessórios",
         preco: 60,
         estoque: 0
-    }
+    },
 ];
 
 const corpoTabela = document.getElementById('corpo-tabela');
-
-produtos.forEach(produto => {
-    const linha = document.createElement('tr');
-    const situacaoText = produto.estoque > 0 ? 'Disponivel' : 'Esgotado';
-
-    linha.innerHTML = `
-        <td>${produto.nome}</td>
-        <td>${produto.categoria}</td>
-        <td>R$ ${produto.preco.toFixed(2)}</td>
-        <td>${produto.estoque} un</td>
-        <td>${situacaoText}</td>
-    `;
-    corpoTabela.appendChild(linha);
-})
 
 function cadastrarProduto() {
     // Captura os elementos do formulário
@@ -58,14 +44,41 @@ function cadastrarProduto() {
     if (!nome || !categoria || !preco || !estoque) {
         alert('Por favor, preencha todos os campos antes de cadastrar!');
         return;
-    }
+    } else {
 
+        produtos.push({
+            nome: nome,
+            categoria: categoria,
+            preco: Number(preco),
+            estoque: Number(estoque)
+        })
+    }
+    console.log(produtos)
     // Se passar na validação
     alert('Dados salvos com sucesso!');
     limparFormulario();
+    atualizarTela();
 }
 
 function limparFormulario() {
     // Reseta todos os campos do formulário para o estado inicial
     document.getElementById('produtoForm').reset();
 }
+function atualizarTela(){
+    corpoTabela.innerHTML='';
+
+    produtos.forEach(produto => {
+        const linha = document.createElement('tr');
+        const situacaoText = produto.estoque > 0 ? 'Disponivel' : 'Esgotado';
+        
+        linha.innerHTML = `
+        <td>${produto.nome}</td>
+        <td>${produto.categoria}</td>
+        <td>R$ ${produto.preco.toFixed(2)}</td>
+        <td>${produto.estoque} un</td>
+        <td class="${situacaoText === 'Disponivel' ? 'disponivel' : 'esgotado'}">${situacaoText}</td>
+        `;
+        corpoTabela.appendChild(linha);
+    })
+}
+atualizarTela();
