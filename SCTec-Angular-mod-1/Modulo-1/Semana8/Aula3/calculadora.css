@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f6f9;
+  /* *O segredo para centralizar o card na tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: cursive;
+}
+
+h1 {
+  text-align: center;
+}
+span {
+  display: flex;
+  margin: 0px 5px;
+  padding: 10px;
+  height: 60px;
+  max-width: 400px;
+  border: 3px, solid, seagreen;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  background-color: #4e4d4d31;
+  font-family: fantasy;
+  font-size: 1.8em;
+  justify-content: flex-end;
+  align-items: center;
+}
+main {
+  background-color: rgba(10, 147, 189, 0.1);
+  padding: 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 350px; /* ?Garante que não fique gigante em telas grandes */
+  /* *Sombra sutil para dar efeito de profundidade (flutuando) */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+.numeros {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  flex-wrap: wrap;
+}
+button {
+  width: 80px;
+  height: 70px;
+  gap: 5px;
+  border: 2px, solid, #000;
+  margin: 4px;
+  font-size: 36px;
+  text-align: center;
+  border-radius: 6px;
+
+}
+.operadores button {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  gap: 5px;
+  border: 2px, solid, #041755;
+  margin: 3px;
+  font-size: 36px;
+  align-items: center;
+  justify-content: center;
+  background-color: bisque;
+  border-radius: 6px;
+}
+#bigual{
+    width: 345px;
+    margin: 4px;
+    background-color: cadetblue;
+}
+#bDiv{
+    background-color: rgb(127, 133, 80);
+}
+#bX{
+    background-color: chocolate;
+}
+#bMenos{
+    background-color: tomato;
+}
+#bMais{
+    background-color: paleturquoise;
+}
+#bC{
+    background-color: rosybrown;
+}
