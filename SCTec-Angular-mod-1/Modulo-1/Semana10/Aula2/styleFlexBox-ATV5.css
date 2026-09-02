@@ -1,0 +1,78 @@
+/* Configuração Geral */
+body {
+  background-color: #222630;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  gap: 20px;
+}
+
+/* Colunas Principais */
+.col-left, .col-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+}
+
+/* Elementos da Esquerda */
+.orange-top {
+  background-color: #f7a060;
+  height: 100px;
+}
+
+.red-bottom {
+  background-color: #ef6c53;
+  flex: 1;
+  min-height: 350px;
+}
+
+/* Elementos da Direita */
+.teal-top {
+  background-color: #4dcbb0;
+  height: 100px;
+}
+
+/* Container Verde-Escuro da Direita */
+.box-group {
+  background-color: #299e85;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+}
+
+.box-group-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.light-teal {
+  background-color: #4dcbb0;
+  flex: 1;
+}
+
+/* Linha Inferior Interna */
+.box-row {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+}
+
+.medium-teal {
+  background-color: #2ba8a8;
+  flex: 2;
+}
+
+.orange-small {
+  background-color: #f7a060;
+  flex: 1;
+}
