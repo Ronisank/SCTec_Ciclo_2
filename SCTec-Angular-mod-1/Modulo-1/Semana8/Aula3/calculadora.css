@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-   font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
 }
 
 h1 {
@@ -59,14 +59,14 @@ button {
   color: #ffffff;
   transition: background 0.2s ease;
 }
-button:hover{
-  background-color:  #48484A;
+button:hover {
+  background-color: #48484a;
 }
 .operador {
   background-color: #ff9500;
   color: #ffffff;
 }
-.operador:hover{
+.operador:hover {
   background-color: #ffb347;
 }
 .operadores button {
@@ -85,7 +85,7 @@ button:hover{
   margin: 4px;
   background-color: #ff9500;
 }
-#bigual:hover{
+#bigual:hover {
   background-color: #ffb347;
 }
 
@@ -96,36 +96,50 @@ button:hover{
   font-size: 1.5rem;
   transition: background 0.2s ease;
 }
-#bC:hover{
+#bC:hover {
   background-color: #ff6961;
 }
-.rodape {
- background-color: #1A1A1A;
-    color: #AEAEB2;
-    padding: 15px 0;
-}
-footer {
-  display: flex;
-  height: 80px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-  flex-direction: column;
+
+/* Container Principal do Rodapé */
+.rodape-container {
+  background-color: #1a1a1a;
   color: #aeaeb2;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  margin-top: 40px;
 }
-.contato-nome{
-  margin-top: 10px;
-  color: #0A84FF;
+
+.rodape-container p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
-.contato,
-a img {
+
+/* Alinhamento dos Ícones */
+.rodape-links {
   display: flex;
-  width: 30px;
-  height: 30px;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: 10px;
-  margin-top: 10px;
-  color: #0A84FF;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Estilo Base dos Links/Ícones */
+.link-icone {
+  font-size: 1.6rem;
+  color: #aeaeb2;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.link-icone:hover {
+  transform: translateY(-3px);
+}
+
+.link-icone.github:hover {
+  color: #ffffff;
+}
+
+.link-icone.linkedin:hover {
+  color: #0a84ff;
 }
