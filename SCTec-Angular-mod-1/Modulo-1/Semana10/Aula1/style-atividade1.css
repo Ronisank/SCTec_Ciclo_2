@@ -1,0 +1,124 @@
+/*?ATIVIDADE 1*/
+/* .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px 2fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  
+}
+
+span {
+  font-size: 2.5em;
+  font-family: cursive;
+
+}
+.item-1 { 
+  background-color: blue;
+}
+.item-2 {
+
+  background-color: green;
+  height: auto;
+}
+.item-3 {
+  background-color: red;
+  height: auto;
+}
+.item-4 {
+  background-color: yellow;
+  height: auto;
+}
+.item-5 {
+  background-color: pink;
+  height: auto;
+}
+.item-6{
+  background-color: purple;
+  height: auto;
+} */
+
+/*? ATIVIDADE - 2*/
+
+/* .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 200px 2fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  
+}
+
+span {
+  font-size: 2.5em;
+  font-family: cursive;
+
+}
+.item-1 { 
+  background-color: blue;
+}
+.item-2 {
+
+  background-color: green;
+  height: auto;
+}
+.item-3 {
+  background-color: red;
+  height: auto;
+}
+
+.item-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 45% 45%;
+  gap: 16px;
+  padding: 16px;
+  background-color: yellow;
+}
+.item-5 {
+  grid-column: 1 /span 2;
+  background-color: pink;
+  height: auto;
+}
+.item-6{
+  background-color: purple;
+  height: auto;
+}
+.item-7{
+  background-color: black;
+  color: aliceblue;
+} */
+ /*? ATIVIDADE - 3 */
+ body {
+  background-color: #2c3e50; /* Fundo escuro da janela */
+  padding: 20px;
+  margin: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 100px 200px 80px;
+  gap: 15px; 
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #f39c12; 
+  grid-column: 1 / -1;
+}
+
+.sidebar {
+  background-color: #1abc9c; 
+}
+
+.main-content {
+  background-color: #e74c3c; 
+}
+
+
+.footer {
+  background-color: #2ecc71;
+  grid-column: 1 / -1;
+}

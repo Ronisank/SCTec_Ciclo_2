@@ -1,0 +1,115 @@
+/* .container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+  column-gap: 5px;
+  row-gap: 10px;
+  text-align: center;
+  
+}
+
+span {
+  font-size: 2.5em;
+  font-family: cursive;
+
+}
+.item-1 {
+  grid-area: header;
+  background-color: #00ffff;
+  height: 50px;
+}
+.item-2 {
+  grid-area: sidebar;
+  background-color: #48ff00;
+  height: 500px;
+}
+.item-3 {
+  grid-area: content;
+  background-color: #0011ff;
+  height: 500px;
+  align-items: center;
+  justify-content: center;
+}
+.item-4 {
+  background-color: #ff0037;
+  height: 250px;
+}
+.item-5 {
+  grid-area: footer;
+  background-color: #fbff00;
+  height: 50px;
+} */
+/* .container-area {
+  display: grid;
+  grid-template-columns: 300px 250px 100px;
+  grid-template-areas: 
+  "header header header"
+  "sidebar principal complemento"
+  "footer footer footer";
+  gap: 16px;
+}
+
+.item-1 {
+  height: 50px;
+  grid-area: header;
+  background-color: #8a2be2;
+}
+.item-2 {
+  height: 200px;
+  grid-area: sidebar;
+  background-color: #e26b2b;
+}
+.item-3 {
+  height: 150px;
+  grid-area: principal;
+  background-color: #2be2a8;
+}
+.item-4 {
+  height: 86px;
+  grid-area: complemento;
+  background-color: #d0e22b;
+}
+.item-5 {
+  height: 25px;
+  grid-area: footer;
+  background-color: #e22ba8;
+}   */
+
+
+
+.container-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px 200px;
+  gap: 16px;
+}
+
+.item-1 {
+  grid-row: 1;
+  grid-column: 1;
+  background-color: #8a2be2;
+}
+.item-2 {
+  grid-row: 1;
+  grid-column: span 2; /*Mesclagem de celula (colunas)*/
+background-color: #e26b2b;
+}
+.item-3 {
+  grid-row: 2;
+  grid-column: 2 / 4; /*Mesclagem de celula (colunas)*/
+background-color: #2be2a8;
+}
+.item-4 {
+  grid-row: 2 / span 2;
+  grid-column: 1;
+  background-color: #d0e22b;
+}
+.item-5 {
+  grid-row: 3;
+  grid-column: 2 / span 2; /*Mesclagem de celula (colunas)*/
+  background-color: #e22ba8;
+}
