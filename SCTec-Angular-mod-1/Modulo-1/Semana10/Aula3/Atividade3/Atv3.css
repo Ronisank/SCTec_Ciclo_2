@@ -1,0 +1,16 @@
+body{
+    font-family: 'Roboto';
+}
+div{
+    /* display: flex; */
+    text-align: center;
+    justify-content: center;
+    width: 500px;
+    background-color: #77adf3;
+    align-items: center;
+}
+.titulo{
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+}

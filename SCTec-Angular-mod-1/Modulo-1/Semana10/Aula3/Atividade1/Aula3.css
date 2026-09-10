@@ -1,0 +1,19 @@
+  /* Estilos para telas até 767px */
+        @media (max-width: 767px) {
+            body {
+                color: red;
+            }
+            h1 {
+                font-size: 28px;
+            }
+        }
+
+        /* Estilos para telas a partir de 767px */
+        @media (min-width: 767px) {
+            body {
+                color: blue;
+            }
+            h1 {
+                font-size: 40px;
+            }
+        }

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="../Atividade2/script.js" defer></script>
+    <title>Tempo Estudo</title>
+  </head>
+  <body>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        font-family: Roboto;
+      }
+      .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px dashed #3939f1;
+        border-radius: 10px;
+        width: 600px;
+        
+      }
+      span {
+        font-size: 40px;
+        border-radius: 8px;
+        border: 1px solid tomato;
+        padding: 4px;
+        margin: 10px;
+      }
+      button{
+        width: 100px;
+        height: 35px;
+        margin: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #3939f1;
+        color: blanchedalmond;
+        font-size: 16px;
+      }
+    </style>
+    <div class="container">
+      <h1>Tempo de Estudo</h1>
+      <span class="tempo" style="font-size: 40px"></span>
+      <button id="iniciar" type="button">Iniciar</button>
+      <button id="cancelar" onclick="cancelamento()" type="button">Cancelar</button>
+    </div>
+  </body>
+</html>

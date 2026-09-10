@@ -1,0 +1,107 @@
+/* *1. Reset básico e centralização na tela inteira */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9; /* Fundo neutro e suave */
+    
+    /* *O segredo para centralizar o card na tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}
+
+/* *(Container Principal) */
+.card-cadastro {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px; /* ?Garante que não fique gigante em telas grandes */
+    
+    /* *Sombra sutil para dar efeito de profundidade (flutuando) */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
+}
+
+/* *Estrutura dos campos */
+.div-senha, .div-usuario {
+    position: relative;
+    margin-bottom: 20px; /* ?Espaço entre os campos */
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+/* *Estilização dos Inputs (Usuario e Senha) */
+input {
+    width: 100%;
+    height: 46px;
+    padding: 0 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #1a202c;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s ease; /* Animação suave ao focar */
+}
+
+/* ?Efeito visual quando o usuário clica para digitar */
+input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* *Posicionamento de mostrar senha */
+#senha {
+    padding-right: 46px; /* ?Abre espaço exato para o emoji */
+}
+
+#btn-senha {
+    position: absolute;
+    right: 12px;
+    bottom: 13px; /* Alinha perfeitamente ao centro vertical do input */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 5. Estilização do Botão Entrar */
+#voltar, #cadastro {
+    width: 100%;
+    height: 46px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+#btnEntrar:hover, .cadastrar:hover {
+    background-color: #4338ca; /* Escurece levemente no hover */
+}
+
+/* ?Estilo para quando o botão estiver desativado */
+#btnEntrar:disabled {
+    background-color: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}

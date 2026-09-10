@@ -1,0 +1,38 @@
+body{
+    font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif, ;
+}
+.menu{
+    display: flex;
+    gap: 10px;
+    background-color: tomato;
+    padding: 20px;
+    justify-content: center;
+}
+a{
+    background-color: blue;
+    text-decoration: none;
+    color: #ffff;
+    padding: 10px;
+    transition: 0.2ms ease-in-out;
+}
+a:hover{
+    background-color: aquamarine;
+    color: black;
+}
+
+@media screen and (max-width: 479px) {
+    .menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: orange;
+    padding: 10px;
+    text-align: center;
+}
+a{
+    background-color: khaki;
+    color: grey;
+    margin-top: 30px;
+}
+
+}
