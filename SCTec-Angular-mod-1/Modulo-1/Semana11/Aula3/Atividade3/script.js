@@ -1,9 +1,6 @@
 const tarefa = document.getElementById('inpuTarefa');
-const btnAdd = document.getElementById('adicionar');
-const btnLimpar = document.querySelector('.btn-limpar');
 const listaTarefa = document.querySelector('ul');
 
-let storageLista = [];
 let lista = [];
 
 const tarefasSalvas = localStorage.getItem('listaTarefas');
@@ -12,61 +9,80 @@ if (tarefasSalvas !== null) {
     lista = JSON.parse(tarefasSalvas);
 }
 
-function adicionar() {
-    if (tarefa.value === ""){
-        alert('preencha o campo de tarefa')
-    }else{
+function salvar() {
+    localStorage.setItem('listaTarefas', JSON.stringify(lista));
+}
 
-        let listaDeTarefas = tarefa.value
-        
-        lista.push(listaDeTarefas)
-        
-        localStorage.setItem('listaTarefas', JSON.stringify(lista));
-        
-        tarefa.value='';
-        
+function adicionar() {
+    const texto = tarefa.value.trim();
+
+    if (texto === "") {
+        alert('preencha o campo de tarefa');
+        return;
     }
+    lista.push({ texto: texto, concluida: false });
+
+    salvar();
+
+    tarefa.value = '';
     exibir()
 }
-function exibir() {
-    listaTarefa.innerHTML = '';
 
-    storageLista = localStorage.getItem('listaTarefas');
-
-    if (storageLista !== null) {
-
-        let exibirLista = JSON.parse(storageLista);
-
-        exibirLista.forEach(element => {
-            const tarefaBtn = document.createElement('button')
-            const elementoLista = document.createElement('li');
-
-            elementoLista.innerHTML = `${element}<span class="linhaAcao"></span> </li>`;
-
-            tarefaBtn.textContent = 'Concluir'
-            tarefaBtn.addEventListener('click', () => {
-                elementoLista.classList.toggle('concluido')
-                tarefaBtn.textContent = tarefaBtn.textContent === 'Concluir' ? 'Concluído' : 'Concluir'
-
-            })
-            tarefaBtn.setAttribute('class', 'btn-tarefa');
-
-            listaTarefa.appendChild(elementoLista);
-
-            elementoLista.querySelector('.linhaAcao').appendChild(tarefaBtn);
-
-        });
-
-    } else {
-        listaTarefa.innerHTML = 'Sem tarefas cadastradas'
-
-    }
+function alternarConclusao(index) {
+    lista[index].concluida = !lista[index].concluida;
+    salvar();
+    exibir();
 }
+
+function exibir() {
+    listaTarefa.textContent = '';
+
+    // storageLista = localStorage.getItem('listaTarefas');
+
+    if (lista.length === 0) {
+        listaTarefa.textContent = 'Sem tarefas cadastradas';
+        return;
+    }
+
+    lista.forEach((el, index) => {
+        const tarefaBtn = document.createElement('button')
+        const elementoLista = document.createElement('li');
+        const spanTarefa = document.createElement('span')
+
+        elementoLista.textContent = el.texto
+        spanTarefa.classList.add('linhaAcao');
+
+        if (el.concluida) {
+            elementoLista.classList.add('concluido');
+        }
+        tarefaBtn.textContent = el.concluida ? 'Concluído' : 'Concluir';
+
+        tarefaBtn.textContent = 'Concluir'
+        tarefaBtn.addEventListener('click', () => alternarConclusao(index))
+
+        spanTarefa.classList.add('linhaAcao');
+
+        spanTarefa.appendChild(tarefaBtn);
+        elementoLista.appendChild(spanTarefa);
+        listaTarefa.appendChild(elementoLista);
+
+        tarefaBtn.setAttribute('class', 'btn-tarefa');
+
+        listaTarefa.appendChild(elementoLista);
+
+        elementoLista.querySelector('.linhaAcao').appendChild(tarefaBtn);
+    })
+
+};
 
 function limpar() {
     localStorage.removeItem('listaTarefas');
     lista = [];
-    listaTarefa.innerHTML = ''
     exibir();
-}
-exibir()
+};
+
+tarefa.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') adicionar();
+});
+
+exibir();

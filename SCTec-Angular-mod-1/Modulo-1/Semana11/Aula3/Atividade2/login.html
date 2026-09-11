@@ -13,7 +13,7 @@
         <h3>LOGIN</h3>
         <div class="div-user">
           <label for="usuario">Usuário</label><br />
-          <input type="text" id="usuario" placeholder="Digite seu email" />
+          <input type="text" id="usuario" placeholder="Digite seu email" autocomplete="username"/>
         </div>
         <div class="div-senha">
           <label id="labelSenha " for="senha">Senha</label><br />
@@ -21,13 +21,14 @@
             id="senha"
             type="password"
             placeholder="Digite sua senha"
+            autocomplete="current-password"
             />
             <button type="button" id="btn-senha"></button>
         </div>
         <div class="div-btn">
           <button id="btnEntrar" class="entrar" disabled>Entrar</button>
 
-          <button class="cadastrar"><a href="../Aula3/Atividade1/atividade1.html">Cadastrar</a></button>
+          <button type="button" id="cadastro" class="cadastrar">Cadastrar</button>
         </div>
       </form>
     </main>

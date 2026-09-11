@@ -104,7 +104,7 @@ li{
     transition: background-color 0.2s ease;
     margin-top: 10px;
 }
-.btn-tarefa{
+.btn-tarefa, .btn-excluir{
     background-color: #6db401;
     color: white;
     border: none;
@@ -115,6 +115,7 @@ li{
     transition: background-color 0.2s ease;
     margin-top: 10px;
     height: 30px;
+    margin: 10px;
 }
 .concluido{
     background-color: #6db401;

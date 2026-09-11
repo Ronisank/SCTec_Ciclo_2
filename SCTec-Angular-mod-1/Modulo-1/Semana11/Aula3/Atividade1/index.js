@@ -1,5 +1,6 @@
 // const cadastro = document.getElementById('cadastro');
 // const nome = document.querySelectorAll('input')
+const btnVoltar = document.getElementById('voltar')
 
 let cadastrado;
 
@@ -38,3 +39,6 @@ document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
     window.alert(`Usuário: ${nome.value}; E-mail: ${email.value}; Celular: ${celular.value}`);
 });
+btnVoltar.addEventListener('click', ()=>{
+    navigation.navigate('../Atividade2/login.html');
+})

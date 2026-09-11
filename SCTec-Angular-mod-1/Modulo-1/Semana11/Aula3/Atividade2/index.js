@@ -2,14 +2,15 @@ const botaoEntrar = document.getElementById('btnEntrar');
 const usuario = document.getElementById('usuario');
 const senha = document.getElementById('senha');
 const verSenha = document.getElementById('btn-senha')
+const btnCadastrar = document.getElementById('cadastro')
 
 
 let localStorageUsuario = JSON.parse(localStorage.getItem('usuario'));
 
 botaoEntrar.addEventListener('click', () => {
-    if(usuario.value === localStorageUsuario.email){
+    if (usuario.value === localStorageUsuario.email) {
         window.alert('Acesso realizado com sucesso');
-    }else{
+    } else {
         console.log('Deu Ruim');
         window.alert('Verifica que deu erro');
     }
@@ -27,8 +28,8 @@ verSenha.addEventListener('click', () => {
 
 })
 
-usuario.oninput = validaCampos;
-senha.oninput= validaCampos;
+usuario.onchange = validaCampos;
+senha.onchange = validaCampos;
 
 function validaCampos() {
     if (usuario.value && senha.value) { //Validação dos valores dos inputs
@@ -37,3 +38,7 @@ function validaCampos() {
         botaoEntrar.disabled = true;
     }
 }
+btnCadastrar.addEventListener('click', () => {
+    console.log('clicando')
+    window.location.href = '../Atividade1/atividade1.html';
+});
