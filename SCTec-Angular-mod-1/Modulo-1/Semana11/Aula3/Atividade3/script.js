@@ -37,8 +37,6 @@ function alternarConclusao(index) {
 function exibir() {
     listaTarefa.textContent = '';
 
-    // storageLista = localStorage.getItem('listaTarefas');
-
     if (lista.length === 0) {
         listaTarefa.textContent = 'Sem tarefas cadastradas';
         return;
