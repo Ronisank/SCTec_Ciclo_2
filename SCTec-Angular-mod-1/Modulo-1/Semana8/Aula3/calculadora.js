@@ -32,15 +32,6 @@ btnOp.forEach(btn => {
     })
 })
 
-// window.addEventListener('keydown', (e) => {
-//     let tecla = e.key
-//     console.log(tecla)
-//     if (tecla === 'Delete') {
-//         console.log('else do C - limpar')
-//         limpar();
-//     }
-// });
-
 window.addEventListener('keydown', (e) => {
     let tecla = e.key
     console.log(tecla)
@@ -55,8 +46,13 @@ window.addEventListener('keydown', (e) => {
     } else if (tecla == '-' || tecla == '+' || tecla == '*' || tecla == '/') {
         operador = tecla;
         display.innerText = operador;
+
     } else if (tecla === 'Enter') {
+        e.preventDefault();
         calcular();
+
+    } else if (tecla === 'Delete') {
+        limpar()
     }
 })
 
@@ -64,19 +60,20 @@ function calcular() {
     const n1 = Number(num1)
     const n2 = Number(num2)
     let result = 0;
+
     if (operador === '+') {
         result = n1 + n2;
 
     } else if (operador === '-') {
         result = n1 - n2;
 
-    } else if (operador === 'x' || '*') {
+    } else if (operador === 'x' || operador === '*') {
         result = n1 * n2;
 
     } else if (operador === '/') {
         if (n2 === 0) {
             display.innerText = 'Não é possivel dividir por ZERO';
-            // return;
+            return;
         }
         result = n1 / n2
 
