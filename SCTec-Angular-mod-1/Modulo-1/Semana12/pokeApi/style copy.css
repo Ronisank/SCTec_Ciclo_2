@@ -1,0 +1,223 @@
+/* *1. Reset básico e centralização na tela inteira */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9; /* Fundo neutro e suave */
+  background-image: url("images/telaPokemonPaisagem.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* *O segredo para centralizar o card na tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#nomePokemon {
+  color: #363b81;
+  text-align: center;
+  font-size: 1.6rem;
+}
+/* *(Container Principal) */
+.container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 35px;
+  border-radius: 35px;
+  width: 90%;
+  max-width: 420px;
+  min-height: 600px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ?Efeito visual quando o usuário clica para digitar */
+input:focus{
+  outline: none;
+  border-color: #ffde00;
+  box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.1);
+}
+.cardPokemon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+img {
+  width:220px;
+    height:220px;
+    object-fit:contain;
+}
+.pokemon {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+span,
+#idPokemon {
+  background: #ffde00;
+  padding: 10px 40px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #363b81;
+  margin-top: 10px;
+  border-radius: 95px 10px 95px 10px;
+}
+.containerInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.inputPesquisa {
+  width: 100%;
+  height: 46px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 95px 10px 95px 10px;
+  font-size: 16px;
+  color: #1a202c;
+  background-color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.btnPesquisa {
+  transition: background-color 0.2s ease; /* Animação suave ao focar */
+  cursor: pointer;
+  width: 80%;
+  height: 48px;
+  border-radius: 10px 95px 10px 95px;
+  font-size: 1.5rem;
+  background-color: #ffde00;
+  color: #ff1f1f;
+  padding: 10px;
+}
+/* ?Estilo para quando o botão estiver desativado */
+.btnPesquisa:disabled,
+.btnAnt:disabled, .btnPro:disabled {
+  background-color: #fbd743;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+.containerBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.btnPro,
+.btnAnt,
+.btnVoltar {
+  transition: background-color 0.2s ease; /* Animação suave ao focar */
+  cursor: pointer;
+  width: 80%;
+  height: 46px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  background-color: #ffde00;
+  margin: 5px;
+  color: #ff1f1f;
+  font-weight: bold;
+}
+.btnPro,
+.btnAnt,
+.btnVoltar,
+.btnPesquisa {
+  border: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.btnAnt {
+  /* Ordem: topo-esquerda | topo-direita | baixo-direita | baixo-esquerda */
+  border-radius: 10px 95px 10px 95px;
+}
+.btnPro {
+  border-radius: 95px 10px 95px 10px;
+}
+.btnPequisa:hover,
+.btnPro:hover,
+.btnAnt:hover,
+.btnVoltar:hover {
+  background-color: #170fbd;
+  color: #ffde00;
+}
+
+.containerErro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.error-msg {
+  color: #ffde00;
+  font-size: 1.7rem;
+  text-align: center;
+  flex-wrap: wrap;
+  font-weight: bolder;
+  justify-content: flex-end;
+}
+.btnVoltar {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  border-radius: 95px 10px 95px 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========================================================
+   MEDIA QUERY PARA CELULARES (Telas até 480px)
+   ======================================================== */
+@media (max-width: 480px) {
+  body {
+    background-image: url("images/fundoPokemon.jpg"); /* Opcional: crie uma versão vertical */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .container {
+    padding: 25px 15px;
+    width: 90%;
+    max-width: 360px;
+  }
+
+  /* Ajusta os inputs e botões de pesquisa para não esmagarem */
+  .containerInput {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .inputPesquisa {
+    width: 60%; /* Dá mais espaço para digitar no celular */
+    font-size: 14px;
+  }
+
+  .btnPesquisa {
+    width: 35%;
+    font-size: 1.1rem; /* Diminui o texto para caber no botão */
+    height: 46px;
+  }
+
+  /* Ajusta os botões de Anterior / Próximo */
+  .btnPro,
+  .btnAnt,
+  .btnVoltar {
+    width: 45%; /* Ficam mais largos e fáceis de tocar com o polegar */
+    font-size: 1.1rem;
+  }
+
+  /* Melhora a mensagem de erro para telas pequenas */
+  .error-msg {
+    font-size: 1.3rem;
+  }
+}
