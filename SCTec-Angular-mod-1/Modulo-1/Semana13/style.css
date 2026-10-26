@@ -1,0 +1,117 @@
+/* Container que guarda todos os cards de cursos */
+/* Container pai de todo o conteúdo da direita */
+.painel-principal {
+  display: flex;
+  flex-direction: column; /* Faz os contadores ficarem em cima e os cursos embaixo */
+  flex: 1;
+  padding: 30px;          /* O padding geral fica aqui agora */
+  gap: 20px;              /* Espaço vertical entre os contadores e os cursos */
+  background-color: #f4f6f9; /* Cor de fundo suave da imagem */
+}
+
+/* Área dos Contadores do Topo */
+.conteudoContador {
+  display: flex;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+/* Ajuste do container que recebe os cards pequenos de total */
+#totalCursos {
+  display: flex;
+  gap: 24px;              /* Espaçamento horizontal entre os dois cards */
+  width: 100%; 
+            /* Permite que eles fiquem livres na linha */
+}
+
+/* Área dos Cursos */
+.conteudoPrincipal {
+  display: flex;
+  width: 100%;
+}
+
+/* Sua grade de cursos perfeitamente mantida */
+#cursos {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas iguais */
+  gap: 20px;
+}
+.cardTotal {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100px;
+  align-items: center;
+}
+.cardTotal h2 {
+  font-size: 1rem;
+  color: #111827;
+  margin: 0;
+  font-weight: bold;
+}
+
+.cardTotal span {
+  font-size: 1.5rem;
+  color: #6b21a8; /* Roxo dos números */
+  font-weight: bold;
+  text-align: right;
+}
+/* Estilização de cada Card individual */
+.cardCurso {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.cardCurso:hover {
+  transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+}
+
+/* Quadrado do Ícone (ex: JS, React) */
+.iconeCurso {
+  width: 50px;
+  height: 50px;
+  background-color: #6200ee; /* Cor de fundo do ícone */
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+/* Bloco de textos internos do card */
+.infoCurso {
+  flex-grow: 1; /* Faz os textos ocuparem o espaço restante */
+}
+
+.infoCurso h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+}
+
+.infoCurso p {
+  margin: 2px 0;
+  font-size: 0.85rem;
+  color: #757575;
+}
+
+/* Seta decorativa no canto direito */
+.setaCurso {
+  color: #6200ee;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
