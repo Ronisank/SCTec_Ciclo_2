@@ -1,0 +1,60 @@
+<h1>Listagem Livros</h1>
+<!-- <div>
+<span>Titulo: As crônicas de Nárnia - O leão, a feiticeira e o guarda-roupa</span>
+<span>Autor:
+C. S. Lewis</span>
+<span>Categoria:
+Romance, Literatura infantil</span>
+</div> -->
+
+<!-- @for (item of livrosCadastrados; track $index) {
+  @if (item.disponivel) {
+    <div>
+      <span>Titulo: {{ item.titulo }}</span>
+      <span>Autor: {{ item.autor }}</span>
+      <span>Categoria: {{ item.categoria }}</span>
+    </div>
+  }
+} @empty {
+  <p>Lista Vazia</p>
+} -->
+<input id="input-busca" type="text" [(ngModel)]="valorBusca" placeholder="Digite o titulo" />
+<button (click)="buscarLivro()">Buscar</button>
+
+@for (livro of livrosFiltrados; track $index) {
+  <div class="container">
+    <div class="container-livro">
+      <img [src]="livro.imagem" [alt]="'capa do livro ' + livro.titulo" />
+      <div class="texto">
+        <span>Titulo: {{ livro.titulo }}</span>
+        <span>Autor: {{ livro.autor }}</span>
+        <span>Categoria: {{ livro.categoria }}</span>
+        <span>Disponível: {{ livro.disponivel }}</span>
+      </div>
+    </div>
+
+    <div class="switch-case">
+      <strong><hr /></strong>
+      @switch (livro.categoria) {
+        @case ('Programação') {
+          <span>Livro sobre linguagens, algoritmos e desenvolvimento de software</span>
+        }
+        @case ('Web Design') {
+          <span>Livro sobre criação de páginas e aplicações web</span>
+        }
+        @case ('Banco de Dados') {
+          <span>Livro sobre armazenamento e consulta de dados</span>
+        }
+        @default {
+          <span>Consulte a descrição desta categoria</span>
+        }
+      }
+    </div>
+    <div class="btns">
+      <button (click)="livro.disponivel = false" [disabled]="!livrosFiltrados">Emprestar</button>
+      <button (click)="livro.disponivel = true" [disabled]="!livrosFiltrados">Devolver</button>
+    </div>
+  </div>
+} @empty {
+  <p>Lista Vazia</p>
+}
