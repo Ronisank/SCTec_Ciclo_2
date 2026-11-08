@@ -18,7 +18,8 @@ Romance, Literatura infantil</span>
 } @empty {
   <p>Lista Vazia</p>
 } -->
-<input id="input-busca" type="text" [(ngModel)]="valorBusca" placeholder="Digite o titulo" />
+<!-- <button (click)="buscarCachorro()">Buscar</button> -->
+<!-- <input id="input-busca" type="text" [(ngModel)]="valorBusca" placeholder="Digite o titulo" />
 <button (click)="buscarLivro()">Buscar</button>
 
 @for (livro of livrosFiltrados; track $index) {
@@ -50,11 +51,42 @@ Romance, Literatura infantil</span>
         }
       }
     </div>
-    <div class="btns">
-      <button (click)="livro.disponivel = false" [disabled]="!livrosFiltrados">Emprestar</button>
-      <button (click)="livro.disponivel = true" [disabled]="!livrosFiltrados">Devolver</button>
+    <div class="btns"> -->
+      <!-- <button (click)="livro.disponivel = false" [disabled]="!livrosFiltrados">Emprestar</button>
+      <button (click)="livro.disponivel = true" [disabled]="!livrosFiltrados">Devolver</button> -->
+<!--     
     </div>
   </div>
 } @empty {
   <p>Lista Vazia</p>
-}
+} -->
+<!-- <main
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+  "
+> -->
+  <!-- <h1>Bem-vindo ao App de Cachorros! 🐶</h1>
+  <p>Uma nova foto a cada 5 segundos:</p>
+
+  @if (imagemUrl) {
+    <img class="dogs" [src]="imagemUrl" alt="Cachorro aleatório" />
+  } @else {
+    <p style="font-weight: bold; color: #666">Buscando doguinho...</p>
+  }
+</main> -->
+<main class="pagina">
+  <h1>{{ titulo }}</h1>
+  <section class="grade">
+    <!-- livros() com parênteses: LÊ o valor atual do signal. O Angular rastreia essa leitura e redesenha quando muda. -->
+    @for (livro of livros(); track livro.id) {
+      <!-- [livro] envia o dado ao filho | (emprestar)/(devolver) escutam o que o filho emite; $event = o id emitido -->
+      <app-card-livro [livro]="livro" (emprestar)="emprestar($event)" (devolver)="devolver($event)" />
+    }
+  </section>
+</main>

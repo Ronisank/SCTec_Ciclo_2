@@ -1,0 +1,13 @@
+<article class="card" [class.concluida]="tarefa().concluida">
+  <div class="card-corpo">
+    <input
+      type="checkbox"
+      [class.concluida]="tarefa().concluida"
+      (change)="alternar.emit(tarefa().id)"
+    />
+    <span class="titulo">{{ tarefa().titulo }}</span>
+    <span class="badge">{{ tarefa().categoria }}</span>
+  </div>
+  
+  <button class="btn-remover" (click)="remover.emit(tarefa().id)">✕</button>
+</article>
