@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fluxograma M2S06</title>
+<style>
+  :root{
+    --navy:#1b4f72; --navy-dark:#123049; --zebra:#eef4f8;
+    --note-bg:#eaf2f8; --warn-bg:#fff3cd; --code-bg:#1e1e1e;
+    --verde:#2e7d32; --verde-dark:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif;color:#263238;line-height:1.55;font-size:13.5px}
+  .wrap{max-width:980px;margin:auto;padding:28px 34px}
+  h1{color:var(--navy);text-align:center;font-size:27px;margin-bottom:4px}
+  h1 + .subtitle{text-align:center;color:#37474f;font-size:15.5px;font-weight:bold;margin-top:0;margin-bottom:18px}
+  .meta{font-size:12.5px;color:#455a64;border-bottom:1px solid #cfd8dc;padding-bottom:16px;margin-bottom:16px}
+  .meta b{color:#263238}
+  h2.encontro,h2.section,h2.conexao,h2.aula{background:var(--navy);color:#fff;padding:10px 16px;border-radius:4px;font-size:17px;margin-top:34px;margin-bottom:14px;letter-spacing:.2px}
+  h3.bloco{color:var(--navy-dark);border-bottom:2px solid var(--navy);padding-bottom:4px;font-size:15px;margin-top:26px}
+  h3.dia{background:var(--navy-dark);color:#fff;padding:8px 14px;border-radius:4px;font-size:14.5px;margin-top:22px;margin-bottom:10px}
+  h3.questao{color:var(--navy-dark);font-size:14px;margin-top:22px;margin-bottom:2px}
+  .tempo{color:#607d8b;font-weight:normal;font-size:12.5px}
+  .enunciado{font-weight:bold;margin:4px 0 8px}
+  .obj-encontro,.objetivo-encontro{background:var(--zebra);border-left:4px solid var(--navy);padding:10px 14px;margin:14px 0 20px;font-size:13px}
+  .fala{background:var(--zebra);border-radius:5px;padding:10px 14px;margin:10px 0}
+  .fala b.label{color:var(--navy);display:block;margin-bottom:3px}
+  pre{background:var(--code-bg);color:#f8f8f2;padding:12px 14px;border-radius:6px;overflow:auto;font-size:11.8px;line-height:1.5;margin:10px 0;white-space:pre-wrap}
+  code{font-family:Consolas,Menlo,monospace}
+  :not(pre) > code{background:#eef4f8;color:var(--navy);padding:1px 5px;border-radius:3px;font-size:12px}
+  .pergunta{background:#f1f8f4;border-left:4px solid #2a9d8f;padding:9px 14px;margin:10px 0;font-size:13px}
+  .pergunta b{color:#1d7a6e}
+  .nota,.dica,.fio{background:var(--note-bg);border-left:4px solid var(--navy);border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .nota .titulo,.dica .titulo,.fio .titulo{font-weight:bold;color:var(--navy);display:block;margin-bottom:3px}
+  .atencao,.apoio,.observacao{background:var(--warn-bg);border-left:4px solid #e08e00;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .atencao .titulo,.observacao .titulo{font-weight:bold;color:#8a5c00;display:block;margin-bottom:3px}
+  .apoio b{color:#8a5c00}
+  .realizado,.fechamento{background:#eef7f2;border-left:4px solid #2a9d8f;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .realizado .titulo{font-weight:bold;color:#1d7a6e;display:block;margin-bottom:3px}
+  .fechamento{margin:20px 0 8px;font-size:13px}
+  .fechamento b{color:#1d7a6e}
+  .erro-comum{background:#fdecea;border-left:4px solid #d9534f;border-radius:4px;padding:10px 14px;margin:10px 0 22px;font-size:12.8px}
+  .erro-comum .titulo,.erro-comum b:first-child{font-weight:bold;color:#a83a32}
+  .erro-comum .titulo{display:block;margin-bottom:3px}
+  .checklist-final{background:var(--navy);color:#fff;padding:11px 16px;border-radius:4px;font-size:16px;margin-top:36px}
+  table{width:100%;border-collapse:collapse;margin:10px 0 20px;font-size:12.6px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px}
+  td{padding:7px 10px;border-bottom:1px solid #e3e9ec;vertical-align:top}
+  tr:nth-child(even) td{background:var(--zebra)}
+  td.correta{font-weight:bold;color:#1d7a6e}
+  .slides{white-space:nowrap;color:var(--navy);font-weight:bold}
+  .comentario{font-size:12.5px;color:#455a64;margin:0 0 18px}
+  .comentario b{color:#263238}
+  .conferencia{background:var(--zebra);border-left:4px solid var(--navy);border-radius:4px;padding:12px 16px;margin-top:16px;font-size:12.8px}
+  .conferencia li{margin-bottom:6px}
+  .comparacao{display:flex;gap:16px;margin:12px 0;flex-wrap:wrap}
+  .comparacao .lado{flex:1;min-width:280px}
+  .rotulo-antes,.rotulo-depois{display:inline-block;color:#fff;font-size:11px;font-weight:bold;padding:3px 10px;border-radius:3px 3px 0 0}
+  .rotulo-antes{background:#d9534f}.rotulo-depois{background:#2a9d8f}
+  .caixa-antes{border:2px solid #d9534f;border-top:none;border-radius:0 0 6px 6px}
+  .caixa-depois{border:2px solid #2a9d8f;border-top:none;border-radius:0 0 6px 6px}
+  .caixa-antes pre,.caixa-depois pre{margin:0;border-radius:0}
+  .checklist li{list-style:none;margin-bottom:7px;padding-left:24px;position:relative;font-size:13px}
+  .checklist li::before{content:"✓";position:absolute;left:0;color:#2a9d8f;font-weight:bold}
+  .video-item{border:1px solid #e3e9ec;border-radius:6px;padding:10px 14px;margin-bottom:10px}
+  .video-item .titulo-video{font-weight:bold;color:var(--navy-dark);display:block;margin-bottom:2px}
+  .video-item .canal{color:#607d8b;font-size:12px}
+  .video-item .desc{margin:4px 0 0;font-size:12.6px}
+  .paleta{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+  .cor{width:140px;border:1px solid #cfd8dc;border-radius:8px;overflow:hidden;font-size:11.5px}
+  .cor .amostra{height:46px}
+  .cor .info{padding:6px 8px}
+  a{color:var(--navy)}
+  ul{margin-top:6px}
+  li{margin-bottom:5px}
+  hr{border:none;border-top:1px solid #cfd8dc;margin:26px 0}
+  .pagebreak{break-before:page}
+  footer{margin-top:40px;padding-top:14px;border-top:1px solid #e3e9ec;color:#78909c;font-size:11px;text-align:center}
+  @media print{ .wrap{padding:0} a{color:var(--navy) !important;text-decoration:underline} }
+
+  .pausa{background:#eef7f2;border-left:4px solid #2a9d8f;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .pausa .titulo{font-weight:bold;color:#1d7a6e;display:block;margin-bottom:3px}
+  .tela{background:#fff;border:1px dashed #90a4ae;border-radius:4px;padding:8px 14px;margin:10px 0;font-size:12.8px}
+  .tela .titulo{font-weight:bold;color:#455a64;display:block;margin-bottom:3px}
+  .minuto{display:inline-block;background:var(--navy);color:#fff;font-size:11.5px;font-weight:bold;padding:2px 9px;border-radius:3px;margin-right:6px}
+  table.compacta td,table.compacta th{padding:5px 8px;font-size:12px}
+
+  .fluxo-caixa{border:2px solid #1b4f72;border-radius:8px;padding:10px 12px;background:#fff;font-size:12px}
+  .fluxo-caixa h4{margin:0 0 4px;color:#1b4f72;font-size:13px}
+  .linha{display:flex;gap:10px;align-items:stretch;margin:10px 0;flex-wrap:wrap}
+  .linha > .fluxo-caixa{flex:1;min-width:150px}
+  .seta{align-self:center;color:#2a9d8f;font-weight:bold;font-size:20px}
+  .verde{border-color:#2a9d8f}.verde h4{color:#1d7a6e}
+  .laranja{border-color:#e08e00;background:#fff8e6}.laranja h4{color:#8a5c00}
+  .azul{border-color:#4fa3e0;background:#eaf4fc}.azul h4{color:#1b5e8f}
+  .roxo{border-color:#7e57c2;background:#f3eefb}.roxo h4{color:#5e35b1}
+  .cabeca-secao{background:#1b4f72;color:#fff;padding:9px 14px;border-radius:6px;font-size:16px;margin:26px 0 10px}
+
+/* extras M2S06 */
+.cron td:first-child{white-space:nowrap;font-weight:bold;color:var(--navy)}
+.cron td.slides{white-space:nowrap}
+.passo{border:1px solid #cfd8dc;border-radius:6px;padding:12px 16px;margin:14px 0}
+.passo h4{margin:0 0 6px;color:var(--navy-dark);font-size:14.5px}
+.passo .arq{font-size:12px;color:#455a64;margin-bottom:6px}
+.analogia{background:#f3eefb;border-left:4px solid #7e57c2;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+.analogia .titulo{font-weight:bold;color:#5e35b1;display:block;margin-bottom:3px}
+.capa-dia{background:var(--navy);color:#fff;border-radius:6px;padding:14px 18px;margin:30px 0 14px}
+.capa-dia h2{margin:0;font-size:19px}
+.capa-dia p{margin:4px 0 0;font-size:13px;color:#dce9f7}
+pre{page-break-inside:avoid}
+.passo,.fala,.dica,.atencao,.analogia,.pergunta,.erro-comum{page-break-inside:avoid}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Como tudo se conecta - Semana 6</h1>
+<p class="subtitle">Módulos, organização, SASS, responsividade e Angular Material no projeto-angular-sctec</p>
+<p class="meta">Desenvolvimento Front-End [Angular] T1 | Módulo 2 | Semana 6 | Mapa visual da semana. Use como cola durante os exercícios.</p>
+
+<div class="cabeca-secao">1. Visão geral: o projeto-angular-sctec ao fim da Semana 6</div>
+<div class="linha"><div class="fluxo-caixa "><h4>Usuário</h4>celular, tablet ou desktop</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>core/layout</h4><code>mat-toolbar</code> com menu responsivo (☰ no celular)</div><div class="seta">&rarr;</div><div class="fluxo-caixa azul"><h4>Router (lazy)</h4><code>loadComponent</code> / <code>loadChildren</code>: baixa só a feature acessada</div><div class="seta">&rarr;</div><div class="fluxo-caixa roxo"><h4>features/</h4>inicio · contato · alunos · <b>cursos</b></div><div class="seta">&rarr;</div><div class="fluxo-caixa laranja"><h4>shared + core</h4><code>SharedModule</code> (Material, pipes, PageHeader) · <code>CepService</code></div></div>
+<p>Por cima de tudo: estilos em <b>SCSS</b> (partials, mapas, mixins), layout <b>mobile-first</b> e tema <b>Material 3</b>.</p>
+
+<div class="cabeca-secao">2. Aula 1 · Organização: onde cada arquivo mora</div>
+<div class="linha"><div class="fluxo-caixa verde"><h4>core/</h4>usado <b>uma vez</b>: <code>layout/header</code>, <code>layout/footer</code>, <code>services/cep-service</code></div><div class="fluxo-caixa azul"><h4>shared/</h4><b>reutilizável</b>: <code>PageHeader</code>, <code>CepPipe</code>, <code>models/</code>, <code>SharedModule</code>, <code>index.ts</code></div><div class="fluxo-caixa roxo"><h4>features/</h4><b>um assunto por pasta</b>: páginas + <code>*.routes.ts</code> + service da feature</div></div>
+<div class="linha"><div class="fluxo-caixa "><h4>ES Module</h4>arquivo com <code>import</code>/<code>export</code></div><div class="seta">&rarr;</div><div class="fluxo-caixa laranja"><h4>NgModule</h4><code>imports</code> (conhece) + <code>exports</code> (repassa)</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>Standalone</h4>o componente lista no <code>imports</code> o que o template usa (pode importar um NgModule)</div></div>
+<div class="linha"><div class="fluxo-caixa "><h4>tsconfig paths</h4><code>@core/*</code>, <code>@shared</code>, <code>@features/*</code></div><div class="seta">&rarr;</div><div class="fluxo-caixa azul"><h4>barrel</h4><code>shared/index.ts</code> reexporta a pasta</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>import curto</h4><code>import { SharedModule, Aluno } from '@shared'</code></div></div>
+
+<div class="cabeca-secao">3. Aula 2 · Do SCSS ao CSS responsivo</div>
+<div class="linha"><div class="fluxo-caixa "><h4>_variaveis.scss</h4>mapas <code>$cores</code> e <code>$breakpoints</code></div><div class="seta">&rarr;</div><div class="fluxo-caixa roxo"><h4>_mixins.scss</h4><code>@forward</code> + <code>espaco()</code> + <code>a-partir-de($bp)</code> + <code>cartao()</code></div><div class="seta">&rarr;</div><div class="fluxo-caixa azul"><h4>componente.scss</h4><code>@use 'mixins' as *;</code> (via <code>includePaths</code>)</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>CSS final</h4>seletores com <code>_ngcontent</code> (encapsulamento)</div></div>
+<div class="linha"><div class="fluxo-caixa "><h4>_tokens.scss</h4><code>@each</code> no mapa</div><div class="seta">&rarr;</div><div class="fluxo-caixa laranja"><h4>:root</h4><code>--azul</code>, <code>--laranja</code>... (navegador, tempo real)</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>componentes</h4><code>var(--azul)</code></div></div>
+<div class="linha"><div class="fluxo-caixa "><h4>375 px (base)</h4>menu ☰ · 1 coluna</div><div class="seta">&rarr;</div><div class="fluxo-caixa azul"><h4>md 768 px</h4>menu em linha · 2 colunas · campos lado a lado</div><div class="seta">&rarr;</div><div class="fluxo-caixa roxo"><h4>lg 1024 px</h4>cadastro: formulário + resumo (<code>grid-template-areas</code>)</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>1280 px+</h4>3 colunas · <code>max-width: 1120px</code></div></div>
+
+<div class="cabeca-secao">4. Aula 3 · Bibliotecas externas</div>
+<div class="linha"><div class="fluxo-caixa "><h4>Escolher</h4><code>npm view lib peerDependencies</code></div><div class="seta">&rarr;</div><div class="fluxo-caixa azul"><h4>Instalar</h4><code>ng add</code> (configura) · <code>npm install</code> (manual)</div><div class="seta">&rarr;</div><div class="fluxo-caixa laranja"><h4>Configurar</h4>tema <code>mat.theme</code> · <code>provideNgxMask()</code> · <code>@use</code> no topo</div><div class="seta">&rarr;</div><div class="fluxo-caixa verde"><h4>Usar</h4><code>SharedModule</code> reexporta <code>Mat*Module</code> e <code>NgxMaskDirective</code></div></div>
+<div class="linha"><div class="fluxo-caixa verde"><h4>Header</h4><code>mat-toolbar</code>, <code>mat-icon-button</code>, <code>mat-button</code></div><div class="fluxo-caixa azul"><h4>Cursos</h4><code>mat-card</code> + <code>mat-card-image</code> (object-fit) + <code>matTooltip</code></div><div class="fluxo-caixa roxo"><h4>Cadastro</h4><code>mat-form-field</code> + <code>matInput</code>/<code>mat-select</code> + <code>mask</code> + <code>MatSnackBar</code></div></div>
+
+<div class="cabeca-secao">5. Qual ferramenta usar? Guia de decisão</div>
+<table class="compacta">
+  <tr><th>Pergunta</th><th>Use</th><th>Por quê</th></tr>
+  <tr><td>Arquivo usado uma vez no app (layout, service global)?</td><td><b>core/</b></td><td>Não pertence a nenhuma feature</td></tr>
+  <tr><td>Peça reutilizável, sem regra de negócio?</td><td><b>shared/</b></td><td>Qualquer feature pode usar</td></tr>
+  <tr><td>Tela ou regra de um assunto (cursos, alunos)?</td><td><b>features/&lt;assunto&gt;</b></td><td>Tudo do assunto mora junto</td></tr>
+  <tr><td>Várias páginas importam a mesma lista?</td><td><b>SharedModule</b> (ou array de imports)</td><td>Uma lista só, com exports</td></tr>
+  <tr><td>Página que nem todo usuário abre?</td><td><b>loadComponent / loadChildren</b></td><td>Bundle inicial menor</td></tr>
+  <tr><td>Valor que muda em tempo real (tema)?</td><td><b>Variável CSS</b> (<code>--azul</code>)</td><td>Existe no navegador</td></tr>
+  <tr><td>Valor/bloco reaproveitado na compilação?</td><td><b>Variável, mapa ou mixin SASS</b></td><td>Organiza o código-fonte</td></tr>
+  <tr><td>Colunas que se ajustam sozinhas?</td><td><b>Grid auto-fill + minmax</b></td><td>Sem media query</td></tr>
+  <tr><td>Imagens de tamanhos diferentes no mesmo card?</td><td><b>aspect-ratio + object-fit: cover</b></td><td>Mesma altura, sem distorcer</td></tr>
+  <tr><td>Mudar o visual de um componente Material?</td><td><b>mat.*-overrides</b></td><td>API pública; sobrevive ao <code>ng update</code></td></tr>
+  <tr><td>Formatar enquanto digita?</td><td><b>ngx-mask</b> (diretiva)</td><td>Pipe formata só a exibição</td></tr>
+</table>
+
+  <footer>Desenvolvimento Front-End [Angular] T1 - SENAI/SC - Fluxograma, Semana 6</footer>
+</div>
+</body>
+</html>

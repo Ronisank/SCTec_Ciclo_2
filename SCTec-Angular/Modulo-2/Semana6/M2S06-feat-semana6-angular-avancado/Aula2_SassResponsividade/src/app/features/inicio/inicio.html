@@ -1,0 +1,28 @@
+<section class="card hero">
+  <app-page-header
+    titulo="Bem-vindo ao seu projeto Angular"
+    subtitulo="Este projeto cresce a cada semana. Hoje ele ganhou SCSS organizado e layout responsivo (celular, tablet e desktop)."
+    tag="projeto-angular-sctec"
+  >
+    <!-- Este trecho entra no <ng-content /> do PageHeader -->
+    <div class="acoes">
+      <a class="btn" routerLink="/cursos">Ver cursos</a>
+      <a class="btn btn-secundario" routerLink="/alunos/cadastro">Cadastrar aluno</a>
+    </div>
+  </app-page-header>
+</section>
+
+<h2 class="secao">Como o projeto está crescendo</h2>
+<div class="etapas">
+  @for (etapa of etapas; track etapa.semana) {
+    <article class="card etapa" [class.atual]="etapa.atual">
+      <span class="numero">{{ etapa.semana }}</span>
+      <h3>{{ etapa.titulo }}</h3>
+      <ul>
+        @for (item of etapa.itens; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </article>
+  }
+</div>

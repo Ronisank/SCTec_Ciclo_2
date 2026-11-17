@@ -1,0 +1,67 @@
+@use 'mixins' as *;
+
+// Layout da página (Aula 2): formulário e resumo lado a lado a partir do notebook.
+.layout {
+  display: grid;
+  gap: espaco(2.5);
+  grid-template-areas:
+    'formulario'
+    'resumo';
+
+  @include a-partir-de(lg) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'formulario resumo';
+    align-items: start;
+  }
+
+  .card { margin-bottom: 0; }
+}
+
+.area-formulario { grid-area: formulario; }
+.area-resumo { grid-area: resumo; }
+
+// Campos: 1 coluna no celular, 2 a partir do tablet.
+.grade {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: espaco(2);
+
+  @include a-partir-de(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+mat-form-field { width: 100%; }
+.campo-cep { max-width: 320px; }
+
+.endereco {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--azul-claro);
+  border-left: 4px solid var(--azul);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: espaco(1) 0 14px;
+  font-size: 14px;
+}
+
+.resumo { border-top: 4px solid var(--ok); }
+
+dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  margin: 0;
+}
+dt { font-weight: 600; color: var(--texto-suave); }
+dd { margin: 0; overflow-wrap: anywhere; }
+
+// Usado só ENQUANTO o CEP ainda não virou mat-form-field (TODO 5). Depois pode apagar.
+.linha-cep {
+  display: flex;
+  flex-wrap: wrap;
+  gap: espaco(1);
+
+  input { flex: 1 1 160px; max-width: 220px; }
+}

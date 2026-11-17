@@ -1,0 +1,46 @@
+@use 'mixins' as *;
+
+// O GRID da Aula 2 continua igual: o Material cuida do visual do cartão, nós cuidamos do layout.
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: espaco(2.5);
+}
+
+.curso {
+  overflow: hidden;
+  transition: transform 0.2s ease;
+
+  &:hover { transform: translateY(-4px); }
+
+  // object-fit da Aula 2 aplicado na imagem do mat-card
+  img[mat-card-image] {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin: 0 0 espaco(1);
+  }
+
+  mat-card-content {
+    flex: 1;
+
+    p { color: var(--texto-suave); font-size: 14px; margin: 0; }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: espaco(1) espaco(2) espaco(2);
+  }
+}
+
+.carga {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  color: var(--azul);
+
+  mat-icon { font-size: 20px; width: 20px; height: 20px; }
+}

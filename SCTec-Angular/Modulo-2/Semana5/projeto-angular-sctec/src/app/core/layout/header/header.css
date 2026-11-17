@@ -1,0 +1,36 @@
+/* header.css - estilo do cabeçalho (antes ficava no app.css). */
+.topo {
+  background: var(--azul);
+  color: var(--branco);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.marca { display: flex; align-items: center; gap: 12px; }
+.marca strong { display: block; font-size: 18px; }
+.marca small { display: block; color: #cfe2f5; font-size: 12px; }
+.logo {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--laranja);
+  color: var(--branco);
+  font-weight: 700;
+  font-family: Consolas, monospace;
+}
+nav { display: flex; gap: 6px; flex-wrap: wrap; }
+nav a {
+  color: #dce9f7;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+}
+nav a:hover { background: rgba(255, 255, 255, 0.12); }
+nav a.ativo { background: var(--branco); color: var(--azul); }

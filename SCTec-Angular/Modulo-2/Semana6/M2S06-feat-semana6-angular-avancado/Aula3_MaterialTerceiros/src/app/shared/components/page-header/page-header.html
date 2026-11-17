@@ -1,0 +1,14 @@
+<!-- page-header.html - título + tag + subtítulo.
+     <ng-content /> = "buraco" que recebe o que o componente pai escrever DENTRO da tag <app-page-header>. -->
+<header class="page-header">
+  <div class="topo">
+    <h2>{{ titulo() }}</h2>
+    @if (tag()) {
+      <span class="tag">{{ tag() }}</span>
+    }
+  </div>
+  @if (subtitulo()) {
+    <p class="subtitulo">{{ subtitulo() }}</p>
+  }
+  <ng-content />
+</header>

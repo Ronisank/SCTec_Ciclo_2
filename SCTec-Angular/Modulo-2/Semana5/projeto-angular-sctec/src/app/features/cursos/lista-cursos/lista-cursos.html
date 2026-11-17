@@ -1,0 +1,19 @@
+<app-page-header
+  titulo="Cursos SCTEC"
+  subtitulo="Catálogo de formações. Nova feature da Semana 6, carregada sob demanda (lazy loading)."
+  tag="{{ cursos().length }} cursos"
+/>
+
+<div class="lista">
+  @for (curso of cursos(); track curso.id) {
+    <article class="card curso">
+      <img [src]="curso.imagem" [alt]="'Capa do curso ' + curso.nome" />
+      <span class="tag">{{ curso.area }}</span>
+      <h3>{{ curso.nome }}</h3>
+      <p>{{ curso.descricao }}</p>
+      <small>{{ curso.nivel }} · {{ curso.cargaHoraria }} h</small>
+    </article>
+  } @empty {
+    <p class="aviso">Nenhum curso para mostrar.</p>
+  }
+</div>

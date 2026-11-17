@@ -1,0 +1,83 @@
+<section class="card">
+  <app-page-header
+    titulo="Cadastro de aluno"
+    subtitulo="A estrutura do formulário vem do fb.group no .ts. O HTML só se conecta com formControlName."
+    tag="Reactive Forms"
+  />
+
+  <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+    <div class="grade">
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input id="nome" formControlName="nome" placeholder="Ex.: Ana Souza" />
+        @if (invalido('nome')) { <small class="erro">Informe o nome (mínimo 3 letras).</small> }
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" formControlName="email" placeholder="ana@email.com" />
+        @if (invalido('email')) { <small class="erro">Informe um e-mail válido.</small> }
+      </div>
+
+      <div class="campo">
+        <label for="telefone">Telefone (só números, com DDD)</label>
+        <input id="telefone" formControlName="telefone" inputmode="numeric" maxlength="11" placeholder="48999998888" />
+        @if (invalido('telefone')) { <small class="erro">Use 10 ou 11 números (DDD + telefone).</small> }
+      </div>
+
+      <div class="campo">
+        <label for="curso">Curso</label>
+        <select id="curso" formControlName="curso">
+          <option value="" disabled>Selecione...</option>
+          @for (curso of cursos; track curso) {
+            <option [value]="curso">{{ curso }}</option>
+          }
+        </select>
+        @if (invalido('curso')) { <small class="erro">Escolha um curso.</small> }
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="cep">CEP (só números)</label>
+      <div class="linha-cep">
+        <input id="cep" formControlName="cep" inputmode="numeric" maxlength="8" placeholder="88010000" />
+        <button type="button" class="btn btn-secundario" (click)="buscarCep()" [disabled]="carregando()">
+          {{ carregando() ? 'Buscando...' : 'Buscar CEP' }}
+        </button>
+      </div>
+      @if (invalido('cep')) { <small class="erro">O CEP precisa ter 8 números.</small> }
+      @if (erroCep()) { <small class="erro">{{ erroCep() }}</small> }
+    </div>
+
+    @if (endereco(); as e) {
+      <div class="endereco">
+        <strong>Endereço encontrado</strong>
+        <span>{{ e.logradouro || 'Logradouro não informado' }} - {{ e.bairro }}</span>
+        <span>{{ e.localidade }} / {{ e.uf }} · CEP {{ e.cep }}</span>
+      </div>
+    }
+
+    <div class="acoes">
+      <button type="submit" class="btn">Salvar cadastro</button>
+      <button type="button" class="btn btn-secundario" (click)="limpar()">Limpar</button>
+    </div>
+  </form>
+</section>
+
+@if (alunoSalvo(); as aluno) {
+  <section class="card resumo">
+    <app-page-header titulo="Resumo do cadastro" tag="Pipes" />
+    <dl>
+      <dt>Nome</dt>
+      <dd>{{ aluno.nome | uppercase }}</dd>
+      <dt>E-mail</dt>
+      <dd>{{ aluno.email }}</dd>
+      <dt>Curso</dt>
+      <dd>{{ aluno.curso }}</dd>
+      <dt>CEP</dt>
+      <dd>{{ aluno.cep | cep }}</dd>
+      <dt>Cadastrado em</dt>
+      <dd>{{ aluno.cadastradoEm | date: 'dd/MM/yyyy HH:mm' }}</dd>
+    </dl>
+  </section>
+}

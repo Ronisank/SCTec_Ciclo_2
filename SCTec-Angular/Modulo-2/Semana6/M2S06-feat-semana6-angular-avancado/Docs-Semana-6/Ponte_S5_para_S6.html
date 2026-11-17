@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ponte S5 para S6</title>
+<style>
+  :root{
+    --navy:#1b4f72; --navy-dark:#123049; --zebra:#eef4f8;
+    --note-bg:#eaf2f8; --warn-bg:#fff3cd; --code-bg:#1e1e1e;
+    --verde:#2e7d32; --verde-dark:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif;color:#263238;line-height:1.55;font-size:13.5px}
+  .wrap{max-width:980px;margin:auto;padding:28px 34px}
+  h1{color:var(--navy);text-align:center;font-size:27px;margin-bottom:4px}
+  h1 + .subtitle{text-align:center;color:#37474f;font-size:15.5px;font-weight:bold;margin-top:0;margin-bottom:18px}
+  .meta{font-size:12.5px;color:#455a64;border-bottom:1px solid #cfd8dc;padding-bottom:16px;margin-bottom:16px}
+  .meta b{color:#263238}
+  h2.encontro,h2.section,h2.conexao,h2.aula{background:var(--navy);color:#fff;padding:10px 16px;border-radius:4px;font-size:17px;margin-top:34px;margin-bottom:14px;letter-spacing:.2px}
+  h3.bloco{color:var(--navy-dark);border-bottom:2px solid var(--navy);padding-bottom:4px;font-size:15px;margin-top:26px}
+  h3.dia{background:var(--navy-dark);color:#fff;padding:8px 14px;border-radius:4px;font-size:14.5px;margin-top:22px;margin-bottom:10px}
+  h3.questao{color:var(--navy-dark);font-size:14px;margin-top:22px;margin-bottom:2px}
+  .tempo{color:#607d8b;font-weight:normal;font-size:12.5px}
+  .enunciado{font-weight:bold;margin:4px 0 8px}
+  .obj-encontro,.objetivo-encontro{background:var(--zebra);border-left:4px solid var(--navy);padding:10px 14px;margin:14px 0 20px;font-size:13px}
+  .fala{background:var(--zebra);border-radius:5px;padding:10px 14px;margin:10px 0}
+  .fala b.label{color:var(--navy);display:block;margin-bottom:3px}
+  pre{background:var(--code-bg);color:#f8f8f2;padding:12px 14px;border-radius:6px;overflow:auto;font-size:11.8px;line-height:1.5;margin:10px 0;white-space:pre-wrap}
+  code{font-family:Consolas,Menlo,monospace}
+  :not(pre) > code{background:#eef4f8;color:var(--navy);padding:1px 5px;border-radius:3px;font-size:12px}
+  .pergunta{background:#f1f8f4;border-left:4px solid #2a9d8f;padding:9px 14px;margin:10px 0;font-size:13px}
+  .pergunta b{color:#1d7a6e}
+  .nota,.dica,.fio{background:var(--note-bg);border-left:4px solid var(--navy);border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .nota .titulo,.dica .titulo,.fio .titulo{font-weight:bold;color:var(--navy);display:block;margin-bottom:3px}
+  .atencao,.apoio,.observacao{background:var(--warn-bg);border-left:4px solid #e08e00;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .atencao .titulo,.observacao .titulo{font-weight:bold;color:#8a5c00;display:block;margin-bottom:3px}
+  .apoio b{color:#8a5c00}
+  .realizado,.fechamento{background:#eef7f2;border-left:4px solid #2a9d8f;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .realizado .titulo{font-weight:bold;color:#1d7a6e;display:block;margin-bottom:3px}
+  .fechamento{margin:20px 0 8px;font-size:13px}
+  .fechamento b{color:#1d7a6e}
+  .erro-comum{background:#fdecea;border-left:4px solid #d9534f;border-radius:4px;padding:10px 14px;margin:10px 0 22px;font-size:12.8px}
+  .erro-comum .titulo,.erro-comum b:first-child{font-weight:bold;color:#a83a32}
+  .erro-comum .titulo{display:block;margin-bottom:3px}
+  .checklist-final{background:var(--navy);color:#fff;padding:11px 16px;border-radius:4px;font-size:16px;margin-top:36px}
+  table{width:100%;border-collapse:collapse;margin:10px 0 20px;font-size:12.6px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px}
+  td{padding:7px 10px;border-bottom:1px solid #e3e9ec;vertical-align:top}
+  tr:nth-child(even) td{background:var(--zebra)}
+  td.correta{font-weight:bold;color:#1d7a6e}
+  .slides{white-space:nowrap;color:var(--navy);font-weight:bold}
+  .comentario{font-size:12.5px;color:#455a64;margin:0 0 18px}
+  .comentario b{color:#263238}
+  .conferencia{background:var(--zebra);border-left:4px solid var(--navy);border-radius:4px;padding:12px 16px;margin-top:16px;font-size:12.8px}
+  .conferencia li{margin-bottom:6px}
+  .comparacao{display:flex;gap:16px;margin:12px 0;flex-wrap:wrap}
+  .comparacao .lado{flex:1;min-width:280px}
+  .rotulo-antes,.rotulo-depois{display:inline-block;color:#fff;font-size:11px;font-weight:bold;padding:3px 10px;border-radius:3px 3px 0 0}
+  .rotulo-antes{background:#d9534f}.rotulo-depois{background:#2a9d8f}
+  .caixa-antes{border:2px solid #d9534f;border-top:none;border-radius:0 0 6px 6px}
+  .caixa-depois{border:2px solid #2a9d8f;border-top:none;border-radius:0 0 6px 6px}
+  .caixa-antes pre,.caixa-depois pre{margin:0;border-radius:0}
+  .checklist li{list-style:none;margin-bottom:7px;padding-left:24px;position:relative;font-size:13px}
+  .checklist li::before{content:"✓";position:absolute;left:0;color:#2a9d8f;font-weight:bold}
+  .video-item{border:1px solid #e3e9ec;border-radius:6px;padding:10px 14px;margin-bottom:10px}
+  .video-item .titulo-video{font-weight:bold;color:var(--navy-dark);display:block;margin-bottom:2px}
+  .video-item .canal{color:#607d8b;font-size:12px}
+  .video-item .desc{margin:4px 0 0;font-size:12.6px}
+  .paleta{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+  .cor{width:140px;border:1px solid #cfd8dc;border-radius:8px;overflow:hidden;font-size:11.5px}
+  .cor .amostra{height:46px}
+  .cor .info{padding:6px 8px}
+  a{color:var(--navy)}
+  ul{margin-top:6px}
+  li{margin-bottom:5px}
+  hr{border:none;border-top:1px solid #cfd8dc;margin:26px 0}
+  .pagebreak{break-before:page}
+  footer{margin-top:40px;padding-top:14px;border-top:1px solid #e3e9ec;color:#78909c;font-size:11px;text-align:center}
+  @media print{ .wrap{padding:0} a{color:var(--navy) !important;text-decoration:underline} }
+
+  .pausa{background:#eef7f2;border-left:4px solid #2a9d8f;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+  .pausa .titulo{font-weight:bold;color:#1d7a6e;display:block;margin-bottom:3px}
+  .tela{background:#fff;border:1px dashed #90a4ae;border-radius:4px;padding:8px 14px;margin:10px 0;font-size:12.8px}
+  .tela .titulo{font-weight:bold;color:#455a64;display:block;margin-bottom:3px}
+  .minuto{display:inline-block;background:var(--navy);color:#fff;font-size:11.5px;font-weight:bold;padding:2px 9px;border-radius:3px;margin-right:6px}
+  table.compacta td,table.compacta th{padding:5px 8px;font-size:12px}
+
+  .fluxo-caixa{border:2px solid #1b4f72;border-radius:8px;padding:10px 12px;background:#fff;font-size:12px}
+  .fluxo-caixa h4{margin:0 0 4px;color:#1b4f72;font-size:13px}
+  .linha{display:flex;gap:10px;align-items:stretch;margin:10px 0;flex-wrap:wrap}
+  .linha > .fluxo-caixa{flex:1;min-width:150px}
+  .seta{align-self:center;color:#2a9d8f;font-weight:bold;font-size:20px}
+  .verde{border-color:#2a9d8f}.verde h4{color:#1d7a6e}
+  .laranja{border-color:#e08e00;background:#fff8e6}.laranja h4{color:#8a5c00}
+  .azul{border-color:#4fa3e0;background:#eaf4fc}.azul h4{color:#1b5e8f}
+  .roxo{border-color:#7e57c2;background:#f3eefb}.roxo h4{color:#5e35b1}
+  .cabeca-secao{background:#1b4f72;color:#fff;padding:9px 14px;border-radius:6px;font-size:16px;margin:26px 0 10px}
+
+/* extras M2S06 */
+.cron td:first-child{white-space:nowrap;font-weight:bold;color:var(--navy)}
+.cron td.slides{white-space:nowrap}
+.passo{border:1px solid #cfd8dc;border-radius:6px;padding:12px 16px;margin:14px 0}
+.passo h4{margin:0 0 6px;color:var(--navy-dark);font-size:14.5px}
+.passo .arq{font-size:12px;color:#455a64;margin-bottom:6px}
+.analogia{background:#f3eefb;border-left:4px solid #7e57c2;border-radius:4px;padding:10px 14px;margin:12px 0;font-size:12.8px}
+.analogia .titulo{font-weight:bold;color:#5e35b1;display:block;margin-bottom:3px}
+.capa-dia{background:var(--navy);color:#fff;border-radius:6px;padding:14px 18px;margin:30px 0 14px}
+.capa-dia h2{margin:0;font-size:19px}
+.capa-dia p{margin:4px 0 0;font-size:13px;color:#dce9f7}
+pre{page-break-inside:avoid}
+.passo,.fala,.dica,.atencao,.analogia,.pergunta,.erro-comum{page-break-inside:avoid}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Da Semana 5 à Semana 6</h1>
+<p class="subtitle">Do projeto que funciona ao projeto organizado, responsivo e com UI profissional</p>
+<p class="meta">Desenvolvimento Front-End [Angular] T1 | Módulo 2 | Semana 6 | Este material não traz conteúdo novo: mostra, ponto a ponto, como o que você já praticou (Módulo 1 e Semanas 3 a 5) é a <b>base literal</b> da Semana 6. <b>Nada aqui é assunto desconhecido: é o mesmo conhecimento crescendo.</b></p>
+
+<h3 class="bloco" style="border:none;margin-top:0">Como ler este material</h3>
+<p>Cada conexão traz <b>o que você já sabe</b>, <b>o que a Semana 6 acrescenta</b> e uma comparação lado a lado entre o código "de antes" e o "de agora".</p>
+<div class="fio"><span class="titulo">O fio condutor: o projeto-angular-sctec</span>Na Semana 5 (aula de 12/11) você criou o <b>projeto-angular-sctec</b> com rotas, formulário Template-Driven, Reactive Forms, pipes e a API viaCEP. Na Semana 6 ele ganha <b>organização por funcionalidade</b> (segunda), <b>SCSS e responsividade</b> (terça) e <b>Angular Material + ngx-mask</b> (quinta). O mesmo projeto, crescendo.</div>
+<table>
+  <tr><th>Semana</th><th>O que você construiu</th><th>Ferramentas usadas</th></tr>
+  <tr><td>Módulo 1</td><td>HTML, CSS (Flexbox, media queries básicas), JavaScript, <code>import/export</code> em módulos JS</td><td><code>&lt;link rel="stylesheet"&gt;</code>, <code>display: flex</code>, <code>export function</code></td></tr>
+  <tr><td>03 e 04</td><td>Componentes, bindings, <code>input()</code>, services, DI, signals, Observables, Git</td><td><code>@Component</code>, <code>inject()</code>, <code>signal</code></td></tr>
+  <tr><td>05</td><td>projeto-angular-sctec: rotas, formulários, pipes, API</td><td><code>provideRouter</code>, <code>FormGroup</code>, <code>@Pipe</code>, <code>HttpClient</code></td></tr>
+  <tr><td>06</td><td>O <b>mesmo</b> projeto organizado, responsivo e com Material</td><td><b>Assunto desta semana:</b> <code>@NgModule</code>, <code>loadChildren</code>, SCSS, Grid, <code>mat-*</code>, ngx-mask</td></tr>
+</table>
+
+<h2 class="conexao">CONEXÃO 1 - Do import/export de arquivos ao NgModule e ao SharedModule</h2>
+<h3 class="bloco">O que você já sabe</h3>
+<p>No Módulo 1 você separou funções em arquivos com <code>export</code> e <code>import</code> (ES Modules). Na Semana 5, cada componente listou no seu <code>imports: [...]</code> o que o template usa (<code>ReactiveFormsModule</code>, <code>DatePipe</code>, <code>CepPipe</code>).</p>
+<h3 class="bloco">O que a Semana 6 acrescenta</h3>
+<ul><li>Um <b>NgModule</b> agrupa peças do Angular: <code>imports</code> (conhece) e <code>exports</code> (repassa).</li><li>O <b>SharedModule</b> junta o que várias páginas usam; cada página importa só ele.</li><li>Um <b>barrel</b> (<code>index.ts</code>) é o mesmo <code>export</code> do Módulo 1, reunindo uma pasta inteira.</li></ul>
+<h3 class="bloco">Comparando o código</h3>
+<div class="comparacao"><div class="lado"><span class="rotulo-antes">SEMANA 5 - cada página lista tudo</span><div class="caixa-antes"><pre><code>@Component({
+  imports: [ReactiveFormsModule, UpperCasePipe,
+            DatePipe, CepPipe],
+})
+export class CadastroAluno {}</code></pre></div></div><div class="lado"><span class="rotulo-depois">SEMANA 6 - um módulo compartilhado</span><div class="caixa-depois"><pre><code>@Component({
+  imports: [SharedModule],
+})
+export class CadastroAluno {}
+// SharedModule: imports + exports</code></pre></div></div></div>
+<div class="observacao"><span class="titulo">O que realmente mudou?</span>A ideia de "o componente declara o que usa" continua. Mudou <b>quem monta a lista</b>: um módulo, uma vez só.</div>
+
+<h2 class="conexao pagebreak">CONEXÃO 2 - De pages/ e caminhos relativos a features, aliases e lazy loading</h2>
+<h3 class="bloco">O que você já sabe</h3>
+<p>Na Semana 5 o projeto tinha <code>pages/</code>, <code>services/</code>, <code>pipes/</code> e <code>models/</code>, com rotas <code>{ path: 'contato', component: Contato }</code> e imports como <code>'../../services/cep-service'</code>.</p>
+<h3 class="bloco">O que a Semana 6 acrescenta</h3>
+<ul><li>Pastas por <b>funcionalidade</b>: <code>core/</code>, <code>shared/</code>, <code>features/</code>.</li><li><b>Aliases</b> no <code>tsconfig.json</code>: <code>@core</code>, <code>@shared</code>, <code>@features</code>.</li><li>Rotas por feature e <b>lazy loading</b>: o código de cada página só é baixado quando o usuário entra nela.</li></ul>
+<div class="comparacao"><div class="lado"><span class="rotulo-antes">SEMANA 5 - rota imediata</span><div class="caixa-antes"><pre><code>import { Contato } from './pages/contato/contato';
+
+{ path: 'contato', component: Contato }</code></pre></div></div><div class="lado"><span class="rotulo-depois">SEMANA 6 - rota sob demanda</span><div class="caixa-depois"><pre><code>{ path: 'contato', loadComponent: () =>
+    import('@features/contato/contato')
+      .then((m) => m.Contato) }</code></pre></div></div></div>
+<div class="observacao"><span class="titulo">O que realmente mudou?</span>A rota leva para a mesma página. Muda <b>quando</b> o navegador baixa o código: só na hora do clique.</div>
+
+<h2 class="conexao pagebreak">CONEXÃO 3 - Do CSS do Módulo 1 ao SCSS organizado</h2>
+<h3 class="bloco">O que você já sabe</h3>
+<p>No Módulo 1 você escreveu CSS com classes, cores repetidas e, na Semana 5, usou <code>var(--azul)</code> no <code>styles.css</code> do projeto.</p>
+<h3 class="bloco">O que a Semana 6 acrescenta</h3>
+<ul><li><b>SCSS</b>: variáveis, aninhamento com <code>&amp;</code>, partials, <code>@use</code>, mixins, funções e mapas com <code>@each</code>.</li><li>A <b>Angular CLI</b> configurada para SCSS (<code>angular.json</code>).</li><li>O mapa SASS <b>gera</b> as mesmas variáveis CSS que você já usava.</li></ul>
+<div class="comparacao"><div class="lado"><span class="rotulo-antes">SEMANA 5 - CSS repetido</span><div class="caixa-antes"><pre><code>.btn { background: var(--azul); }
+.btn:hover { background: var(--azul-escuro); }
+.btn-secundario { color: var(--azul); }</code></pre></div></div><div class="lado"><span class="rotulo-depois">SEMANA 6 - SCSS aninhado</span><div class="caixa-depois"><pre><code>.btn {
+  background: var(--azul);
+  &amp;:hover { background: var(--azul-escuro); }
+  &amp;-secundario { color: var(--azul); }
+}</code></pre></div></div></div>
+<div class="observacao"><span class="titulo">O que realmente mudou?</span>O CSS que chega ao navegador é o mesmo. Muda a <b>organização</b> de quem escreve.</div>
+
+<h2 class="conexao pagebreak">CONEXÃO 4 - Das media queries do Módulo 1 ao layout mobile-first com Grid</h2>
+<h3 class="bloco">O que você já sabe</h3>
+<p>Você já usou Flexbox, <code>@media</code> e, na Semana 5, o cadastro tinha <code>grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))</code>.</p>
+<h3 class="bloco">O que a Semana 6 acrescenta</h3>
+<ul><li><b>Mobile-first</b> com <code>min-width</code> e um mixin de breakpoints.</li><li><b>Grid</b> com <code>auto-fill</code>/<code>minmax</code> e <code>grid-template-areas</code>.</li><li><code>max-width</code>, <code>clamp()</code>, <code>object-fit</code> e <code>aspect-ratio</code>.</li></ul>
+<div class="comparacao"><div class="lado"><span class="rotulo-antes">MÓDULO 1 - media query escrita à mão</span><div class="caixa-antes"><pre><code>@media (max-width: 768px) {
+  nav { flex-direction: column; }
+}</code></pre></div></div><div class="lado"><span class="rotulo-depois">SEMANA 6 - mixin mobile-first</span><div class="caixa-depois"><pre><code>nav {
+  flex-direction: column;
+  @include a-partir-de(md) { flex-direction: row; }
+}</code></pre></div></div></div>
+<div class="observacao"><span class="titulo">O que realmente mudou?</span>Começamos pelo celular e os breakpoints moram em <b>um lugar só</b>.</div>
+
+<h2 class="conexao pagebreak">CONEXÃO 5 - Do inject() e dos componentes próprios ao Angular Material e ngx-mask</h2>
+<h3 class="bloco">O que você já sabe</h3>
+<p>Você criou componentes, usou <code>inject(CepService)</code>, montou formulários reativos com validação e criou o pipe <code>cep</code> para formatar a exibição.</p>
+<h3 class="bloco">O que a Semana 6 acrescenta</h3>
+<ul><li>Componentes prontos do <b>Angular Material</b> (<code>mat-form-field</code>, <code>mat-card</code>, <code>mat-toolbar</code>).</li><li><code>MatSnackBar</code>: um service pedido com <code>inject()</code>, como o <code>CepService</code>.</li><li><b>ngx-mask</b>: formata <b>enquanto digita</b> (o pipe formata só na exibição).</li></ul>
+<div class="comparacao"><div class="lado"><span class="rotulo-antes">SEMANA 5 - campo feito à mão</span><div class="caixa-antes"><pre><code>&lt;label for="cep"&gt;CEP&lt;/label&gt;
+&lt;input id="cep" formControlName="cep" /&gt;
+@if (invalido('cep')) {
+  &lt;small class="erro"&gt;8 números&lt;/small&gt;
+}</code></pre></div></div><div class="lado"><span class="rotulo-depois">SEMANA 6 - Material + máscara</span><div class="caixa-depois"><pre><code>&lt;mat-form-field appearance="outline"&gt;
+  &lt;mat-label&gt;CEP&lt;/mat-label&gt;
+  &lt;input matInput formControlName="cep" mask="00000-000" /&gt;
+  &lt;mat-error&gt;8 números&lt;/mat-error&gt;
+&lt;/mat-form-field&gt;</code></pre></div></div></div>
+<div class="observacao"><span class="titulo">O que realmente mudou?</span>O <b>Reactive Forms é o mesmo</b> (<code>formControlName</code> e <code>Validators</code>). Muda a camada visual, agora pronta e acessível.</div>
+
+<h2 class="conexao pagebreak">CONEXÃO 6 - Do commit da Semana 5 ao histórico da Semana 6</h2>
+<p>Você já guarda o projeto no seu GitHub. Nesta semana, faça <b>um commit por aula</b>, com mensagens no padrão Conventional Commits:</p>
+<pre><code>git commit -m "feat(organizacao): core, shared, features e lazy loading"   # 16/11
+git commit -m "feat(estilo): scss, mixins e layout responsivo"             # 17/11
+git commit -m "feat(ui): angular material e ngx-mask"                      # 19/11</code></pre>
+<div class="observacao"><span class="titulo">Por quê?</span>Se algo quebrar em uma aula, você volta exatamente para o fim da aula anterior com <code>git log</code> e <code>git checkout</code>.</div>
+
+  <footer>Desenvolvimento Front-End [Angular] T1 - SENAI/SC - Ponte Semana 5 para Semana 6</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<section class="card hero">
+  <app-page-header
+    titulo="Bem-vindo ao seu projeto Angular"
+    subtitulo="Este projeto cresce a cada semana. Na Semana 6 ele ganhou organização, SCSS responsivo e Angular Material."
+    tag="projeto-angular-sctec"
+  >
+    <div class="acoes">
+      <a mat-flat-button routerLink="/cursos"><mat-icon>school</mat-icon> Ver cursos</a>
+      <a mat-stroked-button routerLink="/alunos/cadastro"><mat-icon>person_add</mat-icon> Cadastrar aluno</a>
+    </div>
+  </app-page-header>
+</section>
+
+<h2 class="secao">Como o projeto está crescendo</h2>
+<div class="etapas">
+  @for (etapa of etapas; track etapa.semana) {
+    <article class="card etapa" [class.atual]="etapa.atual">
+      <span class="numero">{{ etapa.semana }}</span>
+      <h3>{{ etapa.titulo }}</h3>
+      <ul>
+        @for (item of etapa.itens; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </article>
+  }
+</div>

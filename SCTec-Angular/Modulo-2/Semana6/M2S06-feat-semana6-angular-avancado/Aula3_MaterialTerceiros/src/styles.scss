@@ -1,0 +1,33 @@
+/*
+  styles.scss - estilos GLOBAIS.
+  REGRA DO SASS: todos os @use vêm PRIMEIRO, antes de qualquer outra regra.
+  (O ng add escreve o tema no topo do arquivo: por isso colamos esta versão organizada.)
+*/
+@use '@angular/material' as mat;
+@use 'tokens';      // variáveis CSS geradas a partir do mapa $cores
+@use 'base';        // reset, tipografia, imagens fluidas
+@use 'componentes'; // .card, .btn, .campo...
+
+// TODO 2 (TEMA MATERIAL 3) - parte A: aplique o tema no <html>. Ele gera as variáveis --mat-sys-*:
+//   html {
+//     @include mat.theme(
+//       (
+//         color: (
+//           primary: mat.$azure-palette,
+//           tertiary: mat.$orange-palette,
+//           theme-type: light,
+//         ),
+//         typography: Roboto,
+//         density: 0,
+//       )
+//     );
+//   }
+// Paletas prontas: $red, $green, $blue, $yellow, $cyan, $magenta, $orange, $chartreuse,
+// $spring-green, $azure, $violet, $rose (sempre com -palette no fim). Teste outras!
+
+// TODO 2 - parte B: personalize SEM ::ng-deep, usando a API de overrides (tokens):
+//   :root {
+//     @include mat.toolbar-overrides((container-background-color: var(--azul), container-text-color: var(--branco)));
+//     @include mat.button-overrides((filled-container-shape: 8px, outlined-container-shape: 8px));
+//     @include mat.card-overrides((elevated-container-shape: 12px));
+//   }

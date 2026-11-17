@@ -1,0 +1,116 @@
+<div class="layout">
+  <section class="card area-formulario">
+    <app-page-header
+      titulo="Cadastro de aluno"
+      subtitulo="Reactive Forms + Angular Material (mat-form-field) + máscaras com ngx-mask."
+      tag="Material"
+    />
+
+    <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+      <div class="grade">
+        <!-- MODELO PRONTO: mat-form-field = rótulo flutuante + borda + mensagem de erro no padrão Material -->
+        <mat-form-field appearance="outline">
+          <mat-label>Nome completo</mat-label>
+          <input matInput formControlName="nome" placeholder="Ex.: Ana Souza" />
+          <mat-icon matPrefix>person</mat-icon>
+          <!-- mat-error só aparece quando o campo está inválido E foi tocado (ou o form enviado) -->
+          <mat-error>Informe o nome (mínimo 3 letras).</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="ana@email.com" />
+          <mat-icon matPrefix>mail</mat-icon>
+          <mat-error>Informe um e-mail válido.</mat-error>
+        </mat-form-field>
+
+        <!--
+          TODO 5 (FORM MATERIAL + MÁSCARA) - parte A: converta TELEFONE e CURSO seguindo o modelo acima:
+            Telefone -> <mat-form-field appearance="outline"> com <mat-label>Telefone</mat-label>,
+                        <input matInput formControlName="telefone" mask="(00) 0000-0000||(00) 00000-0000" inputmode="numeric" />
+                        <mat-icon matPrefix>call</mat-icon> e <mat-error>Use DDD + telefone (10 ou 11 números).</mat-error>
+            Curso    -> <mat-select formControlName="curso"> com @for gerando <mat-option [value]="curso">{{ curso }}</mat-option>
+                        <mat-icon matPrefix>school</mat-icon> e <mat-error>Escolha um curso.</mat-error>
+          O "||" do ngx-mask separa duas máscaras: fixo (10 números) ou celular (11 números).
+        -->
+        <div class="campo">
+          <label for="telefone">Telefone (só números, com DDD)</label>
+          <input id="telefone" formControlName="telefone" inputmode="numeric" maxlength="11" placeholder="48999998888" />
+          @if (invalido('telefone')) { <small class="erro">Use 10 ou 11 números (DDD + telefone).</small> }
+        </div>
+
+        <div class="campo">
+          <label for="curso">Curso</label>
+          <select id="curso" formControlName="curso">
+            <option value="" disabled>Selecione...</option>
+            @for (curso of cursos; track curso) {
+              <option [value]="curso">{{ curso }}</option>
+            }
+          </select>
+          @if (invalido('curso')) { <small class="erro">Escolha um curso.</small> }
+        </div>
+      </div>
+
+      <!--
+        TODO 5 - parte B: converta o CEP. O botão de busca vai para DENTRO do campo (matSuffix):
+          <mat-form-field appearance="outline" class="campo-cep">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="cep" mask="00000-000" inputmode="numeric" placeholder="88010-000" />
+            <button mat-icon-button matSuffix type="button" (click)="buscarCep()" [disabled]="carregando()"
+                    matTooltip="Buscar endereço pelo CEP" aria-label="Buscar CEP">
+              <mat-icon>{{ carregando() ? 'hourglass_top' : 'search' }}</mat-icon>
+            </button>
+            <mat-hint>Digite o CEP e clique na lupa</mat-hint>
+            <mat-error>O CEP precisa ter 8 números.</mat-error>
+          </mat-form-field>
+          @if (erroCep()) { <p class="erro">{{ erroCep() }}</p> }
+      -->
+      <div class="campo">
+        <label for="cep">CEP (só números)</label>
+        <div class="linha-cep">
+          <input id="cep" formControlName="cep" inputmode="numeric" maxlength="8" placeholder="88010000" />
+          <button type="button" class="btn btn-secundario" (click)="buscarCep()" [disabled]="carregando()">
+            {{ carregando() ? 'Buscando...' : 'Buscar CEP' }}
+          </button>
+        </div>
+        @if (invalido('cep')) { <small class="erro">O CEP precisa ter 8 números.</small> }
+        @if (erroCep()) { <small class="erro">{{ erroCep() }}</small> }
+      </div>
+
+      @if (endereco(); as e) {
+        <div class="endereco">
+          <strong>Endereço encontrado</strong>
+          <span>{{ e.logradouro || 'Logradouro não informado' }} - {{ e.bairro }}</span>
+          <span>{{ e.localidade }} / {{ e.uf }} · CEP {{ e.cep }}</span>
+        </div>
+      }
+
+      <!-- TODO 5 - parte C: troque class="btn" por  mat-flat-button  e  class="btn btn-secundario" por  mat-stroked-button
+           (e coloque <mat-icon>save</mat-icon> antes de "Salvar cadastro") -->
+      <div class="acoes">
+        <button type="submit" class="btn">Salvar cadastro</button>
+        <button type="button" class="btn btn-secundario" (click)="limpar()">Limpar</button>
+      </div>
+    </form>
+  </section>
+
+  @if (alunoSalvo(); as aluno) {
+    <section class="card resumo area-resumo">
+      <app-page-header titulo="Resumo do cadastro" tag="Pipes" />
+      <dl>
+        <dt>Nome</dt>
+        <dd>{{ aluno.nome | uppercase }}</dd>
+        <dt>E-mail</dt>
+        <dd>{{ aluno.email }}</dd>
+        <dt>Telefone</dt>
+        <dd>{{ aluno.telefone }}</dd>
+        <dt>Curso</dt>
+        <dd>{{ aluno.curso }}</dd>
+        <dt>CEP</dt>
+        <dd>{{ aluno.cep | cep }}</dd>
+        <dt>Cadastrado em</dt>
+        <dd>{{ aluno.cadastradoEm | date: 'dd/MM/yyyy HH:mm' }}</dd>
+      </dl>
+    </section>
+  }
+</div>

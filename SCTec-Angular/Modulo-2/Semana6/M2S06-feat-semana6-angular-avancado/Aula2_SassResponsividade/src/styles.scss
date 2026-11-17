@@ -1,0 +1,14 @@
+/*
+  styles.scss - estilos GLOBAIS (Semana 6: era styles.css, agora é SCSS).
+  Ele não tem regras: só JUNTA as partials da pasta src/styles na ordem certa.
+
+  ATENÇÃO - TODO 1 (CLI + SCSS) fica FORA da pasta src, no angular.json:
+    "styles": ["src/styles.scss"],
+    "inlineStyleLanguage": "scss",
+    "stylePreprocessorOptions": { "includePaths": ["src/styles"] }
+  e no terminal:  ng config schematics.@schematics/angular:component.style scss
+  Sem o includePaths, os componentes não acham  @use 'mixins'  ("Can't find stylesheet to import").
+*/
+@use 'tokens';      // variáveis CSS geradas a partir do mapa $cores
+@use 'base';        // reset, tipografia, imagens fluidas
+@use 'componentes'; // .card, .btn, .campo...

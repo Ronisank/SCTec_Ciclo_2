@@ -1,0 +1,32 @@
+// _variaveis.scss - PARTIAL (o "_" diz ao SASS: não gere um CSS sozinho, este arquivo só é importado).
+// Aqui ficam os VALORES do design do projeto. Mudou aqui, muda no projeto inteiro.
+
+// MAPA de cores (chave: valor). Vira variáveis CSS (--azul, --laranja...) no _tokens.scss.
+$cores: (
+  azul: #0b4f8a,
+  azul-escuro: #083a66,
+  azul-claro: #e6f0fa,
+  laranja: #f08a24,
+  texto: #1f2933,
+  texto-suave: #52606d,
+  borda: #d3dce6,
+  fundo: #f4f7fb,
+  branco: #ffffff,
+  erro: #c62828,
+  ok: #2e7d32,
+  ok-fundo: #e8f5e9,
+);
+
+// BREAKPOINTS: larguras onde o layout muda (mobile-first: do menor para o maior).
+$breakpoints: (
+  sm: 576px,  // celular deitado
+  md: 768px,  // tablet
+  lg: 1024px, // notebook
+  xl: 1280px, // desktop
+);
+
+$espaco-base: 8px;
+$raio: 12px;
+$sombra: 0 2px 12px rgba(15, 40, 70, 0.08);
+$largura-maxima: 1120px;
+$fonte: 'Segoe UI', Roboto, Arial, sans-serif;

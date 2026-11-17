@@ -1,0 +1,8 @@
+.hero .acoes a { text-decoration: none; }
+.secao { margin: 8px 0 14px; }
+.etapas { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+.etapa { margin: 0; border-top: 4px solid var(--borda); }
+.etapa.atual { border-top-color: var(--laranja); }
+.etapa h3 { margin-top: 6px; font-size: 17px; }
+.etapa ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--texto-suave); }
+.numero { font-size: 12px; font-weight: 700; color: var(--laranja); letter-spacing: 0.5px; text-transform: uppercase; }

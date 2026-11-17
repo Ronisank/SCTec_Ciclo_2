@@ -1,0 +1,16 @@
+<header class="topo">
+  <div class="marca">
+    <span class="logo" aria-hidden="true">&lt;/&gt;</span>
+    <div>
+      <strong>{{ titulo }}</strong>
+      <small>{{ curso }}</small>
+    </div>
+  </div>
+
+  <nav aria-label="Menu principal">
+    <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+    <a routerLink="/cursos" routerLinkActive="ativo">Cursos</a>
+    <a routerLink="/alunos/cadastro" routerLinkActive="ativo">Cadastro de aluno</a>
+    <a routerLink="/contato" routerLinkActive="ativo">Contato</a>
+  </nav>
+</header>

@@ -1,0 +1,6 @@
+/* lista-cursos.css - CSS simples DE PROPÓSITO.
+   Repare: as imagens têm tamanhos diferentes e os cartões ficam desalinhados.
+   Na Aula 2 (SASS + responsividade) isso vira um GRID com object-fit. */
+.curso img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+.curso h3 { margin-top: 8px; }
+.curso p { color: var(--texto-suave); font-size: 14px; }

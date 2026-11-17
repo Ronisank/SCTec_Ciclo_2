@@ -1,0 +1,40 @@
+<!--
+  TODO 3 (TOOLBAR) - parte B: troque este header pelo do Angular Material:
+   1) <header class="topo"> ... </header>   vira   <mat-toolbar class="topo"> ... </mat-toolbar>
+   2) o botão ☰ vira:
+        <button mat-icon-button type="button" class="menu-toggle" (click)="alternarMenu()"
+                [attr.aria-expanded]="menuAberto()" aria-controls="menu-principal" aria-label="Abrir ou fechar o menu">
+          <mat-icon>{{ menuAberto() ? 'close' : 'menu' }}</mat-icon>
+        </button>
+   3) cada link ganha  mat-button  e um ícone. Exemplo:
+        <a mat-button routerLink="/cursos" routerLinkActive="ativo"><mat-icon>school</mat-icon> Cursos</a>
+      Ícones sugeridos: home, school, person_add, mail  (catálogo: fonts.google.com/icons)
+  O header.scss desta aula já está preparado para a mat-toolbar.
+-->
+<header class="topo">
+  <div class="marca">
+    <span class="logo" aria-hidden="true">&lt;/&gt;</span>
+    <div>
+      <strong>{{ titulo }}</strong>
+      <small>{{ curso }}</small>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="menu-toggle"
+    (click)="alternarMenu()"
+    [attr.aria-expanded]="menuAberto()"
+    aria-controls="menu-principal"
+    aria-label="Abrir ou fechar o menu"
+  >
+    {{ menuAberto() ? '✕' : '☰' }}
+  </button>
+
+  <nav id="menu-principal" aria-label="Menu principal" [class.aberto]="menuAberto()" (click)="fecharMenu()">
+    <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+    <a routerLink="/cursos" routerLinkActive="ativo">Cursos</a>
+    <a routerLink="/alunos/cadastro" routerLinkActive="ativo">Cadastro</a>
+    <a routerLink="/contato" routerLinkActive="ativo">Contato</a>
+  </nav>
+</header>
