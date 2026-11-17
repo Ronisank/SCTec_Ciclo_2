@@ -1,0 +1,14 @@
+<header class="topo">
+  <h1>{{ titulo }}</h1>
+  <nav>
+    <!-- routerLink troca de página SEM recarregar | routerLinkActive põe a classe "ativo" no link da página atual -->
+    <a routerLink="/livros" routerLinkActive="ativo">Livros</a>
+    <a routerLink="/cadastro" routerLinkActive="ativo">Cadastrar livro</a>
+    <a routerLink="/leitor" routerLinkActive="ativo">Cadastrar leitor</a>
+    <a routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
+  </nav>
+</header>
+
+<main class="pagina">
+  <router-outlet />
+</main>
