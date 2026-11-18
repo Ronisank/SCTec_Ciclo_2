@@ -13,7 +13,7 @@ interface Etapa {
   selector: 'app-inicio',
   imports: [SharedModule],
   templateUrl: './inicio.html',
-  styleUrl: './inicio.css',
+  styleUrl: './inicio.scss',
 })
 export class Inicio {
   protected readonly etapas: Etapa[] = [
@@ -26,12 +26,12 @@ export class Inicio {
       semana: 'Semana 6 · Aula 1',
       titulo: 'Módulos e organização',
       itens: ['Pastas core / shared / features', 'SharedModule e barrel (index.ts)', 'Aliases @core, @shared, @features', 'Lazy loading por feature', 'Nova feature: Cursos'],
-      atual: true,
     },
     {
       semana: 'Semana 6 · Aula 2',
       titulo: 'SASS e responsividade',
-      itens: ['Migrar para SCSS', 'Variáveis, mixins e partials', 'Media queries, Grid e object-fit'],
+      itens: ['Migração para SCSS', 'Variáveis, mapas, mixins e partials', 'Menu responsivo (mobile-first)', 'Grid, max-width e object-fit'],
+      atual: true,
     },
     {
       semana: 'Semana 6 · Aula 3',

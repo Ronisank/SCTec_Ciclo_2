@@ -8,7 +8,7 @@ import { MensagemContato, SharedModule } from '@shared';
   selector: 'app-contato',
   imports: [SharedModule],
   templateUrl: './contato.html',
-  styleUrl: './contato.css',
+  styleUrl: './contato.scss',
 })
 export class Contato {
   contato: MensagemContato = { nome: '', email: '', mensagem: '' };

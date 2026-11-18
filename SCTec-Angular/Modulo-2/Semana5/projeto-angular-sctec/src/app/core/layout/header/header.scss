@@ -1,0 +1,89 @@
+// header.scss - MOBILE-FIRST: primeiro o celular, depois @include a-partir-de(md) para telas maiores.
+@use 'mixins' as *;
+
+.topo {
+  background: var(--azul);
+  color: var(--branco);
+  padding: espaco(1.5) espaco(2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: espaco(1);
+
+  @include a-partir-de(md) {
+    padding: espaco(1.75) espaco(3);
+  }
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  strong { display: block; font-size: 18px; }
+  small { display: none; color: #cfe2f5; font-size: 12px; }
+
+  // o subtítulo só cabe a partir do celular deitado
+  @include a-partir-de(sm) {
+    small { display: block; }
+  }
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--laranja);
+  color: var(--branco);
+  font-weight: 700;
+  font-family: Consolas, monospace;
+}
+
+.menu-toggle {
+  font-size: 22px;
+  line-height: 1;
+  background: transparent;
+  color: var(--branco);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  @include a-partir-de(md) {
+    display: none; // no tablet/desktop o menu aparece sempre
+  }
+}
+
+nav {
+  // CELULAR: menu escondido, ocupa a linha inteira quando aberto (coluna)
+  display: none;
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: espaco(1);
+
+  &.aberto { display: flex; }
+
+  a {
+    color: #dce9f7;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+
+    &:hover { background: rgba(255, 255, 255, 0.12); }
+    &.ativo { background: var(--branco); color: var(--azul); }
+  }
+
+  // TABLET+: menu em linha, sempre visível
+  @include a-partir-de(md) {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    padding-top: 0;
+  }
+}

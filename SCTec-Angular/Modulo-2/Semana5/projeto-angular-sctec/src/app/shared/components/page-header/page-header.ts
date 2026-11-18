@@ -6,7 +6,7 @@ import { Component, input } from '@angular/core';
 @Component({
   selector: 'app-page-header',
   templateUrl: './page-header.html',
-  styleUrl: './page-header.css',
+  styleUrl: './page-header.scss',
 })
 export class PageHeader {
   titulo = input.required<string>(); // obrigatório: <app-page-header titulo="Contato" />

@@ -7,7 +7,25 @@
     </div>
   </div>
 
-  <nav aria-label="Menu principal">
+<!--   
+    TODO 4 (MENU RESPONSIVO) - parte B: crie AQUI o botão que abre/fecha o menu no celular: -->
+    <button
+      type="button"
+      class="menu-toggle"
+      (click)="alternarMenu()"
+      [attr.aria-expanded]="menuAberto()"
+      aria-controls="menu-principal"
+      aria-label="Abrir ou fechar o menu"
+    >
+      {{ menuAberto() ? '✕' : '☰' }}
+    </button>
+
+    <!-- TODO 4 - parte C: no <nav> abaixo, acrescente  (click)="fecharMenu()"
+    (ao clicar num link, o menu fecha sozinho no celular).
+    O CSS do header.scss já está pronto: leia como ele usa @include a-partir-de(md). -->
+ 
+
+  <nav id="menu-principal" aria-label="Menu principal" [class.aberto]="menuAberto()" (click)="fecharMenu()">
     <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Início</a>
     <a routerLink="/cursos" routerLinkActive="ativo">Cursos</a>
     <a routerLink="/alunos/cadastro" routerLinkActive="ativo">Cadastro de aluno</a>

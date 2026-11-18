@@ -1,0 +1,16 @@
+// _tokens.scss - transforma o MAPA $cores em VARIÁVEIS CSS (custom properties).
+// Por que as duas? SASS ($) existe só na COMPILAÇÃO; a variável CSS (--) existe no NAVEGADOR.
+@use 'variaveis' as *;
+
+:root {
+  // TODO 2 (MAPA + @each) - escreva um laço que percorre o mapa $cores (está em _variaveis.scss)
+  // e cria UMA variável CSS para cada cor:
+    @each $nome, $valor in $cores {
+    --#{$nome}: #{$valor};
+    }
+  // #{...} é a INTERPOLAÇÃO do SASS: "cola" o valor dentro do texto.
+  // Antes deste TODO o site fica SEM CORES (var(--azul) não existe). Depois, abra o DevTools
+  // (Elements > :root) e veja --azul, --laranja... geradas pelo SASS.
+  --raio: #{$raio};
+  --sombra: #{$sombra};
+}

@@ -1,29 +1,27 @@
-# Aula 1 (16/11) · Módulos e organização do projeto
+# Aula 2 (17/11) · Estilização avançada com SASS e responsividade
 
-> Pasta para usar **no seu `projeto-angular-sctec`**. Material de apoio da semana em `Docs-Semana-6/` (Ponte S5→S6, Fluxograma e Ferramentas).
-> Comandos do Angular: `README_COMANDOS.md`.
+> Pasta para usar **no seu `projeto-angular-sctec`** (com a Aula 1 concluída). Apoio: `Docs-Semana-6/` (Ponte S5→S6, Fluxograma e Ferramentas). Comandos: `README_COMANDOS.md`.
 
 ## Resumo do que fazer
-1. **Salve a Semana 5:** `git add .` e `git commit -m "semana 5 concluida"`.
-2. **Gere pela CLI** (para ver os arquivos nascendo):
-   `ng g c core/layout/header` · `ng g c core/layout/footer` · `ng g c shared/components/page-header` ·
-   `ng g m shared` · `ng g c features/cursos/lista-cursos` · `ng g s features/cursos/curso-service`
-3. **Apague a pasta `src/app`** do seu projeto e **cole** a pasta `src` desta aula por cima da sua `src`
-   (aceite substituir). O seu código da Semana 5 já está dentro dela, reorganizado.
-4. Faça os TODOs na ordem (`Ctrl + Shift + F` → `TODO 1`, `TODO 2`...).
+1. **Salve a Aula 1:** `git add .` e `git commit -m "feat(organizacao): aula 1"`.
+2. **TODO 1 (CLI):** `ng config schematics.@schematics/angular:component.style scss` e, no `angular.json`
+   (em `build > options`): `"styles": ["src/styles.scss"]`, `"inlineStyleLanguage": "scss"` e
+   `"stylePreprocessorOptions": { "includePaths": ["src/styles"] }`.
+3. **Apague** a pasta `src/app` e o arquivo `src/styles.css` do seu projeto.
+4. **Cole** a pasta `src` desta aula por cima da sua `src` (aceite substituir). Pare e rode de novo o `ng serve`.
+5. Faça os TODOs 2 a 6 (`Ctrl + Shift + F` → `TODO 2`...).
 
 | TODO | Onde | O que |
 |---|---|---|
-| 1 | `tsconfig.json` (raiz do projeto) | Aliases `@core/*`, `@shared`, `@shared/*`, `@features/*` |
-| 2 | `app.ts` e `app.html` | Montar o layout com `<app-header />` e `<app-footer />` |
-| 3 | `shared/shared-module.ts` | Completar o **SharedModule** (imports/exports) |
-| 4 | `app.routes.ts` | Trocar as rotas por **lazy loading** (`loadComponent` / `loadChildren`) |
-| 5 | `features/cursos/*` e `app.routes.ts` | Nova feature **Cursos**: rotas, service e lista |
-
-**Depois de colar, o terminal mostra erros.** É esperado: os TODOs 1 a 3 "religam" o projeto.
+| 1 | `angular.json` + terminal | Projeto passa a usar **SCSS** e acha a pasta `src/styles` |
+| 2 | `styles/_tokens.scss` | `@each` no mapa `$cores` gera as variáveis CSS |
+| 3 | `styles/_mixins.scss` | Mixin `a-partir-de($bp)` com `@media (min-width)` |
+| 4 | `core/layout/header/*` | Menu responsivo (botão ☰ no celular) |
+| 5 | `features/cursos/lista-cursos/lista-cursos.scss` | Grid `auto-fill/minmax` + `object-fit: cover` |
+| 6 | `features/alunos/cadastro-aluno/cadastro-aluno.scss` | `grid-template-areas` + campos em 2 colunas |
 
 ## Como saber se deu certo
-- O menu (Início, Cursos, Cadastro de aluno, Contato) aparece e navega.
-- `/cursos` mostra 6 cursos (as imagens ficam desalinhadas: amanhã o SASS resolve).
-- `ng build` mostra **Lazy chunk files**: `inicio`, `contato`, `alunos-routes`, `cursos-routes`.
-- `git commit -m "feat(organizacao): core, shared, features e lazy loading"`.
+- DevTools (`F12`) → **Toggle device toolbar** (`Ctrl + Shift + M`): em 375px aparece o ☰; em 1280px o menu fica em linha.
+- `/cursos`: 1 coluna no celular, 2 no tablet, 3 no desktop; todas as capas com a mesma altura.
+- `/alunos/cadastro`: depois de salvar, o resumo fica **ao lado** do formulário no notebook.
+- `git commit -m "feat(estilo): scss, mixins e layout responsivo"`.

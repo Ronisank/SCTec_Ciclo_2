@@ -9,7 +9,7 @@ import { Aluno, Endereco, SharedModule } from '@shared';
   selector: 'app-cadastro-aluno',
   imports: [SharedModule],
   templateUrl: './cadastro-aluno.html',
-  styleUrl: './cadastro-aluno.css',
+  styleUrl: './cadastro-aluno.scss',
 })
 export class CadastroAluno {
   private fb = inject(NonNullableFormBuilder);
