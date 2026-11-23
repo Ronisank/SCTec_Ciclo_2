@@ -23,6 +23,13 @@ export const routes: Routes = [
     loadComponent: () => import('@features/contato/contato').then((m) => m.Contato),
     title: 'Contato | Projeto SCTEC',
   },
+  {
+    // Semana 7 · Aula 1: página que lê o ESTADO GLOBAL (Store) das inscrições
+    path: 'inscricoes',
+    loadComponent: () =>
+      import('@features/inscricoes/minhas-inscricoes/minhas-inscricoes').then((m) => m.MinhasInscricoes),
+    title: 'Minhas inscrições | Projeto SCTEC',
+  },
   // A URL antiga (Semana 5) continua funcionando:
   { path: 'cadastro', redirectTo: 'alunos/cadastro' },
   { path: '**', redirectTo: '' },

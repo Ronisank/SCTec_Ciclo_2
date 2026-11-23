@@ -1,0 +1,49 @@
+// styles.scss - ESTILOS GLOBAIS (valem para o app inteiro).
+// A parte do tema foi criada automaticamente pelo comando: ng add @angular/material
+@use '@angular/material' as mat;
+@use 'variaveis' as *;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--mat-sys-surface-container-low);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  height: 100%;
+}
+
+// ===== Nossas regras globais =====
+
+// MAX-WIDTH: centraliza o conteúdo e limita a largura em telas grandes.
+.container {
+  width: 100%;
+  max-width: $largura-maxima;
+  margin: 0 auto;
+  padding: $espaco * 1.5 $espaco;
+  box-sizing: border-box;
+}
+
+// Imagens nunca "estouram" o espaço do pai (base da responsividade).
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// Campos de formulário ocupam a largura toda.
+mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+<div class="etapas">
+  @for (etapa of etapas; track etapa.semana) {
+    <article class="card etapa" [class.atual]="etapa.atual">
+      <span class="numero">{{ etapa.semana }}</span>
+      <h3>{{ etapa.titulo }}</h3>
+      <ul>
+        @for (item of etapa.itens; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </article>
+  }
+</div>

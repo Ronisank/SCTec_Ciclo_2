@@ -1,0 +1,22 @@
+// _mixins.scss - MIXINS SASS: blocos de CSS reutilizáveis (parecem "funções" que devolvem CSS).
+// Uso:  @use 'mixins' as *;   e depois   @include responsivo(celular) { ... }
+@use 'sass:map';
+@use 'variaveis' as *;
+
+// MEDIA QUERY reutilizável.
+// @content = "o CSS que a pessoa escreveu dentro das chaves do @include".
+// Exemplo: @include responsivo(celular) { display: none; }
+// vira:    @media (max-width: 600px) { display: none; }
+@mixin responsivo($tamanho) {
+  @media (max-width: map.get($breakpoints, $tamanho)) {
+    @content;
+  }
+}
+
+// Visual padrão de "cartão" (caixa branca com sombra e borda arredondada).
+@mixin cartao {
+  background: var(--mat-sys-surface-container-lowest, #fff);
+  border-radius: $raio;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+  padding: $espaco * 1.5;
+}

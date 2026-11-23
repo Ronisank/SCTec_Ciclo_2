@@ -1,0 +1,60 @@
+<app-titulo-pagina titulo="Fale conosco" subtitulo="Formulário TEMPLATE-DRIVEN (ngModel)" />
+
+<div class="layout">
+  <!-- #formulario="ngForm": variável de template que representa o FORMULÁRIO inteiro -->
+  <form #formulario="ngForm" (ngSubmit)="enviar(formulario)" class="formulario">
+    <!-- Campo NOME (exemplo pronto): [(ngModel)] + name + validação no próprio HTML -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput name="nome" [(ngModel)]="mensagem.nome" #nome="ngModel" required minlength="3" />
+      @if (nome.hasError('required')) {
+        <mat-error>O nome é obrigatório.</mat-error>
+      } @else if (nome.hasError('minlength')) {
+        <mat-error>Mínimo de 3 letras.</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- TODO 22 (parte 1) - CAMPO E-MAIL TEMPLATE-DRIVEN
+         Copie a ideia do campo Nome:
+         <input matInput type="email" name="email" [(ngModel)]="mensagem.email" #email="ngModel" required email />
+         e as mensagens: email.hasError('required') -> "O e-mail é obrigatório."
+                         email.hasError('email')    -> "Digite um e-mail válido."
+    -->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Assunto</mat-label>
+      <mat-select name="assunto" [(ngModel)]="mensagem.assunto" required>
+        @for (assunto of assuntos; track assunto) {
+          <mat-option [value]="assunto">{{ assunto }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mensagem</mat-label>
+      <textarea matInput name="texto" rows="4" [(ngModel)]="mensagem.texto" required minlength="10"></textarea>
+      <mat-hint>{{ mensagem.texto.length }} caracteres (mínimo 10)</mat-hint>
+    </mat-form-field>
+
+    <mat-checkbox name="aceite" [(ngModel)]="mensagem.aceite" required>
+      Aceito ser contatado por e-mail
+    </mat-checkbox>
+
+    <!-- TODO 22 (parte 2) - PROPERTY BINDING NO ESTADO DO FORMULÁRIO
+         Adicione no botão: [disabled]="formulario.invalid"   -> só libera quando tudo estiver válido -->
+    <button mat-flat-button type="submit">
+      <mat-icon>send</mat-icon> Enviar
+    </button>
+  </form>
+
+  <!-- TODO 22 (parte 3) - RESUMO DA ÚLTIMA MENSAGEM
+       @if (enviada(); as ultima) {
+         <aside class="resumo">
+           <h3>Última mensagem enviada</h3>
+           <p><strong>{{ ultima.nome }}</strong> ({{ ultima.email }})</p>
+           <p>{{ ultima.assunto | uppercase }}</p>
+           <p>"{{ ultima.texto }}"</p>
+         </aside>
+       }
+  -->
+</div>

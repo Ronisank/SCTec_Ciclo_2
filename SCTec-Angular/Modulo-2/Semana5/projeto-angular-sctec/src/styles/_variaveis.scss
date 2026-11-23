@@ -29,4 +29,5 @@ $espaco-base: 8px;
 $raio: 12px;
 $sombra: 0 2px 12px rgba(15, 40, 70, 0.08);
 $largura-maxima: 1120px;
-$fonte: 'Segoe UI', Roboto, Arial, sans-serif;
+// Aula 3: Roboto primeiro (é a fonte do Material, carregada pelo ng add no index.html)
+$fonte: Roboto, 'Segoe UI', Arial, sans-serif;

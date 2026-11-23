@@ -1,0 +1,40 @@
+<mat-toolbar class="topo">
+  <div class="marca">
+    <span class="logo" aria-hidden="true">&lt;/&gt;</span>
+    <div>
+      <strong>{{ titulo }}</strong>
+      <small>{{ curso }}</small>
+    </div>
+  </div>
+
+  <button
+    mat-icon-button
+    type="button"
+    class="menu-toggle"
+    (click)="alternarMenu()"
+    [attr.aria-expanded]="menuAberto()"
+    aria-controls="menu-principal"
+    aria-label="Abrir ou fechar o menu"
+  >
+    <mat-icon>{{ menuAberto() ? 'close' : 'menu' }}</mat-icon>
+  </button>
+
+  <nav id="menu-principal" aria-label="Menu principal" [class.aberto]="menuAberto()" (click)="fecharMenu()">
+    <a mat-button routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }"><mat-icon>home</mat-icon> Início</a>
+    <a mat-button routerLink="/cursos" routerLinkActive="ativo"><mat-icon>school</mat-icon> Cursos</a>
+    <!-- Semana 7: o número vem da Store (selectTotalInscritos). matBadgeHidden esconde quando é zero. -->
+    <a mat-button routerLink="/inscricoes" routerLinkActive="ativo">
+      <mat-icon
+        aria-hidden="false"
+        [matBadge]="totalInscritos()"
+        [matBadgeHidden]="totalInscritos() === 0"
+        matBadgeColor="warn"
+        [matBadgeDescription]="totalInscritos() + ' inscrições'"
+        >bookmark</mat-icon
+      >
+      Inscrições
+    </a>
+    <a mat-button routerLink="/alunos/cadastro" routerLinkActive="ativo"><mat-icon>person_add</mat-icon> Cadastro</a>
+    <a mat-button routerLink="/contato" routerLinkActive="ativo"><mat-icon>mail</mat-icon> Contato</a>
+  </nav>
+</mat-toolbar>

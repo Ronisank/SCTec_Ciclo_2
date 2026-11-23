@@ -1,0 +1,105 @@
+<app-titulo-pagina titulo="Novo contato" subtitulo="Formulário REATIVO + API viaCEP">
+  <a mat-stroked-button routerLink="/contatos"><mat-icon>arrow_back</mat-icon> Voltar</a>
+</app-titulo-pagina>
+
+<!-- [formGroup] liga o <form> ao "form" do TypeScript. (ngSubmit) dispara no botão submit. -->
+<form [formGroup]="form" (ngSubmit)="salvar()" class="formulario">
+  <section class="bloco">
+    <h2>Dados pessoais</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input matInput formControlName="nome" />
+      <mat-error>Informe um nome com pelo menos 3 letras.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <mat-icon matPrefix>mail</mat-icon>
+      <input matInput type="email" formControlName="email" />
+      @if (form.controls.email.hasError('required')) {
+        <mat-error>O e-mail é obrigatório.</mat-error>
+      } @else {
+        <mat-error>E-mail inválido.</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="linha">
+      <mat-form-field appearance="outline">
+        <mat-label>Telefone (só números com DDD)</mat-label>
+        <mat-icon matPrefix>call</mat-icon>
+        <input matInput formControlName="telefone" maxlength="11" />
+        <mat-hint>Prévia: {{ form.controls.telefone.value | telefone }}</mat-hint>
+        <mat-error>Digite 10 ou 11 números.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="categoria">
+          @for (categoria of categorias; track categoria.valor) {
+            <mat-option [value]="categoria.valor">{{ categoria.texto }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>URL da foto (opcional)</mat-label>
+      <mat-icon matPrefix>image</mat-icon>
+      <input matInput formControlName="foto" />
+    </mat-form-field>
+  </section>
+
+  <!-- formGroupName: os campos abaixo pertencem ao grupo "endereco" -->
+  <section class="bloco" formGroupName="endereco">
+    <h2>Endereço</h2>
+
+    <!-- TODO 21 - CAMPO CEP CHAMANDO A API
+         a) no <input>: (blur)="buscarCep()"      -> blur = quando o usuário SAI do campo
+         b) depois do <input>, o spinner enquanto busca:
+              @if (buscandoCep()) { <mat-spinner matSuffix diameter="20" /> }
+         c) DEPOIS do </mat-form-field>, a mensagem de erro da API:
+              @if (erroCep()) { <p class="erro-cep">{{ erroCep() }}</p> }
+         Teste com 88010000 (existe) e 99999999 (não existe).
+    -->
+    <mat-form-field appearance="outline">
+      <mat-label>CEP (só números)</mat-label>
+      <mat-icon matPrefix>location_on</mat-icon>
+      <input matInput formControlName="cep" maxlength="8" />
+      <mat-hint>Ao sair do campo, buscamos o endereço no viaCEP</mat-hint>
+      <mat-error>Digite os 8 números do CEP.</mat-error>
+    </mat-form-field>
+
+    <div class="linha">
+      <mat-form-field appearance="outline" class="largo">
+        <mat-label>Logradouro</mat-label>
+        <input matInput formControlName="logradouro" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Número</mat-label>
+        <input matInput formControlName="numero" />
+      </mat-form-field>
+    </div>
+
+    <div class="linha">
+      <mat-form-field appearance="outline">
+        <mat-label>Bairro</mat-label>
+        <input matInput formControlName="bairro" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="localidade" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>UF</mat-label>
+        <input matInput formControlName="uf" maxlength="2" />
+      </mat-form-field>
+    </div>
+  </section>
+
+  <div class="botoes">
+    <button mat-flat-button type="submit"><mat-icon>save</mat-icon> Salvar</button>
+    <button mat-stroked-button type="button" (click)="limpar()">Limpar</button>
+  </div>
+</form>

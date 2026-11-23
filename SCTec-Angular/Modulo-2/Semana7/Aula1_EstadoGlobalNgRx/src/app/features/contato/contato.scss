@@ -1,0 +1,9 @@
+// max-width + margin auto: o formulário fica centralizado e não se estica demais no desktop.
+.card {
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+textarea { resize: vertical; }
+.estado { margin-top: 12px; font-size: 13px; color: var(--texto-suave); }
+.ok { margin-top: 16px; }

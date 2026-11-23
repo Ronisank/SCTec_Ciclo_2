@@ -1,0 +1,30 @@
+<mat-toolbar class="barra">
+  <a routerLink="/" class="marca">
+    <mat-icon>contacts</mat-icon>
+    <span>{{ tituloApp }}</span>
+  </a>
+
+  <span class="espaco"></span>
+
+  <!-- TODO 8 (parte 1) - EVENT BINDING
+       Crie o botão "hambúrguer" que só aparece no celular (o CSS já está pronto):
+       <button mat-icon-button type="button" class="botao-menu" (click)="alternarMenu()" aria-label="Abrir menu">
+         <mat-icon>{{ menuAberto() ? 'close' : 'menu' }}</mat-icon>
+       </button>
+  -->
+
+  <!-- TODO 8 (parte 2) - CLASS BINDING + @for + routerLinkActive + async pipe
+       a) no <nav>, adicione [class.aberto]="menuAberto()"
+       b) troque os 2 links FIXOS por um @for (link of links; track link.rota) { ... }
+          usando [routerLink]="link.rota", routerLinkActive="ativo",
+          [routerLinkActiveOptions]="{ exact: true }" e (click)="fecharMenu()"
+       c) no fim do <nav>, mostre o total com o async pipe:
+          <span class="total" matTooltip="Total de contatos">
+            <mat-icon [matBadge]="total$ | async" matBadgeSize="small" aria-hidden="false">people</mat-icon>
+          </span>
+  -->
+  <nav class="menu">
+    <a mat-button routerLink="/"><mat-icon>home</mat-icon> Início</a>
+    <a mat-button routerLink="/contatos"><mat-icon>contacts</mat-icon> Contatos</a>
+  </nav>
+</mat-toolbar>

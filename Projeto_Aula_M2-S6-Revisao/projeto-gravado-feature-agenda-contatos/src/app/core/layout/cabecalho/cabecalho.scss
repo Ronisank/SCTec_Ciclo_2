@@ -1,0 +1,78 @@
+// cabecalho.scss - SASS: variáveis, aninhamento (nesting), "&" e MEDIA QUERY "na mão".
+@use 'sass:map';
+@use 'variaveis' as *;
+
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: $cor-primaria;
+  color: #fff;
+
+  .marca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .espaco {
+    flex: 1;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    a {
+      color: #fff;
+
+      // "&.ativo" = link da rota atual (classe colocada pelo routerLinkActive)
+      &.ativo {
+        background: rgb(255 255 255 / 0.2);
+      }
+    }
+  }
+
+  .total {
+    margin-left: 12px;
+    display: flex;
+  }
+
+  .botao-menu {
+    display: none; // no computador o botão "hambúrguer" fica escondido
+    color: #fff;
+  }
+}
+
+// MEDIA QUERY: no tablet/celular o menu vira uma lista que abre e fecha.
+@media (max-width: map.get($breakpoints, tablet)) {
+  .barra {
+    .botao-menu {
+      display: inline-flex;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 8px;
+      background: $cor-primaria;
+
+      &.aberto {
+        display: flex;
+      }
+    }
+
+    .total {
+      margin: 8px 0 0 16px;
+    }
+  }
+}

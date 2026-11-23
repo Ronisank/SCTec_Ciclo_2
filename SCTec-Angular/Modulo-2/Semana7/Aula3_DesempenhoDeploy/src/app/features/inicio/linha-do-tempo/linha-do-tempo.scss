@@ -1,0 +1,26 @@
+@use 'mixins' as *;
+
+// GRID que se adapta sozinho: quantas colunas de no mínimo 220px couberem.
+.etapas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: espaco(2);
+}
+
+.etapa {
+  margin: 0;
+  border-top: 4px solid var(--borda);
+
+  &.atual { border-top-color: var(--laranja); }
+
+  h3 { margin-top: 6px; font-size: 17px; }
+  ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--texto-suave); }
+}
+
+.numero {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--laranja);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}

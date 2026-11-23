@@ -1,0 +1,57 @@
+<app-page-header
+  titulo="Painel do administrador"
+  subtitulo="Área protegida por perfilGuard('admin'). Os dados vêm da mesma Store da Aula 1."
+  tag="admin"
+/>
+
+<div class="numeros">
+  <div class="card"><span class="valor">{{ cursos().length }}</span><span class="rotulo">cursos no catálogo</span></div>
+  <div class="card"><span class="valor">{{ totalInscritos() }}</span><span class="rotulo">inscrições nesta sessão</span></div>
+  <div class="card"><span class="valor">{{ auth.usuario()?.nome }}</span><span class="rotulo">administrador logado</span></div>
+</div>
+
+<section class="card">
+  <h3><mat-icon>add_circle</mat-icon> Novo curso</h3>
+  <form [formGroup]="form" (ngSubmit)="adicionar()" novalidate class="grade">
+    <mat-form-field appearance="outline" class="largo">
+      <mat-label>Nome do curso</mat-label>
+      <input matInput formControlName="nome" />
+      <mat-error>Mínimo de 5 letras.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Área</mat-label>
+      <mat-select formControlName="area">
+        @for (a of areas; track a) {
+          <mat-option [value]="a">{{ a }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nível</mat-label>
+      <mat-select formControlName="nivel">
+        @for (n of niveis; track n) {
+          <mat-option [value]="n">{{ n }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Carga horária (h)</mat-label>
+      <input matInput type="number" formControlName="cargaHoraria" min="1" />
+      <mat-error>Informe um número maior que zero.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="largo">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput formControlName="descricao" rows="2"></textarea>
+      <mat-error>Informe a descrição.</mat-error>
+    </mat-form-field>
+
+    <div class="acoes largo">
+      <button mat-flat-button type="submit"><mat-icon>save</mat-icon> Adicionar curso</button>
+      <a mat-stroked-button routerLink="/cursos"><mat-icon>school</mat-icon> Ver catálogo</a>
+    </div>
+  </form>
+</section>

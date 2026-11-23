@@ -1,0 +1,63 @@
+<app-page-header
+  titulo="Cursos SCTEC"
+  subtitulo="Catálogo carregado pela Store do NgRx (action → effect → API → reducer → tela)."
+  tag="{{ cursos().length }} cursos"
+/>
+
+@if (carregando()) {
+  <div class="estado" role="status">
+    <mat-spinner diameter="40" aria-label="Carregando cursos" />
+    <p>Carregando cursos...</p>
+  </div>
+} @else if (erro()) {
+  <div class="estado erro" role="alert">
+    <mat-icon>error</mat-icon>
+    <p>{{ erro() }}</p>
+    <button mat-stroked-button type="button" (click)="tentarNovamente()">Tentar novamente</button>
+  </div>
+} @else {
+  <div class="lista">
+    @for (curso of cursos(); track curso.id) {
+      <mat-card appearance="outlined" class="curso" [class.inscrito]="estaInscrito(curso.id)">
+        <!--
+          TODO 2 - parte B: troque o <img> abaixo pela versão otimizada (NgOptimizedImage):
+            <img
+              mat-card-image
+              [ngSrc]="curso.imagem"
+              width="800"
+              height="450"
+              [priority]="$first"
+              [alt]="'Capa do curso ' + curso.nome"
+            />
+          [src] vira [ngSrc]; width/height evitam "pulos" no layout (CLS);
+          [priority]="$first" carrega primeiro a imagem do 1º cartão (LCP). Sai o loading="lazy" (ele cuida disso).
+        -->
+        <img mat-card-image [src]="curso.imagem" [alt]="'Capa do curso ' + curso.nome" loading="lazy" />
+        <mat-card-header>
+          <mat-card-title>{{ curso.nome }}</mat-card-title>
+          <mat-card-subtitle>{{ curso.area }} · {{ curso.nivel }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ curso.descricao }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <span class="carga" matTooltip="Carga horária total do curso">
+            <mat-icon>schedule</mat-icon> {{ curso.cargaHoraria }} h
+          </span>
+          <!-- TODO 3 - parte B: troque estaInscrito(curso.id) por inscritosSet().has(curso.id) (aqui e no [class.inscrito]) -->
+          @if (estaInscrito(curso.id)) {
+            <button mat-stroked-button type="button" (click)="cancelar(curso.id)">
+              <mat-icon>check_circle</mat-icon> Inscrito · cancelar
+            </button>
+          } @else {
+            <button mat-flat-button type="button" (click)="inscrever(curso.id)">
+              <mat-icon>add</mat-icon> Inscrever
+            </button>
+          }
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <p class="aviso">Nenhum curso para mostrar.</p>
+    }
+  </div>
+}

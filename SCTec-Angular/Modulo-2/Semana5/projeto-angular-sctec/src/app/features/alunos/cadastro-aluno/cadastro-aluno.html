@@ -2,53 +2,67 @@
   <section class="card area-formulario">
     <app-page-header
       titulo="Cadastro de aluno"
-      subtitulo="A estrutura do formulário vem do fb.group no .ts. O HTML só se conecta com formControlName."
-      tag="Reactive Forms"
+      subtitulo="Reactive Forms + Angular Material (mat-form-field) + máscaras com ngx-mask."
+      tag="Material"
     />
 
     <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
       <div class="grade">
-        <div class="campo">
-          <label for="nome">Nome completo</label>
-          <input id="nome" formControlName="nome" placeholder="Ex.: Ana Souza" />
-          @if (invalido('nome')) { <small class="erro">Informe o nome (mínimo 3 letras).</small> }
-        </div>
+        <!-- mat-form-field: rótulo flutuante, borda e mensagem de erro no padrão Material -->
+        <mat-form-field appearance="outline">
+          <mat-label>Nome completo</mat-label>
+          <input matInput formControlName="nome" placeholder="Ex.: Ana Souza" />
+          <mat-icon matPrefix>person</mat-icon>
+          <!-- mat-error só aparece quando o campo está inválido E foi tocado (ou o form enviado) -->
+          <mat-error>Informe o nome (mínimo 3 letras).</mat-error>
+        </mat-form-field>
 
-        <div class="campo">
-          <label for="email">E-mail</label>
-          <input id="email" type="email" formControlName="email" placeholder="ana@email.com" />
-          @if (invalido('email')) { <small class="erro">Informe um e-mail válido.</small> }
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="ana@email.com" />
+          <mat-icon matPrefix>mail</mat-icon>
+          <mat-error>Informe um e-mail válido.</mat-error>
+        </mat-form-field>
 
-        <div class="campo">
-          <label for="telefone">Telefone (só números, com DDD)</label>
-          <input id="telefone" formControlName="telefone" inputmode="numeric" maxlength="11" placeholder="48999998888" />
-          @if (invalido('telefone')) { <small class="erro">Use 10 ou 11 números (DDD + telefone).</small> }
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <!-- ngx-mask: "||" separa duas máscaras (fixo com 10 números ou celular com 11) -->
+          <input matInput formControlName="telefone" mask="(00) 0000-0000||(00) 00000-0000" inputmode="numeric" placeholder="(48) 99999-8888" />
+          <mat-icon matPrefix>call</mat-icon>
+          <mat-error>Use DDD + telefone (10 ou 11 números).</mat-error>
+        </mat-form-field>
 
-        <div class="campo">
-          <label for="curso">Curso</label>
-          <select id="curso" formControlName="curso">
-            <option value="" disabled>Selecione...</option>
+        <mat-form-field appearance="outline">
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="curso">
             @for (curso of cursos; track curso) {
-              <option [value]="curso">{{ curso }}</option>
+              <mat-option [value]="curso">{{ curso }}</mat-option>
             }
-          </select>
-          @if (invalido('curso')) { <small class="erro">Escolha um curso.</small> }
-        </div>
+          </mat-select>
+          <mat-icon matPrefix>school</mat-icon>
+          <mat-error>Escolha um curso.</mat-error>
+        </mat-form-field>
       </div>
 
-      <div class="campo">
-        <label for="cep">CEP (só números)</label>
-        <div class="linha-cep">
-          <input id="cep" formControlName="cep" inputmode="numeric" maxlength="8" placeholder="88010000" />
-          <button type="button" class="btn btn-secundario" (click)="buscarCep()" [disabled]="carregando()">
-            {{ carregando() ? 'Buscando...' : 'Buscar CEP' }}
-          </button>
-        </div>
-        @if (invalido('cep')) { <small class="erro">O CEP precisa ter 8 números.</small> }
-        @if (erroCep()) { <small class="erro">{{ erroCep() }}</small> }
-      </div>
+      <mat-form-field appearance="outline" class="campo-cep">
+        <mat-label>CEP</mat-label>
+        <input matInput formControlName="cep" mask="00000-000" inputmode="numeric" placeholder="88010-000" />
+        <!-- botão DENTRO do campo, no final (matSuffix) -->
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="buscarCep()"
+          [disabled]="carregando()"
+          matTooltip="Buscar endereço pelo CEP"
+          aria-label="Buscar CEP"
+        >
+          <mat-icon>{{ carregando() ? 'hourglass_top' : 'search' }}</mat-icon>
+        </button>
+        <mat-hint>Digite o CEP e clique na lupa</mat-hint>
+        <mat-error>O CEP precisa ter 8 números.</mat-error>
+      </mat-form-field>
+      @if (erroCep()) { <p class="erro">{{ erroCep() }}</p> }
 
       @if (endereco(); as e) {
         <div class="endereco">
@@ -59,8 +73,8 @@
       }
 
       <div class="acoes">
-        <button type="submit" class="btn">Salvar cadastro</button>
-        <button type="button" class="btn btn-secundario" (click)="limpar()">Limpar</button>
+        <button mat-flat-button type="submit"><mat-icon>save</mat-icon> Salvar cadastro</button>
+        <button mat-stroked-button type="button" (click)="limpar()">Limpar</button>
       </div>
     </form>
   </section>
@@ -73,6 +87,8 @@
         <dd>{{ aluno.nome | uppercase }}</dd>
         <dt>E-mail</dt>
         <dd>{{ aluno.email }}</dd>
+        <dt>Telefone</dt>
+        <dd>{{ aluno.telefone }}</dd>
         <dt>Curso</dt>
         <dd>{{ aluno.curso }}</dd>
         <dt>CEP</dt>

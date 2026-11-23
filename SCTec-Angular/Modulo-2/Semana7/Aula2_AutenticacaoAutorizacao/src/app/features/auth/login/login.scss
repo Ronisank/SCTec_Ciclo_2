@@ -1,0 +1,42 @@
+@use 'mixins' as *;
+
+.layout-login {
+  display: grid;
+  gap: espaco(2.5);
+  max-width: 880px;
+  margin: 0 auto;
+
+  @include a-partir-de(md) {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+
+  .card { margin-bottom: 0; }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field { width: 100%; }
+
+.entrar { align-self: flex-start; }
+
+.erro {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--erro);
+  margin: 0 0 espaco(2);
+}
+
+.dica {
+  display: flex;
+  flex-direction: column;
+  gap: espaco(1);
+
+  h3 { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--azul); }
+  p { margin: 0; color: var(--texto-suave); font-size: 14px; }
+  button { justify-content: flex-start; }
+}

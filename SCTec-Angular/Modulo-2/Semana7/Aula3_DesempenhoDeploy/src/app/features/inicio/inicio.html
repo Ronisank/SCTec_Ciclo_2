@@ -1,0 +1,39 @@
+<section class="card hero">
+  <app-page-header
+    titulo="Bem-vindo ao seu projeto Angular"
+    subtitulo="Este projeto cresce a cada semana. Na Semana 7 ele ganha estado global, login, desempenho e publicação na internet."
+    tag="projeto-angular-sctec"
+  >
+    <div class="acoes">
+      <a mat-flat-button routerLink="/cursos"><mat-icon>school</mat-icon> Ver cursos</a>
+      <a mat-stroked-button routerLink="/alunos/cadastro"><mat-icon>person_add</mat-icon> Cadastrar aluno</a>
+    </div>
+  </app-page-header>
+</section>
+
+<h2 class="secao">Como o projeto está crescendo</h2>
+
+<!--
+  TODO 1 (@DEFER): hoje a linha do tempo é carregada JUNTO com o Início.
+  Rode  ng build  e anote: NÃO existe o chunk "linha-do-tempo". Depois troque a linha <app-linha-do-tempo />
+  (abaixo deste comentário) por:
+
+  @defer (on viewport) {
+    <app-linha-do-tempo />
+  } @placeholder (minimum 300ms) {
+    <div class="esqueleto" aria-hidden="true">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  } @loading (minimum 500ms) {
+    <div class="carregando" role="status">
+      <mat-spinner diameter="32" aria-label="Carregando a linha do tempo" />
+    </div>
+  } @error {
+    <p class="aviso">Não foi possível carregar a linha do tempo.</p>
+  }
+
+  Rode  ng build  de novo: agora aparece o Lazy chunk "linha-do-tempo".
+-->
+<app-linha-do-tempo />

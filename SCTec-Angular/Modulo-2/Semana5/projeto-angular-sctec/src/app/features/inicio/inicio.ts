@@ -23,20 +23,15 @@ export class Inicio {
       itens: ['Rotas /contato e /cadastro', 'Template-Driven e Reactive Forms', 'Pipes uppercase, date e cep', 'API viaCEP'],
     },
     {
-      semana: 'Semana 6 · Aula 1',
-      titulo: 'Módulos e organização',
-      itens: ['Pastas core / shared / features', 'SharedModule e barrel (index.ts)', 'Aliases @core, @shared, @features', 'Lazy loading por feature', 'Nova feature: Cursos'],
+      semana: 'Semana 6',
+      titulo: 'Organização, SCSS e Material',
+      itens: ['core / shared / features + lazy loading', 'SCSS com mixins e layout responsivo', 'Angular Material + ngx-mask'],
     },
     {
-      semana: 'Semana 6 · Aula 2',
-      titulo: 'SASS e responsividade',
-      itens: ['Migração para SCSS', 'Variáveis, mapas, mixins e partials', 'Menu responsivo (mobile-first)', 'Grid, max-width e object-fit'],
+      semana: 'Semana 7 · Aula 1',
+      titulo: 'Estado global com NgRx',
+      itens: ['Store, actions e reducer', 'Selectors e dados derivados', 'Effects: API de cursos', 'Inscrições + contador no menu'],
       atual: true,
-    },
-    {
-      semana: 'Semana 6 · Aula 3',
-      titulo: 'Angular Material e terceiros',
-      itens: ['ng add @angular/material', 'Toolbar, cards, form fields, snackbar', 'Máscaras com ngx-mask'],
     },
   ];
 }

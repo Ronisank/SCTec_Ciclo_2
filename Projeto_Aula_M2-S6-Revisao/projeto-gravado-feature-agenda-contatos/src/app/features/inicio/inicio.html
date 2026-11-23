@@ -1,0 +1,49 @@
+<app-titulo-pagina titulo="Agenda SENAI" [subtitulo]="'Revisão geral · ' + turma">
+  <a mat-flat-button routerLink="/contatos"><mat-icon>contacts</mat-icon> Ver contatos</a>
+</app-titulo-pagina>
+
+<!-- TODO 10 (parte 1) - PROPERTY BINDING + INTERPOLAÇÃO + ASYNC PIPE
+     a) troque src="..." por [src]="imagemCapa"
+     b) troque "visitante" por {{ nomeVisitante || 'visitante' }}
+     c) troque os "0" por {{ total$ | async }} e {{ totalFavoritos$ | async }}
+-->
+<section class="capa">
+  <img src="https://picsum.photos/id/180/1200/500" alt="Mesa de trabalho com notebook" />
+  <div class="capa-texto">
+    <h2>Olá, visitante!</h2>
+    <p>
+      Sua agenda tem <strong>0</strong> contatos e
+      <strong>0</strong> favoritos.
+    </p>
+  </div>
+</section>
+
+<!-- TODO 10 (parte 2) - TWO-WAY BINDING + EVENT BINDING + CLASS BINDING + @if
+     a) no <input>: [(ngModel)]="nomeVisitante"
+     b) no <button>: (click)="curtir()"
+     c) no <span>: [class.muitas]="curtidas() >= 5" e troque o texto fixo por {{ mensagemCurtidas() }}
+     d) depois do <span>:  @if (curtidas() >= 5) { <span class="festa">🎉 A turma curtiu!</span> }
+-->
+<section class="painel">
+  <mat-form-field appearance="outline">
+    <mat-label>Seu nome</mat-label>
+    <input matInput placeholder="Digite seu nome" />
+  </mat-form-field>
+
+  <button mat-flat-button type="button">
+    <mat-icon>thumb_up</mat-icon> Curtir
+  </button>
+
+  <span class="curtidas">Seja o primeiro a curtir!</span>
+</section>
+
+<!-- DIRETIVA ESTRUTURAL @for (com $index) + DIRETIVA DE ATRIBUTO personalizada (appDestaque) -->
+<h2>O que revisamos neste projeto</h2>
+<ul class="topicos">
+  @for (topico of topicos; track topico.titulo; let i = $index) {
+    <li appDestaque>
+      <mat-icon>{{ topico.icone }}</mat-icon>
+      <span>{{ i + 1 }}. {{ topico.titulo }}</span>
+    </li>
+  }
+</ul>

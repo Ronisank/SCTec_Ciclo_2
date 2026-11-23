@@ -1,0 +1,13 @@
+<header class="titulo-pagina">
+  <div>
+    <h1>{{ titulo() }}</h1>
+    @if (subtitulo()) {
+      <p>{{ subtitulo() }}</p>
+    }
+  </div>
+
+  <!-- ng-content: PROJEÇÃO DE CONTEÚDO. O que o pai escrever entre as tags aparece aqui. -->
+  <div class="acoes">
+    <ng-content />
+  </div>
+</header>

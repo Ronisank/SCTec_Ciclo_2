@@ -12,18 +12,12 @@
 // MEDIA QUERY mobile-first: o CSS dentro do @content vale A PARTIR da largura do breakpoint.
 // Uso:  @include a-partir-de(md) { ... }
 @mixin a-partir-de($bp) {
-  // TODO 3 (MIXIN DE BREAKPOINT) - hoje este mixin não gera NADA, por isso o site
-  // fica com o layout de CELULAR em qualquer tela. Escreva:
-    @if not map.has-key($breakpoints, $bp) {
-      @error "Breakpoint '#{$bp}' não existe. Use um destes: #{map.keys($breakpoints)}";
-    }
-    @media (min-width: map.get($breakpoints, $bp)) {
-      @content;
-    }
-  // @content = o bloco que quem chamou escreveu entre { } no @include.
-
-  // Linha PROVISÓRIA (só para o projeto compilar antes do TODO 3). APAGUE quando fizer o TODO 3:
-  // @if false { @content; }
+  @if not map.has-key($breakpoints, $bp) {
+    @error "Breakpoint '#{$bp}' não existe. Use um destes: #{map.keys($breakpoints)}";
+  }
+  @media (min-width: map.get($breakpoints, $bp)) {
+    @content;
+  }
 }
 
 // CARTÃO: o visual de "bloco branco" do projeto, com padding configurável (valor padrão = 24px).

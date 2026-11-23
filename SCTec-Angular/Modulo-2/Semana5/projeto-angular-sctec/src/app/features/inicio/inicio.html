@@ -1,13 +1,12 @@
 <section class="card hero">
   <app-page-header
     titulo="Bem-vindo ao seu projeto Angular"
-    subtitulo="Este projeto cresce a cada semana. Hoje ele ganhou SCSS organizado e layout responsivo (celular, tablet e desktop)."
+    subtitulo="Este projeto cresce a cada semana. Na Semana 7 ele ganha estado global, login, desempenho e publicação na internet."
     tag="projeto-angular-sctec"
   >
-    <!-- Este trecho entra no <ng-content /> do PageHeader -->
     <div class="acoes">
-      <a class="btn" routerLink="/cursos">Ver cursos</a>
-      <a class="btn btn-secundario" routerLink="/alunos/cadastro">Cadastrar aluno</a>
+      <a mat-flat-button routerLink="/cursos"><mat-icon>school</mat-icon> Ver cursos</a>
+      <a mat-stroked-button routerLink="/alunos/cadastro"><mat-icon>person_add</mat-icon> Cadastrar aluno</a>
     </div>
   </app-page-header>
 </section>

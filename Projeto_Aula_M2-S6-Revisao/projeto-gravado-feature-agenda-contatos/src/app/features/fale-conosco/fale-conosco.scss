@@ -1,0 +1,36 @@
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+// GRID de 2 colunas (formulário + resumo) que vira 1 coluna no tablet/celular.
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $espaco * 1.5;
+  align-items: start;
+
+  @include responsivo(tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formulario {
+  @include cartao;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  button {
+    align-self: flex-start;
+    margin-top: $espaco;
+  }
+}
+
+.resumo {
+  @include cartao;
+  border-left: 4px solid $cor-secundaria;
+
+  h3 {
+    margin-top: 0;
+    color: $cor-secundaria;
+  }
+}

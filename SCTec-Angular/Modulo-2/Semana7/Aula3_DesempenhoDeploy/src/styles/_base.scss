@@ -1,0 +1,42 @@
+// _base.scss - regras GERAIS de HTML (reset leve, tipografia, imagens fluidas).
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $fonte;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 espaco(1); }
+// clamp(mínimo, ideal, máximo): o título cresce com a tela, mas tem limites.
+h1 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); }
+h2 { font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); }
+p { margin: 0 0 12px; }
+
+// IMAGEM FLUIDA: nunca passa da largura do "pai" e mantém a proporção.
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+code {
+  background: var(--azul-claro);
+  color: var(--azul-escuro);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  @include foco-visivel;
+}

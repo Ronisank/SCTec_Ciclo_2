@@ -1,0 +1,34 @@
+@use 'mixins' as *;
+
+.hero .acoes a { text-decoration: none; }
+.secao { margin: espaco(1) 0 espaco(2); }
+
+// Semana 7 · Aula 3: "esqueleto" (placeholder) do @defer: caixas cinzas no lugar dos cartões
+.esqueleto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: espaco(2);
+
+  div {
+    height: 160px;
+    border-radius: var(--raio);
+    background: linear-gradient(90deg, var(--borda), var(--fundo), var(--borda));
+    background-size: 200% 100%;
+    animation: brilho 1.2s infinite;
+  }
+}
+
+.carregando {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+}
+
+@keyframes brilho {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .esqueleto div { animation: none; }
+}

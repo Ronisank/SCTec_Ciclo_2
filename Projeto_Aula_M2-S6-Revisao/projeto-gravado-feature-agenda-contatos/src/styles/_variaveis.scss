@@ -1,0 +1,22 @@
+// _variaveis.scss - VARIÁVEIS SASS do projeto (partial: o "_" no nome diz que ele não vira CSS sozinho).
+// Para usar em qualquer .scss:  @use 'variaveis' as *;
+// Isso só funciona sem caminho relativo porque configuramos no angular.json:
+//   "stylePreprocessorOptions": { "includePaths": ["src/styles"] }
+
+// Cores
+$cor-primaria: #1565c0;
+$cor-secundaria: #00897b;
+$cor-destaque: #e91e63;
+$cor-texto-suave: #5f6b7a;
+$cor-erro: #c62828;
+
+// Medidas
+$espaco: 16px;
+$raio: 12px;
+$largura-maxima: 1100px; // MAX-WIDTH: o conteúdo nunca passa disso em telas grandes
+
+// Pontos de quebra (breakpoints) usados nas MEDIA QUERIES
+$breakpoints: (
+  celular: 600px,
+  tablet: 900px,
+);

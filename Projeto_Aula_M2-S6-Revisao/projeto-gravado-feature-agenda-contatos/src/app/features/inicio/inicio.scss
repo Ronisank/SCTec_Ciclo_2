@@ -1,0 +1,73 @@
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+// OBJECT-FIT na imagem de capa: preenche a faixa inteira sem esticar a foto.
+.capa {
+  position: relative;
+  border-radius: $raio;
+  overflow: hidden;
+  margin-bottom: $espaco * 1.5;
+
+  img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+
+  .capa-texto {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: $espaco * 1.5;
+    color: #fff;
+    background: linear-gradient(transparent, rgb(0 0 0 / 0.75));
+
+    h2 {
+      margin: 0 0 4px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include responsivo(celular) {
+    img {
+      height: 200px;
+    }
+  }
+}
+
+.painel {
+  @include cartao;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $espaco;
+  margin-bottom: $espaco * 2;
+
+  mat-form-field {
+    flex: 1 1 260px;
+  }
+
+  .curtidas.muitas {
+    color: $cor-destaque;
+    font-weight: 700;
+  }
+}
+
+// GRID responsivo: quantas colunas couberem, cada uma com no mínimo 240px.
+.topicos {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: $espaco;
+
+  li {
+    @include cartao;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $cor-primaria;
+  }
+}

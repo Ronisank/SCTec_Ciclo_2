@@ -1,0 +1,36 @@
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+.detalhe {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: $espaco * 2;
+  padding: $espaco * 1.5;
+
+  // OBJECT-FIT + aspect-ratio: foto sempre quadrada e redonda, sem distorcer.
+  .foto {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  h3 {
+    color: $cor-primaria;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 6px 0;
+  }
+
+  @include responsivo(celular) {
+    grid-template-columns: 1fr;
+    text-align: center;
+
+    .foto {
+      max-width: 160px;
+      margin: 0 auto;
+    }
+  }
+}

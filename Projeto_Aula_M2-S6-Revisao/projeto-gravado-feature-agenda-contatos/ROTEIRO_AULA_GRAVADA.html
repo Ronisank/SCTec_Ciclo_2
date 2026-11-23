@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roteiro Aula Gravada</title>
+<style>
+  :root{
+    --navy:#1b4f72; --navy-dark:#123049; --zebra:#eef4f8;
+    --note-bg:#eaf2f8; --code-bg:#1e1e1e; --teal:#2a9d8f; --teal-dark:#1d7a6e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif;color:#263238;line-height:1.55;font-size:13.5px}
+  .wrap{max-width:980px;margin:auto;padding:28px 34px}
+  h1{color:var(--navy);text-align:center;font-size:26px;margin:0 0 14px}
+  h1 + p{font-size:12.8px;color:#455a64;border-bottom:1px solid #cfd8dc;padding-bottom:14px}
+  h1 + p strong{color:#263238}
+  h2.parte{background:var(--navy);color:#fff;padding:11px 16px;border-radius:4px;font-size:18px;margin-top:34px;letter-spacing:.2px}
+  h3.bloco{color:var(--navy-dark);border-bottom:2px solid var(--navy);padding-bottom:4px;font-size:16px;margin-top:28px}
+  h4.todo{background:var(--navy-dark);color:#fff;padding:7px 13px;border-radius:4px;font-size:14px;margin:24px 0 8px}
+  h4.todo code{background:transparent;color:#fff;padding:0}
+  p.arq{background:#f5f7f8;border:1px solid #cfd8dc;border-radius:4px;padding:6px 10px;font-size:12.6px}
+  .fala{background:#f1f8f4;border-left:4px solid var(--teal);border-radius:4px;padding:8px 14px;margin:12px 0;font-size:13px}
+  .fala p{margin:5px 0}
+  .fala strong{color:var(--teal-dark)}
+  .nota{background:var(--note-bg);border-left:4px solid var(--navy);border-radius:4px;padding:8px 14px;margin:12px 0;font-size:12.8px}
+  .nota p{margin:5px 0}
+  pre{background:var(--code-bg);color:#f8f8f2;padding:12px 14px;border-radius:6px;overflow:auto;font-size:11.8px;line-height:1.5;margin:10px 0;white-space:pre-wrap;word-break:break-word}
+  code{font-family:Consolas,Menlo,monospace}
+  :not(pre) > code{background:var(--zebra);color:var(--navy);padding:1px 5px;border-radius:3px;font-size:12px}
+  table{width:100%;border-collapse:collapse;margin:10px 0 20px;font-size:12.6px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px}
+  td{padding:7px 10px;border-bottom:1px solid #e3e9ec;vertical-align:top}
+  tr:nth-child(even) td{background:var(--zebra)}
+  .fala table th{background:var(--teal-dark)}
+  ul,ol{margin-top:6px}
+  li{margin-bottom:5px}
+  hr{border:none;border-top:1px solid #cfd8dc;margin:26px 0}
+  a{color:var(--navy)}
+  footer{margin-top:40px;padding-top:14px;border-top:1px solid #e3e9ec;color:#78909c;font-size:11px;text-align:center}
+  @media print{
+    .wrap{padding:0}
+    h2.parte{break-before:page}
+    pre,tr,.fala,.nota,p.arq{break-inside:avoid}
+    h3.bloco,h4.todo,p.arq{break-after:avoid}
+  }
+  @page{size:A4;margin:14mm 13mm}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Roteiro da aula gravada: Revisão geral de Angular (do zero ao app completo)</h1>
+<p><strong>Duração:</strong> 60 minutos<br><strong>Projeto:</strong> <em>Agenda SENAI</em>, uma agenda de contatos com busca reativa, cadastro com viaCEP, rotas com lazy loading, Angular Material e layout responsivo.<br><strong>Versões testadas:</strong> Node 22.23 · npm 10.9 · Angular CLI 22.2 · Angular Material 22.3<br><strong>Pasta do repositório:</strong> <code>C:\Users\DESKTOP\Desktop\SENAI\ANGULAR\projeto-gravado\projeto-gravado</code><br><strong>Pasta do gabarito:</strong> <code>C:\Users\DESKTOP\Desktop\SENAI\ANGULAR\Gabarito_Aula_Gravada_Revisao_Geral</code></p>
+<div class="nota">
+<p><strong>Como usar este roteiro</strong></p>
+<ul>
+<li><strong>Parte 1 (0:00 → 0:20):</strong> tudo é feito <strong>pelo terminal</strong>: criar, configurar e estruturar o projeto.</li>
+<li><strong>Parte 2 (0:20 → 0:55):</strong> você copia a pasta <code>1-codigo-com-todos/src</code> para dentro do projeto e resolve os <strong>22 TODOs</strong> junto com a turma.</li>
+<li><strong>Parte 3 (0:55 → 1:00):</strong> build, Git (GitFlow) e encerramento.</li>
+<li>O projeto <strong>compila e roda</strong> logo depois da cópia, e continua rodando a cada TODO resolvido. Deixe o <code>ng serve</code> aberto e mostre o navegador atualizando sozinho.</li>
+<li>Se algo travar durante a gravação, copie o arquivo correspondente de <code>2-projeto-completo/src</code> (mesmo caminho).</li>
+<li>Os blocos <strong>🎙️ Fala</strong> são sugestões do que dizer.</li>
+</ul>
+</div>
+<hr>
+<h3 class="bloco">Mapa: tópico do curso → onde aparece no projeto</h3>
+<table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Tópico</th>
+<th>Onde aparece</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Inicial</td>
+<td>Introdução, primeiros passos e ambiente</td>
+<td>Parte 1, passos 1.1 e 1.3</td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>Arquitetura, estrutura e build</td>
+<td>Passos 1.3 e 1.5, e <code>ng build</code> na Parte 3</td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>Depuração e debug</td>
+<td>TODO 9 (<code>console.log</code>, <code>debugger</code>, DevTools, Angular DevTools)</td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>TypeScript para Angular</td>
+<td>TODO 1 (union type), interfaces, <code>Omit</code>, tipos genéricos <code>Observable&lt;T&gt;</code></td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>Componentes</td>
+<td>Todos os <code>ng generate component</code> e TODOs 7 a 12</td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>Template syntax (interpolação, estruturais, atributo)</td>
+<td>TODOs 8, 10, 12 e 16 (<code>{{ }}</code>, <code>@if</code>, <code>@for</code>, <code>@switch</code>, <code>[class.x]</code>)</td>
+</tr>
+<tr>
+<td>Inicial</td>
+<td>Binding de dados e eventos</td>
+<td>TODO 10 (<code>[src]</code>, <code>(click)</code>, <code>[(ngModel)]</code>) e TODO 21 (<code>(blur)</code>)</td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Services e Dependency Injection</td>
+<td>TODOs 2, 3, 4, 7 (<code>@Service()</code>, <code>inject()</code>)</td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Componentes reativos</td>
+<td>TODOs 7/8 (cabeçalho com <code>total$ | async</code>) e 15/16 (lista)</td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Observables e RxJS</td>
+<td>TODOs 2, 15 e 18 (<code>BehaviorSubject</code>, <code>map</code>, <code>debounceTime</code>, <code>combineLatest</code>, <code>switchMap</code>)</td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>GitHub colaborativo (plugins e GitFlow)</td>
+<td>Passos 1.2 e 3.2</td>
+</tr>
+<tr>
+<td>Avançado</td>
+<td>Formulários template-driven e reativos</td>
+<td>TODO 22 (Fale conosco) e TODOs 19 a 21 (Novo contato)</td>
+</tr>
+<tr>
+<td>Avançado</td>
+<td>Roteamento</td>
+<td>TODOs 5, 6 e 18 (lazy loading, rotas filhas, <code>:id</code>, <code>**</code>)</td>
+</tr>
+<tr>
+<td>Avançado</td>
+<td>Pipes e diretivas personalizadas</td>
+<td>TODOs 13 e 14</td>
+</tr>
+<tr>
+<td>Avançado</td>
+<td>Consumindo APIs (viaCEP, RapidAPI)</td>
+<td>TODOs 4, 20 e 21, mais o exemplo de RapidAPI comentado no <code>cep-service.ts</code></td>
+</tr>
+<tr>
+<td>Org./Estilo</td>
+<td>Módulos no Angular</td>
+<td><code>ContatosModule</code> + <code>ContatosRoutingModule</code> (TODO 6)</td>
+</tr>
+<tr>
+<td>Org./Estilo</td>
+<td>Organização e módulos compartilhados</td>
+<td>Pastas <code>core/shared/features</code>, <code>SharedModule</code> e <code>MaterialModule</code></td>
+</tr>
+<tr>
+<td>Org./Estilo</td>
+<td>Estilização avançada com CLI e SASS</td>
+<td>Passo 1.4, <code>_variaveis.scss</code>, <code>_mixins.scss</code> e nesting com <code>&amp;</code></td>
+</tr>
+<tr>
+<td>Org./Estilo</td>
+<td>Responsividade (media queries, grid, object-fit, max-width)</td>
+<td>TODO 17 e <code>.container</code> no <code>styles.scss</code></td>
+</tr>
+<tr>
+<td>Org./Estilo</td>
+<td>Bibliotecas externas: Angular Material</td>
+<td>Passo 1.4 (<code>ng add</code>) e <code>MaterialModule</code></td>
+</tr>
+</tbody></table>
+<h3 class="bloco">Linha do tempo</h3>
+<table>
+<thead>
+<tr>
+<th>Tempo</th>
+<th>Bloco</th>
+<th>O que acontece</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:00 – 0:02</td>
+<td>Abertura</td>
+<td>Apresentar o app final e o que vamos revisar</td>
+</tr>
+<tr>
+<td>0:02 – 0:05</td>
+<td>1.1 Ambiente</td>
+<td>Node, npm, Angular CLI, VS Code e extensões</td>
+</tr>
+<tr>
+<td>0:05 – 0:07</td>
+<td>1.2 GitFlow</td>
+<td>Branches <code>develop</code> e <code>feature/agenda-contatos</code></td>
+</tr>
+<tr>
+<td>0:07 – 0:11</td>
+<td>1.3 Criar o projeto</td>
+<td><code>ng new</code>, estrutura de pastas, <code>ng serve</code></td>
+</tr>
+<tr>
+<td>0:11 – 0:14</td>
+<td>1.4 SCSS e Material</td>
+<td><code>ng add</code>, <code>ng config</code>, partials SASS</td>
+</tr>
+<tr>
+<td>0:14 – 0:18</td>
+<td>1.5 Arquitetura</td>
+<td><code>ng generate</code> de módulos, componentes, services, pipes, diretiva</td>
+</tr>
+<tr>
+<td>0:18 – 0:20</td>
+<td>1.6 Commit e gabarito</td>
+<td>Commit da estrutura e cópia do código com TODOs</td>
+</tr>
+<tr>
+<td>0:20 – 0:26</td>
+<td>Bloco A</td>
+<td>TypeScript, services, DI, RxJS e API (TODOs 1 a 4)</td>
+</tr>
+<tr>
+<td>0:26 – 0:31</td>
+<td>Bloco B</td>
+<td>Rotas, módulos e cabeçalho reativo (TODOs 5 a 8)</td>
+</tr>
+<tr>
+<td>0:31 – 0:38</td>
+<td>Bloco C</td>
+<td>Componentes, bindings, debug, input e output (TODOs 9 a 12)</td>
+</tr>
+<tr>
+<td>0:38 – 0:41</td>
+<td>Bloco D</td>
+<td>Pipe e diretiva personalizados (TODOs 13 e 14)</td>
+</tr>
+<tr>
+<td>0:41 – 0:46</td>
+<td>Bloco E</td>
+<td>Lista reativa, grid e object-fit (TODOs 15 a 17)</td>
+</tr>
+<tr>
+<td>0:46 – 0:55</td>
+<td>Bloco F</td>
+<td>Rota com parâmetro, formulários e viaCEP (TODOs 18 a 22)</td>
+</tr>
+<tr>
+<td>0:55 – 0:58</td>
+<td>Parte 3</td>
+<td><code>ng build</code> (lazy chunks) e Git: commit, push, PR, merge</td>
+</tr>
+<tr>
+<td>0:58 – 1:00</td>
+<td>Encerramento</td>
+<td>Recapitular o mapa de tópicos</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 class="parte">PARTE 1: Criar e estruturar o projeto pelo terminal (0:00 → 0:20)</h2>
+<h3 class="bloco">0. Abertura (0:00 – 0:02)</h3>
+<div class="fala">
+<p>🎙️ Fala: &quot;Hoje vamos revisar <strong>tudo</strong> que vimos de Angular em um projeto só, começando do zero. Primeiro criamos e organizamos o projeto inteiro pelo terminal. Depois vamos escrever o código juntos, TODO por TODO. No final ele vai estar no GitHub seguindo o GitFlow.&quot;</p>
+</div>
+<p>Se quiser, mostre o app pronto rodando a partir de <code>2-projeto-completo</code> (com <code>npm install</code> e <code>ng serve --open</code> feitos <strong>antes</strong> de gravar).</p>
+<h3 class="bloco">1.1 Ambiente (0:02 – 0:05)</h3>
+<p>Abra o VS Code na pasta do repositório e o terminal integrado (<strong>Terminal → Novo Terminal</strong>). Todos os comandos abaixo são para o <strong>PowerShell</strong>, que é o terminal padrão do VS Code no Windows.</p>
+<pre><code class="language-powershell">Set-Location C:\Users\DESKTOP\Desktop\SENAI\ANGULAR\projeto-gravado\projeto-gravado
+node --version
+npm --version
+ng version
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;O Angular precisa do <strong>Node.js</strong>, que roda o JavaScript fora do navegador, e do <strong>npm</strong>, que instala as bibliotecas. O comando <code>ng</code> é a <strong>Angular CLI</strong>.&quot;</p>
+</div>
+<p>Se a CLI não estiver instalada na máquina do aluno:</p>
+<pre><code class="language-powershell">npm install --global @angular/cli
+</code></pre>
+<p><strong>Extensões do VS Code</strong> (mostre rapidamente a aba de extensões):</p>
+<table>
+<thead>
+<tr>
+<th>Extensão</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Angular Language Service</td>
+<td>Autocompletar e erros dentro do HTML dos componentes</td>
+</tr>
+<tr>
+<td>GitLens</td>
+<td>Mostra quem alterou cada linha (<em>blame</em>) e o histórico de commits</td>
+</tr>
+<tr>
+<td>Git Graph</td>
+<td>Desenha o gráfico das branches, útil para enxergar o GitFlow</td>
+</tr>
+<tr>
+<td>Prettier</td>
+<td>Formata o código automaticamente</td>
+</tr>
+</tbody></table>
+<p>Na <strong>Chrome Web Store</strong>, mostre também a extensão <strong>Angular DevTools</strong>. Ela será usada no TODO 9.</p>
+<h3 class="bloco">1.2 GitFlow: preparar as branches (0:05 – 0:07)</h3>
+<pre><code class="language-powershell">git status
+git branch --all
+git switch --create develop
+git push --set-upstream origin develop
+git switch --create feature/agenda-contatos
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;No <strong>GitFlow</strong>: a <code>main</code> guarda só o que está pronto para produção. A <code>develop</code> junta as funcionalidades. Cada funcionalidade nova nasce numa branch <code>feature/...</code> criada a partir da <code>develop</code>. Quando a feature termina, abrimos um <strong>Pull Request</strong> para a <code>develop</code>.&quot;</p>
+</div>
+<pre><code>main      ●────────────────────────────────────●  (release)
+develop    └──●───────────────────────●───────┘
+feature        └──● estrutura ──● código ──┘   (Pull Request)
+</code></pre>
+<h3 class="bloco">1.3 Criar o projeto (0:07 – 0:11)</h3>
+<p>O <code>ng new</code> não aceita criar o projeto em uma pasta que já tenha um <code>README.md</code>. Como o repositório veio do GitHub com um README, apague-o primeiro (o Angular cria um novo):</p>
+<pre><code class="language-powershell">Remove-Item -Path README.md
+</code></pre>
+<p>Agora crie o projeto <strong>dentro da pasta atual</strong>:</p>
+<pre><code class="language-powershell">ng new projeto-gravado --directory=. --style=scss --routing=true --ssr=false --zoneless=true --ai-config=none --skip-tests=true --skip-git=true
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Opção</th>
+<th>Por quê</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--directory=.</code></td>
+<td>Cria na pasta atual (o repositório já existe)</td>
+</tr>
+<tr>
+<td><code>--style=scss</code></td>
+<td>Usa <strong>SASS/SCSS</strong> em todos os componentes</td>
+</tr>
+<tr>
+<td><code>--routing=true</code></td>
+<td>Já cria o <code>app.routes.ts</code></td>
+</tr>
+<tr>
+<td><code>--ssr=false</code></td>
+<td>Sem renderização no servidor (não usamos no curso)</td>
+</tr>
+<tr>
+<td><code>--zoneless=true</code></td>
+<td>Padrão do Angular moderno: a tela atualiza por <strong>signals</strong>, eventos e <code>async</code> pipe</td>
+</tr>
+<tr>
+<td><code>--ai-config=none</code></td>
+<td>Não cria arquivos de configuração para ferramentas de IA</td>
+</tr>
+<tr>
+<td><code>--skip-tests=true</code></td>
+<td>Não gera os arquivos <code>.spec.ts</code> (deixa a árvore de pastas mais limpa para a aula)</td>
+</tr>
+<tr>
+<td><code>--skip-git=true</code></td>
+<td>Não roda <code>git init</code> (o repositório já existe)</td>
+</tr>
+</tbody></table>
+<div class="fala">
+<p>🎙️ Fala, explicando a <strong>arquitetura</strong> com o explorador de arquivos aberto:</p>
+<ul>
+<li><code>package.json</code>: dependências e scripts (<code>npm start</code> = <code>ng serve</code>).</li>
+<li><code>angular.json</code>: configuração do <strong>build</strong> (estilos globais, <em>budgets</em>, opções do SASS).</li>
+<li><code>tsconfig.json</code>: regras do <strong>TypeScript</strong> (modo <code>strict</code> ligado).</li>
+<li><code>public/</code>: arquivos estáticos (favicon, imagens).</li>
+<li><code>src/main.ts</code>: ponto de entrada. Ele chama <code>bootstrapApplication(App, appConfig)</code>.</li>
+<li><code>src/app/app.config.ts</code>: os <em>providers</em> globais (rotas, HttpClient...).</li>
+<li><code>src/app/app.ts</code> + <code>app.html</code> + <code>app.scss</code>: o <strong>componente raiz</strong>.</li>
+<li>Cada componente tem <strong>3 arquivos</strong>: <code>.ts</code> (lógica), <code>.html</code> (template) e <code>.scss</code> (estilo).</li>
+</ul>
+</div>
+<pre><code class="language-powershell">ng serve --open
+</code></pre>
+<p>Mostre a página padrão do Angular e pare o servidor com <strong>Ctrl + C</strong>.</p>
+<h3 class="bloco">1.4 SCSS avançado e Angular Material (0:11 – 0:14)</h3>
+<p><strong>Biblioteca externa (Angular Material):</strong></p>
+<pre><code class="language-powershell">npm view @angular/material version
+ng add @angular/material --skip-confirmation
+</code></pre>
+<p>Quando o <code>ng add</code> perguntar, escolha o tema <strong>Azure/Blue</strong> e confirme a tipografia. Ele <strong>instala e configura</strong> o pacote: adiciona o tema no <code>styles.scss</code> e as fontes Roboto e Material Symbols no <code>index.html</code>. Mostre essas duas mudanças com o <code>git diff</code>:</p>
+<pre><code class="language-powershell">git diff -- src/styles.scss src/index.html
+</code></pre>
+<p><strong>Pasta de partials SASS</strong> (variáveis e mixins reutilizáveis):</p>
+<pre><code class="language-powershell">New-Item -ItemType Directory -Path src/styles
+New-Item -ItemType File -Path src/styles/_variaveis.scss
+New-Item -ItemType File -Path src/styles/_mixins.scss
+</code></pre>
+<p><strong>Ensinar ao SASS onde procurar os partials.</strong> Assim qualquer componente pode escrever <code>@use &#39;mixins&#39; as *;</code> sem caminho <code>../../..</code>:</p>
+<pre><code class="language-powershell">ng config projects.projeto-gravado.architect.build.options.stylePreprocessorOptions.includePaths &#39;[\&quot;src/styles\&quot;]&#39;
+</code></pre>
+<p><strong>Ajustar o budget do build.</strong> O Angular Material deixa o pacote inicial maior que o limite padrão de 500 kB:</p>
+<pre><code class="language-powershell">ng config &quot;projects.projeto-gravado.architect.build.configurations.production.budgets[0].maximumWarning&quot; 1MB
+ng config &quot;projects.projeto-gravado.architect.build.configurations.production.budgets[0].maximumError&quot; 2MB
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;O <code>ng config</code> edita o <code>angular.json</code> por nós.&quot; Abra o <code>angular.json</code> e mostre <code>stylePreprocessorOptions</code> e <code>budgets</code>. &quot;<strong>Budget</strong> é o limite de tamanho do build: o Angular avisa quando o app fica pesado demais.&quot;</p>
+</div>
+<h3 class="bloco">1.5 Arquitetura de pastas com a CLI (0:14 – 0:18)</h3>
+<div class="fala">
+<p>🎙️ Fala: &quot;Vamos organizar em três áreas:</p>
+<ul>
+<li><strong>core/</strong>: coisas únicas do app, como o layout (cabeçalho e rodapé) e os services globais.</li>
+<li><strong>shared/</strong>: o que é reutilizado (componentes, pipes, diretivas, models, módulos compartilhados).</li>
+<li><strong>features/</strong>: as páginas, separadas por funcionalidade.&quot;</li>
+</ul>
+</div>
+<p>Rode um por um, comentando o que cada comando cria:</p>
+<pre><code class="language-powershell"># ===== SHARED: models (interfaces TypeScript)
+ng generate interface shared/models/contato
+ng generate interface shared/models/endereco
+
+# ===== SHARED: módulos compartilhados (NgModule)
+ng generate module shared
+ng generate module shared/material
+
+# ===== SHARED: componentes, pipes e diretiva reutilizáveis
+ng generate component shared/components/card-contato
+ng generate component shared/components/titulo-pagina
+ng generate pipe shared/pipes/cep
+ng generate pipe shared/pipes/telefone
+ng generate directive shared/directives/destaque
+
+# ===== CORE: services globais e layout
+ng generate service core/services/contato-service
+ng generate service core/services/cep-service
+ng generate component core/layout/cabecalho
+ng generate component core/layout/rodape
+
+# ===== FEATURES: páginas avulsas
+ng generate component features/inicio
+ng generate component features/fale-conosco
+ng generate component features/nao-encontrada
+
+# ===== FEATURES: módulo de funcionalidade COM rotas próprias (lazy loading)
+ng generate module features/contatos --routing
+ng generate component features/contatos/lista-contatos
+ng generate component features/contatos/detalhe-contato
+ng generate component features/contatos/form-contato
+</code></pre>
+<div class="nota">
+<p>Dica: antes de gerar, mostre a simulação com <code>ng generate component features/teste --dry-run</code>. Ela lista o que <strong>seria</strong> criado sem criar nada.</p>
+</div>
+<p>A estrutura final fica assim (mostre no explorador do VS Code):</p>
+<pre><code>src/
+├── styles/                 _variaveis.scss  _mixins.scss
+├── styles.scss             (global)
+└── app/
+    ├── app.ts / app.html / app.scss / app.config.ts / app.routes.ts
+    ├── core/
+    │   ├── layout/         cabecalho/  rodape/
+    │   └── services/       contato-service.ts  cep-service.ts
+    ├── shared/
+    │   ├── shared-module.ts
+    │   ├── material/       material-module.ts
+    │   ├── components/     card-contato/  titulo-pagina/
+    │   ├── directives/     destaque.ts
+    │   ├── pipes/          cep-pipe.ts  telefone-pipe.ts
+    │   └── models/         contato.ts  endereco.ts
+    └── features/
+        ├── inicio/  fale-conosco/  nao-encontrada/
+        └── contatos/
+            ├── contatos-module.ts  contatos-routing-module.ts
+            └── lista-contatos/  detalhe-contato/  form-contato/
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;Repare em dois tipos de arquivo novos:</p>
+<ul>
+<li><code>@NgModule</code> (<strong>módulos</strong>): o <code>shared-module</code>, o <code>material-module</code> e o <code>contatos-module</code>. O <code>contatos-module</code> ganhou um arquivo de <strong>rotas próprio</strong> por causa do <code>--routing</code>.</li>
+<li><code>@Service()</code>: os <strong>services</strong>. O Angular cria uma única instância de cada um e a entrega por <strong>injeção de dependência</strong>.&quot;</li>
+</ul>
+</div>
+<h3 class="bloco">1.6 Commit da estrutura e cópia do gabarito (0:18 – 0:20)</h3>
+<pre><code class="language-powershell">git add --all
+git commit --message &quot;chore: cria projeto angular com scss, material e estrutura core/shared/features&quot;
+</code></pre>
+<p><strong>Copiar o código com TODOs para dentro do projeto</strong>, substituindo os arquivos gerados:</p>
+<pre><code class="language-powershell">Copy-Item -Path ..\..\Gabarito_Aula_Gravada_Revisao_Geral\1-codigo-com-todos\src\* -Destination .\src -Recurse -Force
+ng serve --open
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;Agora entra o código. Os arquivos estão no lugar e o app <strong>já roda</strong>, mas várias partes estão marcadas com <code>TODO</code>. Vamos resolver uma a uma.&quot; Abra a aba <strong>TODO</strong> do VS Code, ou procure <code>TODO</code> com <strong>Ctrl + Shift + F</strong>, para mostrar a lista.</p>
+</div>
+<p>Nesse momento o app mostra o cabeçalho, a página inicial com valores fixos e a lista de tópicos.</p>
+<hr>
+<h2 class="parte">PARTE 2: Código guiado pelos TODOs (0:20 → 0:55)</h2>
+<div class="nota">
+<p>Em cada TODO: (1) leia o comentário do arquivo com a turma, (2) escreva o código, (3) salve e mostre o efeito no navegador.</p>
+</div>
+<h3 class="bloco">Bloco A: TypeScript, services, DI, RxJS e API (0:20 – 0:26)</h3>
+<h4 class="todo">TODO 1: union type (TypeScript)</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/shared/models/contato.ts</code></p>
+<pre><code class="language-ts">export type Categoria = &#39;familia&#39; | &#39;trabalho&#39; | &#39;amigos&#39;;
+</code></pre>
+<p><strong>Demonstração:</strong> no <code>contato-service.ts</code>, troque uma categoria para <code>&#39;familha&#39;</code>. O VS Code sublinha o erro em vermelho e o terminal do <code>ng serve</code> também acusa. Desfaça a troca.</p>
+<div class="fala">
+<p>🎙️ Fala: &quot;Interface e type <strong>não viram JavaScript</strong>. Eles existem para o TypeScript nos proteger <strong>antes</strong> de rodar. Vejam também o <code>NovoContato = Omit&lt;Contato, ...&gt;</code>: é um <em>utility type</em> que reaproveita a interface sem três campos.&quot;</p>
+</div>
+<h4 class="todo">TODO 2: Observables públicos do service (RxJS)</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/core/services/contato-service.ts</code></p>
+<p>Troque as três linhas provisórias por:</p>
+<pre><code class="language-ts">readonly contatos$: Observable&lt;Contato[]&gt; = this.contatosSubject.asObservable();
+
+readonly total$: Observable&lt;number&gt; = this.contatos$.pipe(map((lista) =&gt; lista.length));
+
+readonly totalFavoritos$: Observable&lt;number&gt; = this.contatos$.pipe(
+  map((lista) =&gt; lista.filter((contato) =&gt; contato.favorito).length),
+);
+</code></pre>
+<p>Remova o <code>of</code> do import do <code>rxjs</code> (o VS Code avisa que ele não é mais usado).</p>
+<div class="fala">
+<p>🎙️ Fala: &quot;<strong>Observable</strong> é um fluxo de valores no tempo. O <strong>BehaviorSubject</strong> guarda o valor atual e avisa quem estiver inscrito sempre que ele muda. Ele é <code>private</code> para só o service poder alterar a lista. Para fora, expomos a versão <strong>somente leitura</strong> com <code>asObservable()</code>. O <code>pipe(map(...))</code> transforma cada valor que passa pelo fluxo.&quot;</p>
+</div>
+<h4 class="todo">TODO 3: alterar o estado com imutabilidade</h4>
+<p><strong>Mesmo arquivo.</strong></p>
+<pre><code class="language-ts">adicionar(dados: NovoContato): void {
+  const novo: Contato = {
+    ...dados,
+    id: Date.now(),
+    favorito: false,
+    criadoEm: new Date(),
+  };
+  this.contatosSubject.next([...this.contatosSubject.value, novo]);
+}
+
+alternarFavorito(id: number): void {
+  const listaAtualizada = this.contatosSubject.value.map((contato) =&gt;
+    contato.id === id ? { ...contato, favorito: !contato.favorito } : contato,
+  );
+  this.contatosSubject.next(listaAtualizada);
+}
+
+remover(id: number): void {
+  this.contatosSubject.next(this.contatosSubject.value.filter((contato) =&gt; contato.id !== id));
+}
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;Nunca usamos <code>push</code> ou <code>splice</code>. Sempre criamos um <strong>novo array</strong> e chamamos <code>.next()</code>. Assim todos os inscritos são avisados.&quot;</p>
+</div>
+<h4 class="todo">TODO 4: consumir API com HttpClient</h4>
+<p class="arq"><strong>Parte 1. Arquivo:</strong> <code>src/app/core/services/cep-service.ts</code></p>
+<pre><code class="language-ts">import { HttpClient } from &#39;@angular/common/http&#39;;
+import { Service, inject } from &#39;@angular/core&#39;;
+import { Observable } from &#39;rxjs&#39;;
+import { Endereco } from &#39;../../shared/models/endereco&#39;;
+
+@Service()
+export class CepService {
+  private readonly http = inject(HttpClient);
+  private readonly urlBase = &#39;https://viacep.com.br/ws&#39;;
+
+  buscar(cep: string): Observable&lt;Endereco&gt; {
+    const somenteNumeros = cep.replace(/\D/g, &#39;&#39;);
+    return this.http.get&lt;Endereco&gt;(`${this.urlBase}/${somenteNumeros}/json/`);
+  }
+  // (mantenha o exemplo de RapidAPI comentado logo abaixo)
+}
+</code></pre>
+<p class="arq"><strong>Parte 2. Arquivo:</strong> <code>src/app/app.config.ts</code></p>
+<pre><code class="language-ts">import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from &#39;@angular/core&#39;;
+import { registerLocaleData } from &#39;@angular/common&#39;;
+import localePt from &#39;@angular/common/locales/pt&#39;;
+import { provideHttpClient } from &#39;@angular/common/http&#39;;
+import { provideRouter } from &#39;@angular/router&#39;;
+import { routes } from &#39;./app.routes&#39;;
+
+registerLocaleData(localePt);
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+    provideHttpClient(),
+    { provide: LOCALE_ID, useValue: &#39;pt-BR&#39; },
+  ],
+};
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;<code>inject(HttpClient)</code> é <strong>injeção de dependência</strong>: o service <strong>pede</strong> o HttpClient em vez de criá-lo. O <code>provideHttpClient()</code> é quem registra o HttpClient no app. Sem ele, aparece o erro <em>No provider for HttpClient</em>. O <code>get</code> devolve um Observable, e a requisição <strong>só acontece quando alguém der <code>subscribe</code></strong>. Para APIs com chave, como as da <strong>RapidAPI</strong>, a chave vai nos <code>headers</code>. Mostrem o exemplo comentado no fim do arquivo.&quot;</p>
+</div>
+<p>Abra <code>https://viacep.com.br/ws/88010000/json/</code> numa aba do navegador para mostrar o JSON que a API devolve.</p>
+<h3 class="bloco">Bloco B: rotas, módulos e cabeçalho reativo (0:26 – 0:31)</h3>
+<h4 class="todo">TODO 5: rotas com lazy loading</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/app.routes.ts</code></p>
+<pre><code class="language-ts">export const routes: Routes = [
+  { path: &#39;&#39;, component: Inicio, title: &#39;Início | Agenda SENAI&#39; },
+  {
+    path: &#39;contatos&#39;,
+    loadChildren: () =&gt;
+      import(&#39;./features/contatos/contatos-module&#39;).then((m) =&gt; m.ContatosModule),
+  },
+  {
+    path: &#39;fale-conosco&#39;,
+    loadComponent: () =&gt;
+      import(&#39;./features/fale-conosco/fale-conosco&#39;).then((m) =&gt; m.FaleConosco),
+    title: &#39;Fale conosco | Agenda SENAI&#39;,
+  },
+  { path: &#39;**&#39;, component: NaoEncontrada, title: &#39;Página não encontrada | Agenda SENAI&#39; },
+];
+</code></pre>
+<p><strong>Teste:</strong> acesse <code>http://localhost:4200/qualquer-coisa</code> para ver a página 404.</p>
+<h4 class="todo">TODO 6: rotas filhas dentro do módulo</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/contatos/contatos-routing-module.ts</code></p>
+<pre><code class="language-ts">const routes: Routes = [
+  { path: &#39;&#39;, component: ListaContatos, title: &#39;Contatos | Agenda SENAI&#39; },
+  { path: &#39;novo&#39;, component: FormContato, title: &#39;Novo contato | Agenda SENAI&#39; },
+  { path: &#39;:id&#39;, component: DetalheContato, title: &#39;Detalhe do contato | Agenda SENAI&#39; },
+];
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala, com <code>contatos-module.ts</code> aberto: &quot;Este é um <strong>módulo de funcionalidade</strong>. Ele importa o <code>ContatosRoutingModule</code>, que usa <code>RouterModule.forChild(routes)</code>. O app principal carrega o módulo com <code>loadChildren</code>: isso é <strong>lazy loading</strong>. O código dos contatos só é baixado quando o usuário entra em <code>/contatos</code>.&quot; Abra também o <code>shared-module.ts</code> e o <code>material-module.ts</code>: &quot;Esses são os <strong>módulos compartilhados</strong>. Tudo que está em <code>exports</code> chega a quem importar o módulo. Por isso as páginas só precisam de <code>imports: [SharedModule]</code>.&quot;</p>
+</div>
+<p>Mostre no navegador: <strong>F12 → Network → JS</strong>, depois clique em <em>Contatos</em>. Um arquivo <code>chunk-...js</code> novo é baixado nesse momento.</p>
+<h4 class="todo">TODO 7: injeção de dependência e estado do menu</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/core/layout/cabecalho/cabecalho.ts</code> (dentro da classe, depois de <code>links</code>)</p>
+<pre><code class="language-ts">private readonly contatoService = inject(ContatoService);
+readonly total$ = this.contatoService.total$;
+
+readonly menuAberto = signal(false);
+
+alternarMenu(): void {
+  this.menuAberto.update((aberto) =&gt; !aberto);
+}
+
+fecharMenu(): void {
+  this.menuAberto.set(false);
+}
+</code></pre>
+<h4 class="todo">TODO 8: event binding, class binding, @for, routerLinkActive e async pipe</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/core/layout/cabecalho/cabecalho.html</code>. Substitua tudo depois de <code>&lt;span class=&quot;espaco&quot;&gt;&lt;/span&gt;</code> por:</p>
+<pre><code class="language-html">&lt;button mat-icon-button type=&quot;button&quot; class=&quot;botao-menu&quot; (click)=&quot;alternarMenu()&quot; aria-label=&quot;Abrir menu&quot;&gt;
+  &lt;mat-icon&gt;{{ menuAberto() ? &#39;close&#39; : &#39;menu&#39; }}&lt;/mat-icon&gt;
+&lt;/button&gt;
+
+&lt;nav class=&quot;menu&quot; [class.aberto]=&quot;menuAberto()&quot;&gt;
+  @for (link of links; track link.rota) {
+    &lt;a
+      mat-button
+      [routerLink]=&quot;link.rota&quot;
+      routerLinkActive=&quot;ativo&quot;
+      [routerLinkActiveOptions]=&quot;{ exact: true }&quot;
+      (click)=&quot;fecharMenu()&quot;
+    &gt;
+      &lt;mat-icon&gt;{{ link.icone }}&lt;/mat-icon&gt;
+      {{ link.texto }}
+    &lt;/a&gt;
+  }
+
+  &lt;span class=&quot;total&quot; matTooltip=&quot;Total de contatos&quot;&gt;
+    &lt;mat-icon [matBadge]=&quot;total$ | async&quot; matBadgeSize=&quot;small&quot; aria-hidden=&quot;false&quot;&gt;people&lt;/mat-icon&gt;
+  &lt;/span&gt;
+&lt;/nav&gt;
+&lt;/mat-toolbar&gt;
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;Este é um <strong>componente reativo</strong>. Ele não pergunta quantos contatos existem: ele se <strong>inscreve</strong> no <code>total$</code> usando o <code>async</code> pipe, que faz o <code>subscribe</code> e o <code>unsubscribe</code> sozinho. Quando a lista mudar em qualquer página, o número do cabeçalho muda junto.&quot; Para mostrar o menu &quot;hambúrguer&quot;, aperte <strong>F12 → Ctrl + Shift + M</strong> e escolha uma tela de celular. O CSS desse menu está pronto em <code>cabecalho.scss</code> e usa uma media query &quot;na mão&quot;.</p>
+</div>
+<h3 class="bloco">Bloco C: componentes, bindings, debug, input e output (0:31 – 0:38)</h3>
+<h4 class="todo">TODO 9: service, signal, computed e debug</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/inicio/inicio.ts</code> (dentro da classe)</p>
+<pre><code class="language-ts">private readonly contatoService = inject(ContatoService);
+readonly total$ = this.contatoService.total$;
+readonly totalFavoritos$ = this.contatoService.totalFavoritos$;
+
+readonly curtidas = signal(0);
+readonly mensagemCurtidas = computed(() =&gt;
+  this.curtidas() === 0 ? &#39;Seja o primeiro a curtir!&#39; : `${this.curtidas()} curtida(s)`,
+);
+
+curtir(): void {
+  this.curtidas.update((valorAtual) =&gt; valorAtual + 1);
+  console.log(&#39;[Inicio] curtidas =&#39;, this.curtidas());
+  debugger;
+}
+</code></pre>
+<h4 class="todo">TODO 10: interpolação, property binding, two-way binding, event binding e @if</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/inicio/inicio.html</code>. Substitua as seções <code>.capa</code> e <code>.painel</code> por:</p>
+<pre><code class="language-html">&lt;section class=&quot;capa&quot;&gt;
+  &lt;img [src]=&quot;imagemCapa&quot; alt=&quot;Mesa de trabalho com notebook&quot; /&gt;
+  &lt;div class=&quot;capa-texto&quot;&gt;
+    &lt;h2&gt;Olá, {{ nomeVisitante || &#39;visitante&#39; }}!&lt;/h2&gt;
+    &lt;p&gt;
+      Sua agenda tem &lt;strong&gt;{{ total$ | async }}&lt;/strong&gt; contatos e
+      &lt;strong&gt;{{ totalFavoritos$ | async }}&lt;/strong&gt; favoritos.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class=&quot;painel&quot;&gt;
+  &lt;mat-form-field appearance=&quot;outline&quot;&gt;
+    &lt;mat-label&gt;Seu nome&lt;/mat-label&gt;
+    &lt;input matInput [(ngModel)]=&quot;nomeVisitante&quot; placeholder=&quot;Digite seu nome&quot; /&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;button mat-flat-button type=&quot;button&quot; (click)=&quot;curtir()&quot;&gt;
+    &lt;mat-icon&gt;thumb_up&lt;/mat-icon&gt; Curtir
+  &lt;/button&gt;
+
+  &lt;span class=&quot;curtidas&quot; [class.muitas]=&quot;curtidas() &gt;= 5&quot;&gt;{{ mensagemCurtidas() }}&lt;/span&gt;
+
+  @if (curtidas() &gt;= 5) {
+    &lt;span class=&quot;festa&quot;&gt;🎉 A turma curtiu!&lt;/span&gt;
+  }
+&lt;/section&gt;
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: os quatro tipos de binding.</p>
+<ul>
+<li><code>{{ }}</code> <strong>interpolação</strong>: TS → tela, como texto.</li>
+<li><code>[src]</code> <strong>property binding</strong>: TS → propriedade do elemento.</li>
+<li><code>(click)</code> <strong>event binding</strong>: tela → TS.</li>
+<li><code>[(ngModel)]</code> <strong>two-way binding</strong>: os dois sentidos ao mesmo tempo. Digite o nome e veja o &quot;Olá&quot; mudar.</li>
+</ul>
+<p>Depois as duas famílias de diretiva:</p>
+<ul>
+<li><strong>Estruturais</strong> (<code>@if</code>, <code>@for</code>, <code>@switch</code>) <strong>criam ou removem</strong> elementos.</li>
+<li><strong>De atributo</strong> (<code>[class.muitas]</code>, <code>ngModel</code>, <code>appDestaque</code>) <strong>mudam</strong> um elemento que já existe.</li>
+</ul>
+</div>
+<p><strong>🐞 Depuração (2 min):</strong></p>
+<ol>
+<li><strong>F12 → Console:</strong> clique em <em>Curtir</em> e veja o <code>console.log</code>.</li>
+<li>Com o F12 aberto, clique de novo. O <code>debugger;</code> <strong>pausa</strong> o código. Passe o mouse sobre <code>this.curtidas</code> e use <strong>F10</strong> para avançar linha a linha. Depois <strong>comente</strong> o <code>debugger;</code>.</li>
+<li><strong>F12 → Sources → Ctrl + P → <code>inicio.ts</code>:</strong> clique no número de uma linha para criar um <em>breakpoint</em> sem mexer no código.</li>
+<li><strong>Angular DevTools → aba Angular → Components:</strong> selecione <code>app-inicio</code> e veja o signal <code>curtidas</code> mudar a cada clique.</li>
+<li>Mostre um erro de propósito: escreva <code>{{ curtidas }}</code> (sem os parênteses) e leia a mensagem no terminal do <code>ng serve</code>. Desfaça.</li>
+</ol>
+<h4 class="todo">TODO 11: input e output (componente filho)</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/shared/components/card-contato/card-contato.ts</code></p>
+<p>Imports no topo do arquivo:</p>
+<pre><code class="language-ts">import { TitleCasePipe } from &#39;@angular/common&#39;;
+import { TelefonePipe } from &#39;../../pipes/telefone-pipe&#39;;
+import { Destaque } from &#39;../../directives/destaque&#39;;
+</code></pre>
+<p>No <code>@Component</code>:</p>
+<pre><code class="language-ts">imports: [MaterialModule, RouterLink, TitleCasePipe, TelefonePipe, Destaque],
+</code></pre>
+<p>Na classe:</p>
+<pre><code class="language-ts">readonly contato = input.required&lt;Contato&gt;();
+readonly favoritar = output&lt;number&gt;();
+readonly remover = output&lt;number&gt;();
+
+readonly foto = computed(
+  () =&gt; this.contato().foto || `https://i.pravatar.cc/300?u=${this.contato().email}`,
+);
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;<strong>Input</strong>: o dado <strong>desce</strong> do pai para o filho. <strong>Output</strong>: o evento <strong>sobe</strong> do filho para o pai. O card <strong>não conhece</strong> o service. Ele só mostra os dados e avisa o que aconteceu. Em projetos mais antigos vocês vão ver a mesma ideia escrita com <code>@Input()</code> e <code>@Output() ... = new EventEmitter()</code>.&quot;</p>
+</div>
+<h4 class="todo">TODO 12: template do card</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/shared/components/card-contato/card-contato.html</code>. Substitua tudo por:</p>
+<pre><code class="language-html">&lt;mat-card class=&quot;card&quot; [class.favorito]=&quot;contato().favorito&quot; appDestaque=&quot;#e91e63&quot;&gt;
+  &lt;img mat-card-image [src]=&quot;foto()&quot; [alt]=&quot;&#39;Foto de &#39; + contato().nome&quot; /&gt;
+
+  &lt;mat-card-header&gt;
+    &lt;mat-card-title&gt;{{ contato().nome }}&lt;/mat-card-title&gt;
+    &lt;mat-card-subtitle class=&quot;categoria&quot;&gt;
+      @switch (contato().categoria) {
+        @case (&#39;familia&#39;) {
+          &lt;mat-icon&gt;family_restroom&lt;/mat-icon&gt;
+        }
+        @case (&#39;trabalho&#39;) {
+          &lt;mat-icon&gt;work&lt;/mat-icon&gt;
+        }
+        @default {
+          &lt;mat-icon&gt;diversity_3&lt;/mat-icon&gt;
+        }
+      }
+      {{ contato().categoria | titlecase }}
+    &lt;/mat-card-subtitle&gt;
+  &lt;/mat-card-header&gt;
+
+  &lt;mat-card-content&gt;
+    &lt;p&gt;&lt;mat-icon&gt;call&lt;/mat-icon&gt; {{ contato().telefone | telefone }}&lt;/p&gt;
+    &lt;p&gt;&lt;mat-icon&gt;mail&lt;/mat-icon&gt; {{ contato().email }}&lt;/p&gt;
+  &lt;/mat-card-content&gt;
+
+  &lt;mat-card-actions&gt;
+    &lt;button
+      mat-icon-button
+      type=&quot;button&quot;
+      (click)=&quot;favoritar.emit(contato().id)&quot;
+      [matTooltip]=&quot;contato().favorito ? &#39;Desfavoritar&#39; : &#39;Favoritar&#39;&quot;
+    &gt;
+      &lt;mat-icon&gt;{{ contato().favorito ? &#39;star&#39; : &#39;star_border&#39; }}&lt;/mat-icon&gt;
+    &lt;/button&gt;
+
+    &lt;a mat-button [routerLink]=&quot;[&#39;/contatos&#39;, contato().id]&quot;&gt;Detalhes&lt;/a&gt;
+
+    &lt;button mat-icon-button type=&quot;button&quot; (click)=&quot;remover.emit(contato().id)&quot; matTooltip=&quot;Remover&quot;&gt;
+      &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+    &lt;/button&gt;
+  &lt;/mat-card-actions&gt;
+&lt;/mat-card&gt;
+</code></pre>
+<div class="nota">
+<p>Os cards ainda <strong>não aparecem</strong>: a lista vai usá-los no TODO 16.</p>
+</div>
+<h3 class="bloco">Bloco D: pipe e diretiva personalizados (0:38 – 0:41)</h3>
+<h4 class="todo">TODO 13: pipe personalizado</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/shared/pipes/cep-pipe.ts</code>. Mostre antes o <code>telefone-pipe.ts</code>, que está pronto, como modelo.</p>
+<pre><code class="language-ts">transform(valor: string | null | undefined): string {
+  const numeros = (valor ?? &#39;&#39;).replace(/\D/g, &#39;&#39;);
+  if (numeros.length !== 8) {
+    return valor ?? &#39;&#39;;
+  }
+  return `${numeros.slice(0, 5)}-${numeros.slice(5)}`;
+}
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;O pipe muda <strong>só a forma de mostrar</strong> o valor. O dado guardado continua <code>88010000</code>.&quot; Ele vai aparecer na página de detalhe (TODO 18).</p>
+</div>
+<h4 class="todo">TODO 14: diretiva de atributo com @HostListener</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/shared/directives/destaque.ts</code> (dentro da classe, depois do <code>constructor</code>)</p>
+<pre><code class="language-ts">@HostListener(&#39;mouseenter&#39;)
+aoEntrar(): void {
+  const cor = this.appDestaque() || &#39;#1565c0&#39;;
+  this.elemento.nativeElement.style.transform = &#39;translateY(-4px)&#39;;
+  this.elemento.nativeElement.style.boxShadow = `0 10px 20px ${cor}55`;
+}
+
+@HostListener(&#39;mouseleave&#39;)
+aoSair(): void {
+  this.elemento.nativeElement.style.transform = &#39;&#39;;
+  this.elemento.nativeElement.style.boxShadow = &#39;&#39;;
+}
+</code></pre>
+<p><strong>Teste:</strong> passe o mouse sobre os tópicos da página inicial. Eles usam <code>&lt;li appDestaque&gt;</code>.</p>
+<h3 class="bloco">Bloco E: lista reativa, grid e object-fit (0:41 – 0:46)</h3>
+<h4 class="todo">TODO 15: busca reativa com RxJS e métodos dos outputs</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/contatos/lista-contatos/lista-contatos.ts</code>. Troque a linha provisória do <code>contatosFiltrados$</code> por:</p>
+<pre><code class="language-ts">private readonly termo$ = this.busca.valueChanges.pipe(
+  debounceTime(300),
+  startWith(&#39;&#39;),
+  map((texto) =&gt; texto.trim().toLowerCase()),
+  distinctUntilChanged(),
+);
+
+readonly contatosFiltrados$ = combineLatest([this.contatoService.contatos$, this.termo$]).pipe(
+  map(([lista, termo]) =&gt;
+    lista.filter(
+      (contato) =&gt;
+        contato.nome.toLowerCase().includes(termo) || contato.email.toLowerCase().includes(termo),
+    ),
+  ),
+);
+
+aoFavoritar(id: number): void {
+  this.contatoService.alternarFavorito(id);
+}
+
+aoRemover(id: number): void {
+  this.contatoService.remover(id);
+  this.snackBar.open(&#39;Contato removido.&#39;, &#39;OK&#39;, { duration: 2500 });
+}
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;<code>valueChanges</code> emite a cada tecla. O <code>debounceTime</code> espera a pessoa parar de digitar, o <code>distinctUntilChanged</code> ignora termos repetidos e o <code>combineLatest</code> junta <strong>dois</strong> fluxos: sempre que a lista <strong>ou</strong> o termo mudar, o filtro roda de novo.&quot;</p>
+</div>
+<h4 class="todo">TODO 16: async pipe, @for/@empty, input e output</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/contatos/lista-contatos/lista-contatos.html</code>. Substitua o comentário do TODO por:</p>
+<pre><code class="language-html">@if (contatosFiltrados$ | async; as contatos) {
+  &lt;p class=&quot;resumo&quot;&gt;{{ contatos.length }} contato(s) encontrado(s)&lt;/p&gt;
+
+  &lt;section class=&quot;grade&quot;&gt;
+    @for (contato of contatos; track contato.id) {
+      &lt;app-card-contato
+        [contato]=&quot;contato&quot;
+        (favoritar)=&quot;aoFavoritar($event)&quot;
+        (remover)=&quot;aoRemover($event)&quot;
+      /&gt;
+    } @empty {
+      &lt;p class=&quot;vazio&quot;&gt;Nenhum contato encontrado.&lt;/p&gt;
+    }
+  &lt;/section&gt;
+}
+</code></pre>
+<p><strong>Teste ao vivo:</strong></p>
+<ul>
+<li>Clique na ⭐ de um card: o número de favoritos muda na página inicial.</li>
+<li>Remova um contato: o <em>badge</em> do cabeçalho diminui. Isso é o <strong>componente reativo</strong> funcionando.</li>
+<li>Digite &quot;ana&quot; na busca.</li>
+<li>Passe o mouse num card: é a diretiva <code>appDestaque</code> com a cor rosa.</li>
+</ul>
+<h4 class="todo">TODO 17: grid responsivo e object-fit</h4>
+<p class="arq"><strong>Parte 1. Arquivo:</strong> <code>src/app/features/contatos/lista-contatos/lista-contatos.scss</code></p>
+<pre><code class="language-scss">.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $espaco * 1.5;
+
+  @include responsivo(celular) {
+    grid-template-columns: 1fr;
+    gap: $espaco;
+  }
+}
+</code></pre>
+<p class="arq"><strong>Parte 2. Arquivo:</strong> <code>src/app/shared/components/card-contato/card-contato.scss</code>. Mostre antes as fotos <strong>distorcidas</strong> e depois adicione dentro de <code>img { }</code>:</p>
+<pre><code class="language-scss">object-fit: cover;
+object-position: center top;
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala, com <code>src/styles/_mixins.scss</code> e <code>_variaveis.scss</code> abertos:</p>
+<ul>
+<li>&quot;O <strong>mixin</strong> <code>responsivo</code> é uma media query reutilizável. O <code>@content</code> recebe o CSS que escrevemos entre as chaves do <code>@include</code>.&quot;</li>
+<li>&quot;O mapa <code>$breakpoints</code> concentra os tamanhos de tela num lugar só.&quot;</li>
+<li>&quot;No <code>styles.scss</code>, a classe <code>.container</code> usa <strong>max-width</strong>: em telas grandes o conteúdo não passa de 1100px.&quot;</li>
+</ul>
+<p>Teste com <strong>F12 → Ctrl + Shift + M</strong>, mudando a largura da tela: 3 colunas, depois 2, depois 1.</p>
+</div>
+<h3 class="bloco">Bloco F: rota com parâmetro, formulários e API (0:46 – 0:55)</h3>
+<h4 class="todo">TODO 18: ler o :id da URL</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/contatos/detalhe-contato/detalhe-contato.ts</code> (dentro da classe)</p>
+<pre><code class="language-ts">private readonly rota = inject(ActivatedRoute);
+private readonly contatoService = inject(ContatoService);
+
+readonly contato$: Observable&lt;Contato | undefined&gt; = this.rota.paramMap.pipe(
+  map((parametros) =&gt; Number(parametros.get(&#39;id&#39;))),
+  switchMap((id) =&gt; this.contatoService.buscarPorId(id)),
+);
+</code></pre>
+<p>Remova o <code>of</code> do import do <code>rxjs</code>.</p>
+<p><strong>Teste:</strong> clique em <em>Detalhes</em> no card da <strong>Ana</strong>. O CEP aparece como <code>88010-000</code> (pipe do TODO 13) e a data aparece em português (<code>LOCALE_ID</code> do TODO 4). Depois digite <code>/contatos/999</code> na barra de endereço.</p>
+<div class="fala">
+<p>🎙️ Fala: &quot;O <code>paramMap</code> é um Observable, porque o id pode mudar sem sair da página. O <code>switchMap</code> <strong>troca</strong> o fluxo do id pelo fluxo do contato.&quot;</p>
+</div>
+<h4 class="todo">TODO 19: formulário reativo com validators</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/contatos/form-contato/form-contato.ts</code>. Substitua o <code>form</code> por:</p>
+<pre><code class="language-ts">readonly form = this.formBuilder.group({
+  nome: [&#39;&#39;, [Validators.required, Validators.minLength(3)]],
+  email: [&#39;&#39;, [Validators.required, Validators.email]],
+  telefone: [&#39;&#39;, [Validators.required, Validators.pattern(/^\d{10,11}$/)]],
+  categoria: this.formBuilder.control&lt;Categoria&gt;(&#39;amigos&#39;, Validators.required),
+  foto: [&#39;&#39;],
+  endereco: this.formBuilder.group({
+    cep: [&#39;&#39;, [Validators.required, Validators.pattern(/^\d{8}$/)]],
+    logradouro: [&#39;&#39;, Validators.required],
+    numero: [&#39;&#39;],
+    bairro: [&#39;&#39;],
+    localidade: [&#39;&#39;, Validators.required],
+    uf: [&#39;&#39;, Validators.required],
+  }),
+});
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;No formulário <strong>reativo</strong>, a estrutura e as regras ficam no <strong>TypeScript</strong>. O HTML só se liga a elas com <code>[formGroup]</code>, <code>formControlName</code> e <code>formGroupName</code>. Para o grupo <code>endereco</code>, olhem o <code>formGroupName=&quot;endereco&quot;</code> no HTML.&quot;</p>
+</div>
+<h4 class="todo">TODO 20: consumir a API e salvar</h4>
+<p><strong>Mesmo arquivo.</strong></p>
+<pre><code class="language-ts">buscarCep(): void {
+  const cep = this.form.controls.endereco.controls.cep.value.replace(/\D/g, &#39;&#39;);
+  this.erroCep.set(&#39;&#39;);
+  if (cep.length !== 8) {
+    return;
+  }
+
+  this.buscandoCep.set(true);
+  this.cepService.buscar(cep).subscribe({
+    next: (endereco) =&gt; {
+      this.buscandoCep.set(false);
+      if (endereco.erro) {
+        this.erroCep.set(&#39;CEP não encontrado.&#39;);
+        return;
+      }
+      this.form.controls.endereco.patchValue({
+        logradouro: endereco.logradouro,
+        bairro: endereco.bairro,
+        localidade: endereco.localidade,
+        uf: endereco.uf,
+      });
+    },
+    error: () =&gt; {
+      this.buscandoCep.set(false);
+      this.erroCep.set(&#39;Não foi possível consultar o viaCEP. Verifique a internet.&#39;);
+    },
+  });
+}
+
+salvar(): void {
+  if (this.form.invalid) {
+    this.form.markAllAsTouched();
+    return;
+  }
+  const dados = this.form.getRawValue();
+  this.contatoService.adicionar({ ...dados, foto: dados.foto || undefined });
+  this.snackBar.open(`${dados.nome} cadastrado com sucesso!`, &#39;OK&#39;, { duration: 3000 });
+  this.router.navigate([&#39;/contatos&#39;]);
+}
+</code></pre>
+<h4 class="todo">TODO 21: campo CEP com (blur), spinner e erro</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/contatos/form-contato/form-contato.html</code>. Substitua o <code>mat-form-field</code> do CEP por:</p>
+<pre><code class="language-html">&lt;mat-form-field appearance=&quot;outline&quot;&gt;
+  &lt;mat-label&gt;CEP (só números)&lt;/mat-label&gt;
+  &lt;mat-icon matPrefix&gt;location_on&lt;/mat-icon&gt;
+  &lt;input matInput formControlName=&quot;cep&quot; maxlength=&quot;8&quot; (blur)=&quot;buscarCep()&quot; /&gt;
+  @if (buscandoCep()) {
+    &lt;mat-spinner matSuffix diameter=&quot;20&quot; /&gt;
+  }
+  &lt;mat-hint&gt;Ao sair do campo, buscamos o endereço no viaCEP&lt;/mat-hint&gt;
+  &lt;mat-error&gt;Digite os 8 números do CEP.&lt;/mat-error&gt;
+&lt;/mat-form-field&gt;
+@if (erroCep()) {
+  &lt;p class=&quot;erro-cep&quot;&gt;{{ erroCep() }}&lt;/p&gt;
+}
+</code></pre>
+<p><strong>Teste completo:</strong></p>
+<ol>
+<li>Clique em <em>Salvar</em> com tudo vazio. Os erros aparecem por causa do <code>markAllAsTouched</code>.</li>
+<li>Preencha nome, e-mail e telefone <code>48999990000</code>. Veja a <strong>prévia</strong> formatada pelo pipe no <code>mat-hint</code>.</li>
+<li>CEP <code>88010000</code>, depois saia do campo: o endereço é preenchido pela <strong>API</strong>. Mostre a requisição em <strong>F12 → Network → Fetch/XHR</strong>.</li>
+<li>CEP <code>99999999</code>: aparece &quot;CEP não encontrado&quot;.</li>
+<li>Salve. O app mostra o <em>snackbar</em>, <strong>navega</strong> para <code>/contatos</code> e o novo card aparece. O <em>badge</em> do cabeçalho sobe.</li>
+</ol>
+<h4 class="todo">TODO 22: formulário template-driven</h4>
+<p class="arq"><strong>Arquivo:</strong> <code>src/app/features/fale-conosco/fale-conosco.html</code></p>
+<p><strong>Parte 1.</strong> No lugar do comentário do e-mail:</p>
+<pre><code class="language-html">&lt;mat-form-field appearance=&quot;outline&quot;&gt;
+  &lt;mat-label&gt;E-mail&lt;/mat-label&gt;
+  &lt;input matInput type=&quot;email&quot; name=&quot;email&quot; [(ngModel)]=&quot;mensagem.email&quot; #email=&quot;ngModel&quot; required email /&gt;
+  @if (email.hasError(&#39;required&#39;)) {
+    &lt;mat-error&gt;O e-mail é obrigatório.&lt;/mat-error&gt;
+  } @else if (email.hasError(&#39;email&#39;)) {
+    &lt;mat-error&gt;Digite um e-mail válido.&lt;/mat-error&gt;
+  }
+&lt;/mat-form-field&gt;
+</code></pre>
+<p><strong>Parte 2.</strong> No botão:</p>
+<pre><code class="language-html">&lt;button mat-flat-button type=&quot;submit&quot; [disabled]=&quot;formulario.invalid&quot;&gt;
+</code></pre>
+<p><strong>Parte 3.</strong> No lugar do último comentário:</p>
+<pre><code class="language-html">@if (enviada(); as ultima) {
+  &lt;aside class=&quot;resumo&quot;&gt;
+    &lt;h3&gt;Última mensagem enviada&lt;/h3&gt;
+    &lt;p&gt;&lt;strong&gt;{{ ultima.nome }}&lt;/strong&gt; ({{ ultima.email }})&lt;/p&gt;
+    &lt;p&gt;{{ ultima.assunto | uppercase }}&lt;/p&gt;
+    &lt;p&gt;&quot;{{ ultima.texto }}&quot;&lt;/p&gt;
+  &lt;/aside&gt;
+}
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala, comparando os dois formulários lado a lado:</p>
+<table>
+<thead>
+<tr>
+<th>Template-driven (Fale conosco)</th>
+<th>Reativo (Novo contato)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>FormsModule</code></td>
+<td><code>ReactiveFormsModule</code></td>
+</tr>
+<tr>
+<td>Regras no <strong>HTML</strong> (<code>required</code>, <code>email</code>)</td>
+<td>Regras no <strong>TS</strong> (<code>Validators</code>)</td>
+</tr>
+<tr>
+<td><code>[(ngModel)]</code> + <code>name</code></td>
+<td><code>[formGroup]</code> + <code>formControlName</code></td>
+</tr>
+<tr>
+<td><code>#form=&quot;ngForm&quot;</code></td>
+<td><code>this.form</code></td>
+</tr>
+<tr>
+<td>Bom para formulários simples</td>
+<td>Bom para formulários grandes, dinâmicos e testáveis</td>
+</tr>
+</tbody></table>
+</div>
+<hr>
+<h2 class="parte">PARTE 3: Build e Git (0:55 → 1:00)</h2>
+<h3 class="bloco">3.1 Build de produção (0:55 – 0:56)</h3>
+<p>Pare o servidor (<strong>Ctrl + C</strong>) e rode:</p>
+<pre><code class="language-powershell">ng build
+</code></pre>
+<div class="fala">
+<p>🎙️ Fala: &quot;Repare em duas listas na saída:</p>
+<ul>
+<li><strong>Initial chunk files</strong>: o que o navegador baixa logo ao abrir o app.</li>
+<li><strong>Lazy chunk files</strong>: <code>contatos-module</code> e <code>fale-conosco</code>, baixados só quando o usuário entra nessas rotas. Esse é o resultado do <code>loadChildren</code> e do <code>loadComponent</code>.</li>
+</ul>
+<p>O build final fica em <code>dist/projeto-gravado/browser</code>.&quot;</p>
+</div>
+<h3 class="bloco">3.2 Commit, push, Pull Request e merge (0:56 – 0:58)</h3>
+<pre><code class="language-powershell">git status
+git add --all
+git commit --message &quot;feat(agenda): componentes, services, rxjs, rotas, formularios, viacep, pipes, diretiva e material&quot;
+git push --set-upstream origin feature/agenda-contatos
+</code></pre>
+<p><strong>Pull Request</strong> no GitHub: abra o repositório no navegador e clique em <strong>Compare &amp; pull request</strong>. Configure <strong>base: <code>develop</code></strong> ← <strong>compare: <code>feature/agenda-contatos</code></strong>, escreva uma descrição e peça revisão a um colega. Esse é o fluxo <strong>colaborativo</strong>: ninguém envia código direto para a <code>develop</code> sem revisão.</p>
+<p>Depois do merge pelo GitHub, atualize a máquina e apague a branch local:</p>
+<pre><code class="language-powershell">git switch develop
+git pull
+git branch --delete feature/agenda-contatos
+</code></pre>
+<p><strong>Release</strong> (opcional, mostre se der tempo): levar a <code>develop</code> para a <code>main</code> com uma versão.</p>
+<pre><code class="language-powershell">git switch main
+git merge --no-ff develop --message &quot;release: v1.0.0&quot;
+git tag --annotate v1.0.0 --message &quot;Agenda SENAI v1.0.0&quot;
+git push origin main --follow-tags
+</code></pre>
+<p>Abra o <strong>Git Graph</strong> no VS Code para mostrar o desenho das branches.</p>
+<h3 class="bloco">3.3 Encerramento (0:58 – 1:00)</h3>
+<p>Volte ao <strong>mapa de tópicos</strong> do início deste roteiro e passe rapidamente por cada linha, apontando no app onde aquilo aparece.</p>
+<div class="fala">
+<p>🎙️ Fala: &quot;Num projeto só, usamos componentes, input e output, bindings, diretivas, services, injeção de dependência, Observables, rotas com lazy loading, formulários dos dois tipos, API, pipes e diretivas personalizados, módulos, SASS, responsividade e Angular Material. Tudo isso ficou versionado com GitFlow. O código completo está no repositório.&quot;</p>
+</div>
+<hr>
+<h3 class="bloco">Apêndice A: problemas comuns durante a gravação</h3>
+<table>
+<thead>
+<tr>
+<th>Sintoma</th>
+<th>Causa</th>
+<th>Solução</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ng new</code> diz <em>A merge conflicted on path &quot;/README.md&quot;</em></td>
+<td>O README do GitHub ainda está na pasta</td>
+<td><code>Remove-Item -Path README.md</code> e rode o <code>ng new</code> de novo</td>
+</tr>
+<tr>
+<td><code>Can&#39;t find stylesheet to import</code> em <code>@use &#39;variaveis&#39;</code></td>
+<td>Faltou o <code>includePaths</code></td>
+<td>Rode o <code>ng config ... includePaths</code> do passo 1.4 e <strong>reinicie</strong> o <code>ng serve</code></td>
+</tr>
+<tr>
+<td><code>ng config ... includePaths</code> dá erro de JSON</td>
+<td>Aluno usando PowerShell 7 (<code>pwsh</code>) em vez do Windows PowerShell 5.1</td>
+<td>No PowerShell 7, use as aspas sem barra: <code>&#39;[&quot;src/styles&quot;]&#39;</code></td>
+</tr>
+<tr>
+<td><code>NullInjectorError: No provider for HttpClient</code></td>
+<td>Faltou o <code>provideHttpClient()</code></td>
+<td>TODO 4, parte 2 (<code>app.config.ts</code>)</td>
+</tr>
+<tr>
+<td><code>&#39;app-card-contato&#39; is not a known element</code></td>
+<td>O card não está no <code>SharedModule</code> ou a página não importa o <code>SharedModule</code></td>
+<td>Confira o <code>imports: [SharedModule]</code></td>
+</tr>
+<tr>
+<td><code>Can&#39;t bind to &#39;contato&#39;</code></td>
+<td>O TODO 11 não foi feito</td>
+<td>Crie o <code>input.required&lt;Contato&gt;()</code></td>
+</tr>
+<tr>
+<td>Ícones aparecem como texto (<code>home</code>, <code>star</code>)</td>
+<td>Sem internet: a fonte Material Symbols vem do Google Fonts</td>
+<td>Verifique a conexão</td>
+</tr>
+<tr>
+<td><code>/contatos/novo</code> abre o <strong>detalhe</strong></td>
+<td>A rota <code>&#39;:id&#39;</code> está antes de <code>&#39;novo&#39;</code></td>
+<td>Inverta a ordem (TODO 6)</td>
+</tr>
+<tr>
+<td>Erro <code>NG0</code> no console</td>
+<td>Abra a mensagem: ela traz um link para a documentação do erro</td>
+<td>Use isso como exemplo de debug</td>
+</tr>
+<tr>
+<td>Aviso <em>bundle initial exceeded maximum budget</em></td>
+<td>Faltou ajustar o budget</td>
+<td>Rode os dois <code>ng config ... budgets</code> do passo 1.4</td>
+</tr>
+</tbody></table>
+<h3 class="bloco">Apêndice B: comandos usados (todos por extenso)</h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>node --version</code> / <code>npm --version</code> / <code>ng version</code></td>
+<td>Conferir o ambiente</td>
+</tr>
+<tr>
+<td><code>npm install --global @angular/cli</code></td>
+<td>Instalar a Angular CLI</td>
+</tr>
+<tr>
+<td><code>ng new nome --directory=. --style=scss ...</code></td>
+<td>Criar o projeto na pasta atual</td>
+</tr>
+<tr>
+<td><code>ng serve --open</code></td>
+<td>Servidor de desenvolvimento + abrir o navegador</td>
+</tr>
+<tr>
+<td><code>ng build</code></td>
+<td>Build de produção (mostra initial e lazy chunks)</td>
+</tr>
+<tr>
+<td><code>ng add @angular/material --skip-confirmation</code></td>
+<td>Instalar <strong>e configurar</strong> uma biblioteca</td>
+</tr>
+<tr>
+<td><code>npm view @angular/material version</code></td>
+<td>Ver a versão publicada de um pacote</td>
+</tr>
+<tr>
+<td><code>ng config caminho.no.angular.json valor</code></td>
+<td>Editar o <code>angular.json</code> pelo terminal</td>
+</tr>
+<tr>
+<td><code>ng generate component caminho/nome</code></td>
+<td>Componente (<code>.ts</code>, <code>.html</code>, <code>.scss</code>)</td>
+</tr>
+<tr>
+<td><code>ng generate service caminho/nome</code></td>
+<td>Service (<code>@Service()</code>)</td>
+</tr>
+<tr>
+<td><code>ng generate module caminho/nome --routing</code></td>
+<td>NgModule + módulo de rotas</td>
+</tr>
+<tr>
+<td><code>ng generate pipe caminho/nome</code></td>
+<td>Pipe personalizado</td>
+</tr>
+<tr>
+<td><code>ng generate directive caminho/nome</code></td>
+<td>Diretiva personalizada</td>
+</tr>
+<tr>
+<td><code>ng generate interface caminho/nome</code></td>
+<td>Interface TypeScript</td>
+</tr>
+<tr>
+<td><code>ng generate component caminho/nome --dry-run</code></td>
+<td>Simular sem criar arquivos</td>
+</tr>
+<tr>
+<td><code>git switch --create nome</code></td>
+<td>Criar uma branch e entrar nela</td>
+</tr>
+<tr>
+<td><code>git push --set-upstream origin nome</code></td>
+<td>Primeiro push de uma branch</td>
+</tr>
+<tr>
+<td><code>git add --all</code> / <code>git commit --message &quot;...&quot;</code></td>
+<td>Versionar</td>
+</tr>
+<tr>
+<td><code>git merge --no-ff branch</code></td>
+<td>Merge preservando o histórico da branch (GitFlow)</td>
+</tr>
+<tr>
+<td><code>git tag --annotate v1.0.0 --message &quot;...&quot;</code></td>
+<td>Marcar uma versão</td>
+</tr>
+<tr>
+<td><code>git branch --delete nome</code></td>
+<td>Apagar uma branch local já integrada</td>
+</tr>
+</tbody></table>
+
+<footer>Desenvolvedor Front-End Angular · SENAI · Roteiro da aula gravada de revisão geral</footer>
+</div>
+</body>
+</html>

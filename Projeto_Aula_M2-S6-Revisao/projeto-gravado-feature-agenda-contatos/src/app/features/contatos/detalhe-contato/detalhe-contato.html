@@ -1,0 +1,35 @@
+@if (contato$ | async; as contato) {
+  <app-titulo-pagina
+    [titulo]="contato.nome"
+    [subtitulo]="'Cadastrado em ' + (contato.criadoEm | date: 'dd/MM/yyyy HH:mm')"
+  >
+    <a mat-stroked-button routerLink="/contatos"><mat-icon>arrow_back</mat-icon> Voltar</a>
+  </app-titulo-pagina>
+
+  <mat-card class="detalhe">
+    <img
+      class="foto"
+      [src]="contato.foto || 'https://i.pravatar.cc/300?u=' + contato.email"
+      [alt]="'Foto de ' + contato.nome"
+    />
+
+    <div class="dados">
+      <p><strong>E-mail:</strong> {{ contato.email }}</p>
+      <p><strong>Telefone:</strong> {{ contato.telefone | telefone }}</p>
+      <p><strong>Categoria:</strong> {{ contato.categoria | titlecase }}</p>
+      <p><strong>Favorito:</strong> {{ contato.favorito ? 'Sim ⭐' : 'Não' }}</p>
+
+      <h3>Endereço</h3>
+      @if (contato.endereco; as endereco) {
+        <p>{{ endereco.logradouro }}, {{ endereco.numero || 's/n' }} · {{ endereco.bairro }}</p>
+        <p>{{ endereco.localidade }} / {{ endereco.uf | uppercase }} · CEP {{ endereco.cep | cep }}</p>
+      } @else {
+        <p>Nenhum endereço cadastrado.</p>
+      }
+    </div>
+  </mat-card>
+} @else {
+  <app-titulo-pagina titulo="Contato não encontrado" subtitulo="Confira o id na URL">
+    <a mat-stroked-button routerLink="/contatos"><mat-icon>arrow_back</mat-icon> Voltar</a>
+  </app-titulo-pagina>
+}

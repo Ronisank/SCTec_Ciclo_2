@@ -1,0 +1,39 @@
+<app-page-header
+  titulo="Minhas inscrições"
+  subtitulo="Os mesmos dados da página Cursos, lidos da mesma Store por selectors."
+  tag="{{ total() }} {{ total() === 1 ? 'curso' : 'cursos' }}"
+/>
+
+@if (cursos().length > 0) {
+  <div class="resumo card">
+    <div>
+      <span class="numero">{{ total() }}</span>
+      <span class="rotulo">cursos</span>
+    </div>
+    <div>
+      <span class="numero">{{ cargaHoraria() }} h</span>
+      <span class="rotulo">carga horária total</span>
+    </div>
+  </div>
+
+  <ul class="inscricoes">
+    @for (curso of cursos(); track curso.id) {
+      <li class="card inscricao">
+        <img [src]="curso.imagem" alt="" loading="lazy" />
+        <div class="info">
+          <strong>{{ curso.nome }}</strong>
+          <small>{{ curso.area }} · {{ curso.nivel }} · {{ curso.cargaHoraria }} h</small>
+        </div>
+        <button mat-stroked-button type="button" (click)="cancelar(curso.id)" [attr.aria-label]="'Cancelar inscrição em ' + curso.nome">
+          <mat-icon>close</mat-icon> Cancelar
+        </button>
+      </li>
+    }
+  </ul>
+} @else {
+  <div class="vazio card">
+    <mat-icon>bookmark_border</mat-icon>
+    <p>Você ainda não se inscreveu em nenhum curso.</p>
+    <a mat-flat-button routerLink="/cursos"><mat-icon>school</mat-icon> Ver cursos</a>
+  </div>
+}

@@ -1,0 +1,82 @@
+// _componentes.scss - classes GLOBAIS reaproveitadas (.card, .campo, .btn, .erro, .ok, .aviso, .tag).
+// Mesmo visual da Semana 5, agora escrito com ANINHAMENTO (&) e MIXINS.
+@use 'sass:color';
+@use 'sass:map';
+@use 'mixins' as *;
+
+.card {
+  @include cartao;
+  margin-bottom: espaco(2.5);
+}
+
+.subtitulo { color: var(--texto-suave); }
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--azul-claro);
+  color: var(--azul);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+// ---------- Formulários ----------
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+
+  label { font-weight: 600; font-size: 14px; }
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--branco);
+  color: var(--texto);
+
+  &:focus { outline: 3px solid var(--azul-claro); border-color: var(--azul); }
+  // classes que o próprio Angular coloca nos campos (Semana 5)
+  &.ng-invalid.ng-touched { border-color: var(--erro); }
+}
+
+.erro { color: var(--erro); font-size: 13px; }
+
+// ---------- Botões ----------
+.acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: espaco(1); }
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  background: var(--azul);
+  color: var(--branco);
+  border: 1px solid var(--azul);
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+
+  // color.scale: escurece 25% a cor do mapa (calculado na COMPILAÇÃO)
+  &:hover { background: color.scale(map.get($cores, azul), $lightness: -25%); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  // .btn-secundario é um "modificador" do .btn
+  &-secundario {
+    background: transparent;
+    color: var(--azul);
+
+    &:hover { background: var(--azul-claro); }
+  }
+}
+
+// ---------- Mensagens ----------
+.ok { background: var(--ok-fundo); color: var(--ok); border-left: 4px solid var(--ok); padding: 12px 16px; border-radius: 8px; }
+.aviso { background: #fff6e6; border-left: 4px solid var(--laranja); padding: 12px 16px; border-radius: 8px; }

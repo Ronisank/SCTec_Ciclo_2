@@ -1,0 +1,40 @@
+<!-- TODO 12 - DE HTML FIXO PARA HTML DINÂMICO (faça depois do TODO 11)
+     Troque cada valor fixo por um BINDING usando o input contato():
+     a) <mat-card>: [class.favorito]="contato().favorito"  e  appDestaque="#e91e63"
+     b) <img>: [src]="foto()"  e  [alt]="'Foto de ' + contato().nome"
+     c) título: {{ contato().nome }}
+     d) subtítulo: @switch (contato().categoria) com @case ('familia') / @case ('trabalho') / @default
+        mostrando os ícones family_restroom / work / diversity_3 + {{ contato().categoria | titlecase }}
+     e) telefone: {{ contato().telefone | telefone }}     e-mail: {{ contato().email }}
+     f) estrela:  (click)="favoritar.emit(contato().id)"  e ícone {{ contato().favorito ? 'star' : 'star_border' }}
+     g) detalhes: [routerLink]="['/contatos', contato().id]"
+     h) lixeira:  (click)="remover.emit(contato().id)"
+-->
+<mat-card class="card">
+  <img mat-card-image src="https://i.pravatar.cc/300?img=1" alt="Foto do contato" />
+
+  <mat-card-header>
+    <mat-card-title>Nome do contato</mat-card-title>
+    <mat-card-subtitle class="categoria">
+      <mat-icon>diversity_3</mat-icon>
+      Categoria
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><mat-icon>call</mat-icon> (00) 00000-0000</p>
+    <p><mat-icon>mail</mat-icon> email&#64;exemplo.com</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-icon-button type="button">
+      <mat-icon>star_border</mat-icon>
+    </button>
+
+    <a mat-button routerLink="/contatos">Detalhes</a>
+
+    <button mat-icon-button type="button">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

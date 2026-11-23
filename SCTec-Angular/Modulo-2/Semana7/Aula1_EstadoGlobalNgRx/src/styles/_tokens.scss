@@ -1,0 +1,13 @@
+// _tokens.scss - transforma o MAPA $cores em VARIÁVEIS CSS (custom properties) com @each.
+// Resultado no CSS final:  :root { --azul: #0b4f8a; --laranja: #f08a24; ... }
+// Por que as duas? SASS ($) existe só na COMPILAÇÃO; a variável CSS (--) existe no NAVEGADOR
+// (dá para mudar em tempo real, por exemplo num tema escuro).
+@use 'variaveis' as *;
+
+:root {
+  @each $nome, $valor in $cores {
+    --#{$nome}: #{$valor};
+  }
+  --raio: #{$raio};
+  --sombra: #{$sombra};
+}

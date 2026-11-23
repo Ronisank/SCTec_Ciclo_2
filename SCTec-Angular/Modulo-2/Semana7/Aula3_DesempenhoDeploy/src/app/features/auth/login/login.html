@@ -1,0 +1,49 @@
+<div class="layout-login">
+  <section class="card">
+    <app-page-header titulo="Entrar" subtitulo="Acesse com seu usuário para ver suas inscrições." tag="JWT" />
+
+    <form [formGroup]="form" (ngSubmit)="entrar()" novalidate>
+      <mat-form-field appearance="outline">
+        <mat-label>Usuário</mat-label>
+        <input matInput formControlName="username" autocomplete="username" />
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-error>Informe o usuário.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="mostrarSenha() ? 'text' : 'password'" formControlName="password" autocomplete="current-password" />
+        <mat-icon matPrefix>lock</mat-icon>
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="mostrarSenha.set(!mostrarSenha())"
+          [attr.aria-label]="mostrarSenha() ? 'Esconder senha' : 'Mostrar senha'"
+        >
+          <mat-icon>{{ mostrarSenha() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error>Informe a senha.</mat-error>
+      </mat-form-field>
+
+      @if (erro()) {
+        <p class="erro" role="alert"><mat-icon>error</mat-icon> {{ erro() }}</p>
+      }
+
+      <button mat-flat-button type="submit" class="entrar" [disabled]="carregando()">
+        <mat-icon>{{ carregando() ? 'hourglass_top' : 'login' }}</mat-icon>
+        {{ carregando() ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+  </section>
+
+  <aside class="card dica">
+    <h3><mat-icon>science</mat-icon> Usuários de teste</h3>
+    <p>API pública DummyJSON. Clique para preencher:</p>
+    @for (u of usuariosTeste; track u.username) {
+      <button mat-stroked-button type="button" (click)="preencher(u)">
+        {{ u.perfil }}: <strong>{{ u.username }}</strong>
+      </button>
+    }
+  </aside>
+</div>

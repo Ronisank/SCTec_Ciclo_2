@@ -1,7 +1,9 @@
-// cadastro-aluno.ts - FORMULÁRIO REATIVO (Semana 5). Semana 6: mudou para features/alunos.
-// ReactiveFormsModule e os pipes (uppercase, date, cep) agora chegam pelo SharedModule.
+// cadastro-aluno.ts - FORMULÁRIO REATIVO (Semana 5).
+// Semana 6 · Aula 3: campos do Angular Material (mat-form-field), máscaras do ngx-mask e
+// aviso de sucesso com MatSnackBar (um SERVICE do Material, pedido com inject()).
 import { Component, inject, signal } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CepService } from '@core/services/cep-service';
 import { Aluno, Endereco, SharedModule } from '@shared';
 
@@ -14,9 +16,11 @@ import { Aluno, Endereco, SharedModule } from '@shared';
 export class CadastroAluno {
   private fb = inject(NonNullableFormBuilder);
   private cepService = inject(CepService);
+  private snackBar = inject(MatSnackBar);
 
   readonly cursos = ['Angular', 'React', 'Java', 'Python', 'Banco de Dados'];
 
+  // As validações NÃO mudaram: o ngx-mask entrega ao form só os NÚMEROS (sem "(", ")" e "-").
   form = this.fb.group({
     nome: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
@@ -30,18 +34,15 @@ export class CadastroAluno {
   carregando = signal(false);
   erroCep = signal('');
 
-  invalido(campo: string): boolean {
-    const controle = this.form.get(campo);
-    return !!controle && controle.invalid && controle.touched;
-  }
-
   enviar(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      this.snackBar.open('Confira os campos destacados em vermelho.', 'OK', { duration: 3000 });
       return;
     }
     const dados = this.form.getRawValue();
     this.alunoSalvo.set({ ...dados, cadastradoEm: new Date() });
+    this.snackBar.open(`Aluno ${dados.nome} cadastrado com sucesso!`, 'Fechar', { duration: 4000 });
   }
 
   limpar(): void {

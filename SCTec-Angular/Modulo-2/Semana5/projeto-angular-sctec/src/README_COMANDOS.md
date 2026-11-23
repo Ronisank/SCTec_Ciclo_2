@@ -1,88 +1,69 @@
-# Comandos do Angular · projeto-angular-sctec (atualizado na Semana 6)
+# Comandos do Angular · projeto-angular-sctec (atualizado na Semana 7)
 
-Rode no terminal do VS Code (`Ctrl + '`) **dentro da pasta do projeto**.
-Atalhos da CLI: `generate` = `g`, `component` = `c`, `service` = `s`, `module` = `m`, `pipe` = `p`.
+Rode no terminal do VS Code (`Ctrl + '`) **dentro da pasta do projeto** (onde está o `angular.json`).
 
 ---
 
-## 1. Rodar, compilar e testar
+## 1. Rodar, compilar e analisar
 
 | Comando | O que faz |
 |---|---|
-| `ng serve -o` | Sobe o projeto em http://localhost:4200 e abre o navegador |
+| `ng serve -o` | Sobe o projeto em http://localhost:4200 (usa o `environment.development.ts`) |
 | `Ctrl + C` | Para o servidor (faça isso **sempre** que mudar `angular.json` ou `tsconfig.json`) |
-| `ng build` | Build de produção. Mostra **Initial chunk files** (baixados logo) e **Lazy chunk files** (sob demanda) |
-| `ng build --named-chunks` | Mesmo build, com nomes legíveis nos arquivos `chunk-*.js` |
-| `ng test --watch=false` | Roda os testes uma vez |
+| `ng build` | Build de produção em `dist/projeto-angular-sctec/browser` (usa o `environment.ts`) |
+| `ng build --stats-json` | Gera `dist/projeto-angular-sctec/browser-stats.json` (abra em esbuild.github.io/analyze) |
+| `npx http-server dist/projeto-angular-sctec/browser -p 8080` | Testa o build localmente (sem rewrite: F5 em rotas dá 404) |
 
-## 2. Gerar arquivos (Semana 6)
-
-| O que | Comando | Cria |
-|---|---|---|
-| Componente de layout (core) | `ng g c core/layout/header` | `header.ts`, `.html`, `.css/.scss`, `.spec.ts` |
-| Componente compartilhado (shared) | `ng g c shared/components/page-header` | idem |
-| Página de uma feature | `ng g c features/cursos/lista-cursos` | idem |
-| Service de uma feature | `ng g s features/cursos/curso-service` | `curso-service.ts` (`@Service()`) |
-| **Módulo** (NgModule) | `ng g m shared` | `shared/shared-module.ts` (`@NgModule`) |
-| Simular antes de criar | `ng g c features/teste --dry-run` | nada (só mostra) |
-
-## 3. Organização (Aula 1)
-
-**Aliases** no `tsconfig.json` (dentro de `compilerOptions`):
-```json
-"paths": {
-  "@core/*": ["./src/app/core/*"],
-  "@shared": ["./src/app/shared/index.ts"],
-  "@shared/*": ["./src/app/shared/*"],
-  "@features/*": ["./src/app/features/*"]
-}
-```
-Depois: `import { SharedModule } from '@shared';` em vez de `'../../../shared/shared-module'`.
-
-**Lazy loading** no `app.routes.ts`:
-```ts
-{ path: 'cursos', loadChildren: () => import('@features/cursos/cursos.routes').then((m) => m.CURSOS_ROUTES) },
-{ path: 'contato', loadComponent: () => import('@features/contato/contato').then((m) => m.Contato) },
-```
-
-## 4. SCSS (Aula 2)
-
-| Comando / configuração | O que faz |
-|---|---|
-| `ng new meu-app --style=scss` | Projeto **novo** já com SCSS |
-| `ng config schematics.@schematics/angular:component.style scss` | Projeto **existente**: os próximos `ng g c` criam `.scss` |
-| `angular.json` → `"styles": ["src/styles.scss"]` | Arquivo global de estilos |
-| `angular.json` → `"inlineStyleLanguage": "scss"` | SCSS também em `styles: [...]` dentro do `@Component` |
-| `angular.json` → `"stylePreprocessorOptions": { "includePaths": ["src/styles"] }` | Permite `@use 'mixins' as *;` em qualquer componente |
-
-> O pacote `sass` já vem com o `@angular/build`: **não precisa instalar nada**.
-
-## 5. Bibliotecas (Aula 3)
+## 2. Aula 1 · NgRx
 
 | Comando | O que faz |
 |---|---|
-| `npm view @angular/material version peerDependencies` | Confere a versão e com quais versões do Angular a biblioteca é compatível |
-| `ng add @angular/material` | Instala **e configura** (tema, fontes Roboto e Material Symbols no `index.html`) |
-| `npm install ngx-mask` | Só instala (a configuração é manual: `provideNgxMask()` no `app.config.ts`) |
-| `npm uninstall nome-do-pacote` | Remove uma biblioteca |
-| `npm outdated` | Lista pacotes com versões mais novas |
-| `ng update` | Mostra/atualiza o Angular e bibliotecas compatíveis |
+| `npm view @ngrx/store version peerDependencies` | Confere a versão e a compatibilidade com o Angular |
+| `npm install @ngrx/store @ngrx/effects @ngrx/store-devtools` | Instala a Store, os effects e o DevTools |
+| `ng add @ngrx/store` | (Alternativa) instala e já registra `provideStore()` no `app.config.ts` |
+| `ng g c features/inscricoes/minhas-inscricoes` | Nova página de inscrições |
 
-## 6. Git (fim de cada aula)
+```ts
+// app.config.ts
+provideStore(),
+provideState(cursosFeature),
+provideEffects(cursosEffects),
+provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 
-```bash
-git add .
-git commit -m "feat(organizacao): core, shared, features e lazy loading"   # Aula 1
-git commit -m "feat(estilo): scss, mixins e layout responsivo"             # Aula 2
-git commit -m "feat(ui): angular material e ngx-mask"                      # Aula 3
-git push
+// em um componente
+cursos = this.store.selectSignal(cursosFeature.selectLista);   // LER
+this.store.dispatch(CursosActions.inscrever({ cursoId }));      // AVISAR
 ```
 
-## 7. Atalhos úteis
+## 3. Aula 2 · Autenticação e autorização
 
-| Atalho | O que faz |
+| Comando | Cria |
 |---|---|
-| `Ctrl + Shift + F` | Buscar `TODO 1`, `TODO 2`... em todos os arquivos |
-| `Ctrl + P` | Abrir arquivo pelo nome |
-| `F12` → `Ctrl + Shift + M` | DevTools no **modo dispositivo** (testar celular/tablet) |
-| `F12` → Network → filtro **JS** | Ver os chunks do lazy loading baixando ao trocar de página |
+| `ng g s core/auth/auth-service` | `auth-service.ts` com `@Service()` |
+| `ng g interceptor core/auth/auth` | `auth-interceptor.ts` (`HttpInterceptorFn`) |
+| `ng g guard core/auth/auth --implements CanActivate` | `auth-guard.ts` (`CanActivateFn`) |
+| `ng g c features/auth/login` · `ng g c features/auth/acesso-negado` · `ng g c features/admin/painel-admin` | páginas |
+
+```ts
+provideHttpClient(withInterceptors([authInterceptor])),                // app.config.ts
+{ path: 'inscricoes', canActivate: [authGuard], loadComponent: ... },  // app.routes.ts
+{ path: 'admin', canMatch: [perfilGuard('admin')], loadComponent: ... },
+```
+
+Usuários de teste (DummyJSON): **admin** `emilys` / `emilyspass` · **aluno** `averyp` / `averyppass`.
+
+## 4. Aula 3 · Desempenho e deploy
+
+| Comando | O que faz |
+|---|---|
+| `ng g environments` | Cria `src/environments/` e o `fileReplacements` no `angular.json` |
+| `npm install -g firebase-tools` | CLI do Firebase (sem permissão? use `npx firebase-tools ...`) |
+| `firebase login` | Entra com a conta Google |
+| `firebase init hosting` | public: `dist/projeto-angular-sctec/browser` · SPA: **Yes** · GitHub: **No** · overwrite index.html: **No** |
+| `firebase deploy` | Publica e mostra a **Hosting URL** |
+| Netlify Drop | app.netlify.com/drop → arraste a pasta `browser` (com o `_redirects`) |
+
+```html
+@defer (on viewport) { <app-linha-do-tempo /> } @placeholder { ... }
+<img [ngSrc]="curso.imagem" width="800" height="450" [priority]="$first" />
+```

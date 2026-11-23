@@ -1,0 +1,42 @@
+@use 'variaveis' as *;
+
+:host {
+  display: block;
+}
+
+.card {
+  height: 100%;
+  overflow: hidden;
+
+  // TODO 17 (parte 2) - OBJECT-FIT
+  // Repare: as fotos estão ESTICADAS/ACHATADAS, porque forçamos 100% x 200px.
+  // Adicione:  object-fit: cover;          (preenche a área cortando as sobras, sem distorcer)
+  //            object-position: center top; (prioriza a parte de cima da foto: o rosto)
+  img {
+    width: 100%;
+    height: 200px;
+  }
+
+  // "&" = o próprio seletor pai -> vira ".card.favorito"
+  &.favorito {
+    outline: 3px solid $cor-destaque;
+  }
+
+  .categoria {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  mat-card-content p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    word-break: break-all;
+  }
+
+  mat-card-actions {
+    justify-content: space-between;
+  }
+}

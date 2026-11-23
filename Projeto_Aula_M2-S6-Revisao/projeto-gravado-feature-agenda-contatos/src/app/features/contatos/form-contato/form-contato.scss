@@ -1,0 +1,46 @@
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+.formulario {
+  display: grid;
+  gap: $espaco * 1.5;
+}
+
+.bloco {
+  @include cartao;
+
+  h2 {
+    margin-top: 0;
+    color: $cor-primaria;
+  }
+}
+
+// Campos lado a lado no computador...
+.linha {
+  display: flex;
+  gap: $espaco;
+
+  mat-form-field {
+    flex: 1;
+  }
+
+  .largo {
+    flex: 3;
+  }
+
+  // ...e um embaixo do outro no celular.
+  @include responsivo(celular) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.erro-cep {
+  color: $cor-erro;
+  margin: -8px 0 $espaco;
+}
+
+.botoes {
+  display: flex;
+  gap: $espaco;
+}

@@ -1,0 +1,60 @@
+@use 'mixins' as *;
+
+.resumo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: espaco(2);
+  margin-bottom: espaco(2);
+  text-align: center;
+
+  .numero { display: block; font-size: 32px; font-weight: 700; color: var(--azul); }
+  .rotulo { color: var(--texto-suave); font-size: 14px; }
+}
+
+.inscricoes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: espaco(1.5);
+}
+
+.inscricao {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  align-items: center;
+  gap: espaco(2);
+  padding: espaco(1.5);
+  margin: 0;
+
+  img {
+    width: 96px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .info { display: flex; flex-direction: column; gap: 4px; }
+  small { color: var(--texto-suave); }
+
+  button { grid-column: 1 / -1; justify-self: end; }
+
+  @include a-partir-de(md) {
+    grid-template-columns: 120px 1fr auto;
+
+    img { width: 120px; }
+    button { grid-column: auto; }
+  }
+}
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: espaco(1);
+  padding: espaco(5) espaco(2);
+  color: var(--texto-suave);
+
+  mat-icon { font-size: 48px; width: 48px; height: 48px; }
+  a { text-decoration: none; }
+}
