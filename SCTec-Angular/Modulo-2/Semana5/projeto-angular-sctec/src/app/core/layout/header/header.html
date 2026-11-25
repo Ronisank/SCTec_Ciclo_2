@@ -36,5 +36,25 @@
     </a>
     <a mat-button routerLink="/alunos/cadastro" routerLinkActive="ativo"><mat-icon>person_add</mat-icon> Cadastro</a>
     <a mat-button routerLink="/contato" routerLinkActive="ativo"><mat-icon>mail</mat-icon> Contato</a>
+
+    <!--
+    TODO 6 (MENU COM LOGIN): escreva aqui, no final do <nav>:
+      
+      A) AUTORIZAÇÃO na interface (o link Admin só aparece para o perfil admin):
+      -->
+        @if (auth.ehAdmin()) {
+          <a mat-button routerLink="/admin" routerLinkActive="ativo"><mat-icon>admin_panel_settings</mat-icon> Admin</a>
+        }
+
+      <!-- B) AUTENTICAÇÃO na interface (usuário + Sair, ou o botão Entrar): -->
+        @if (auth.usuario(); as usuario) {
+          <span class="usuario">
+            <img [src]="usuario.foto" alt="" width="32" height="32" />
+            <span class="nome">{{ usuario.nome }}</span>
+          </span>
+          <button mat-button type="button" (click)="sair()"><mat-icon>logout</mat-icon> Sair</button>
+        } @else {
+          <a mat-button routerLink="/login" routerLinkActive="ativo"><mat-icon>login</mat-icon> Entrar</a>
+        }
   </nav>
 </mat-toolbar>

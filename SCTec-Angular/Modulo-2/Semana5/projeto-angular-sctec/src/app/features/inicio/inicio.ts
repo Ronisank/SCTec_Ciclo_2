@@ -31,6 +31,11 @@ export class Inicio {
       semana: 'Semana 7 · Aula 1',
       titulo: 'Estado global com NgRx',
       itens: ['Store, actions e reducer', 'Selectors e dados derivados', 'Effects: API de cursos', 'Inscrições + contador no menu'],
+    },
+    {
+      semana: 'Semana 7 · Aula 2',
+      titulo: 'Autenticação e autorização',
+      itens: ['Login com JWT (API DummyJSON)', 'Interceptor: token em cada requisição', 'Guards: authGuard e perfilGuard', 'Área admin + acesso negado'],
       atual: true,
     },
   ];

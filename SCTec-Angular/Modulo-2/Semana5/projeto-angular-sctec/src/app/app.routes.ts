@@ -3,6 +3,7 @@
 //   loadComponent -> carrega UM componente (página simples)
 //   loadChildren  -> carrega o ARQUIVO DE ROTAS de uma feature (várias páginas)
 import { Routes } from '@angular/router';
+import { authGuard, perfilGuard } from '@core/auth/auth-guard';
 
 export const routes: Routes = [
   {
@@ -26,9 +27,29 @@ export const routes: Routes = [
   {
     // Semana 7 · Aula 1: página que lê o ESTADO GLOBAL (Store) das inscrições
     path: 'inscricoes',
+    // TODO 4 - parte B: proteja esta rota. Acrescente aqui:
+      canActivate: [authGuard],
     loadComponent: () =>
       import('@features/inscricoes/minhas-inscricoes/minhas-inscricoes').then((m) => m.MinhasInscricoes),
     title: 'Minhas inscrições | Projeto SCTEC',
+  },
+  // Semana 7 · Aula 2: autenticação e autorização
+  {
+    path: 'login',
+    loadComponent: () => import('@features/auth/login/login').then((m) => m.Login),
+    title: 'Entrar | Projeto SCTEC',
+  },
+  {
+    path: 'acesso-negado',
+    loadComponent: () => import('@features/auth/acesso-negado/acesso-negado').then((m) => m.AcessoNegado),
+    title: 'Acesso negado | Projeto SCTEC',
+  },
+  {
+    path: 'admin',
+    // TODO 5 - parte B: só o perfil admin. Acrescente aqui:
+      canMatch: [perfilGuard('admin')],
+    loadComponent: () => import('@features/admin/painel-admin/painel-admin').then((m) => m.PainelAdmin),
+    title: 'Admin | Projeto SCTEC',
   },
   // A URL antiga (Semana 5) continua funcionando:
   { path: 'cadastro', redirectTo: 'alunos/cadastro' },

@@ -80,3 +80,22 @@ nav {
     padding-bottom: 0;
   }
 }
+
+// Semana 7 · Aula 2: usuário logado no menu
+.usuario {
+  display: inline-flex;
+  align-items: center;
+  gap: espaco(1);
+  padding: 0 espaco(1);
+  color: var(--branco);
+  font-size: 14px;
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--azul-claro);
+  }
+}
+
+nav button { color: #dce9f7; justify-content: flex-start; }

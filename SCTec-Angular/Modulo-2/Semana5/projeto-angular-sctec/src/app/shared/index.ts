@@ -8,3 +8,4 @@ export * from './models/aluno';
 export * from './models/curso';
 export * from './models/endereco';
 export * from './models/mensagem-contato';
+export * from './models/usuario';

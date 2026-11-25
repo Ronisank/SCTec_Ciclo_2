@@ -29,34 +29,30 @@ export const cursosFeature = createFeature({
   reducer: createReducer(
     estadoInicial,
     on(CursosActions.carregar, (state) => ({ ...state, carregando: true, erro: null })),
-    // TODO 2 (REDUCER - CARREGAR): seguindo o modelo da linha acima, trate o resultado da API:
-    //   on(CursosActions.carregarSucesso, (state, { cursos }) => ({ ...state, lista: cursos, carregando: false })),
-    //   on(CursosActions.carregarFalha, (state, { erro }) => ({ ...state, carregando: false, erro })),
+    on(CursosActions.carregarSucesso, (state, { cursos }) => ({ ...state, lista: cursos, carregando: false })),
+    on(CursosActions.carregarFalha, (state, { erro }) => ({ ...state, carregando: false, erro })),
 
-    // TODO 4 (REDUCER - INSCRIÇÕES): SEM push e SEM splice (imutabilidade!). Sempre uma lista NOVA:
-    //   on(CursosActions.inscrever, (state, { cursoId }) =>
-    //     state.inscritos.includes(cursoId) ? state : { ...state, inscritos: [...state.inscritos, cursoId] },
-    //   ),
-    //   on(CursosActions.cancelarInscricao, (state, { cursoId }) => ({
-    //     ...state,
-    //     inscritos: state.inscritos.filter((id) => id !== cursoId),
-    //   })),
+    on(CursosActions.inscrever, (state, { cursoId }) =>
+      state.inscritos.includes(cursoId) ? state : { ...state, inscritos: [...state.inscritos, cursoId] },
+    ),
+    on(CursosActions.cancelarInscricao, (state, { cursoId }) => ({
+      ...state,
+      inscritos: state.inscritos.filter((id) => id !== cursoId),
+    })),
+    // Aula 2: curso novo entra no FINAL de uma NOVA lista (imutável)
+    on(CursosActions.adicionarCurso, (state, { curso }) => ({ ...state, lista: [...state.lista, curso] })),
   ),
 
   // 4) SELECTORS EXTRAS: dados DERIVADOS (calculados a partir do estado, não guardados).
   //    createSelector MEMORIZA: só recalcula quando lista ou inscritos mudam.
   extraSelectors: ({ selectLista, selectInscritos }) => {
-    // TODO 5 (SELECTORS): as 3 linhas abaixo são PROVISÓRIAS (devolvem vazio/zero). Troque por:
-    //   const selectCursosInscritos = createSelector(selectLista, selectInscritos, (lista, inscritos) =>
-    //     lista.filter((curso) => inscritos.includes(curso.id)),
-    //   );
-    //   const selectTotalInscritos = createSelector(selectInscritos, (inscritos) => inscritos.length);
-    //   const selectCargaHorariaTotal = createSelector(selectCursosInscritos, (cursos) =>
-    //     cursos.reduce((total, curso) => total + curso.cargaHoraria, 0),
-    //   );
-    const selectCursosInscritos = createSelector(selectLista, (): Curso[] => []);
-    const selectTotalInscritos = createSelector(selectInscritos, () => 0);
-    const selectCargaHorariaTotal = createSelector(selectCursosInscritos, () => 0);
+    const selectCursosInscritos = createSelector(selectLista, selectInscritos, (lista, inscritos) =>
+      lista.filter((curso) => inscritos.includes(curso.id)),
+    );
+    const selectTotalInscritos = createSelector(selectInscritos, (inscritos) => inscritos.length);
+    const selectCargaHorariaTotal = createSelector(selectCursosInscritos, (cursos) =>
+      cursos.reduce((total, curso) => total + curso.cargaHoraria, 0),
+    );
     return { selectCursosInscritos, selectTotalInscritos, selectCargaHorariaTotal };
   },
 });

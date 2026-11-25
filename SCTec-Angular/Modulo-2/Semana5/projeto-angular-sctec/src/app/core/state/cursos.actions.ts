@@ -18,5 +18,8 @@ export const CursosActions = createActionGroup({
     // Fluxo SÍNCRONO (só o reducer)
     'Inscrever': props<{ cursoId: number }>(),
     'Cancelar Inscricao': props<{ cursoId: number }>(),
+
+    // Aula 2: só o ADMIN dispara (painel protegido por perfilGuard)
+    'Adicionar Curso': props<{ curso: Curso }>(),
   },
 });

@@ -1,0 +1,9 @@
+<section class="card negado" role="alert">
+  <mat-icon class="icone">lock</mat-icon>
+  <h2>Acesso negado</h2>
+  <p>
+    Você entrou como <strong>{{ auth.usuario()?.nome }}</strong> (perfil <strong>{{ auth.usuario()?.perfil }}</strong>),
+    mas esta área é só para administradores.
+  </p>
+  <a mat-flat-button routerLink="/"><mat-icon>home</mat-icon> Voltar ao início</a>
+</section>
